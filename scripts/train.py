@@ -63,6 +63,9 @@ def main(cfg: TrainConfig) -> None:
         )
 
     barrier()
+    
+    log.info(f"World size: {get_world_size()}")
+    log.info(f"Local world size: {get_local_world_size()}")
 
     device = torch.device("cuda")
 
@@ -111,6 +114,7 @@ def main(cfg: TrainConfig) -> None:
             name=cfg.wandb.name,
             tags=cfg.wandb.tags,
             config=cfg.asdict(exclude=["wandb"]),
+            mode="offline",
         )
 
     barrier()
