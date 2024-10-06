@@ -695,7 +695,7 @@ class CosWithWarmup(Scheduler):
     warmup_steps: int
     alpha_f: float = 0.1
     t_max: Optional[int] = None
-
+    
     def get_lr(self, initial_lr: float, step: int, max_steps: int) -> float:
         max_steps = max_steps if self.t_max is None else self.t_max
         eta_min = initial_lr * self.alpha_f
@@ -731,7 +731,7 @@ class LinearWithWarmup(Scheduler):
 @dataclass
 class InvSqrtWithWarmup(Scheduler):
     warmup_steps: int
-
+    
     def get_lr(self, initial_lr: float, step: int, max_steps: int) -> float:
         if step < self.warmup_steps:
             return self._linear_warmup(initial_lr, step, self.warmup_steps)

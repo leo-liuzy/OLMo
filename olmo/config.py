@@ -1234,6 +1234,12 @@ class TrainConfig(BaseConfig):
     can be compared using `scripts/compare_module_outputs.py`.
     """
 
+    ###### Below is Leo's customization 
+    restart_from_unsharded_checkpoint: bool = False 
+    
+    filter_strategy: Optional[str] = None
+    
+
     @property
     def autocast_precision(self) -> torch.dtype:
         if self.precision == "amp_bf16":

@@ -244,6 +244,12 @@ def main(cfg: TrainConfig) -> None:
         evaluators=evaluators,
         indices_file=indices_file,
     ) as trainer:
+        log.info(f"Max duration: {cfg.max_duration}")
+        log.info(f"Max #tokens: {trainer.max_tokens}")
+        log.info(f"Max #steps: {trainer.max_steps}")
+        log.info(f"#batches / epoch: {trainer.batches_per_epoch}")
+        log.info(f"#tokens / batch: {trainer.tokens_per_batch}")
+        
         if cfg.try_load_latest_save:
             if (
                 cfg.save_folder is not None
@@ -299,12 +305,21 @@ def main(cfg: TrainConfig) -> None:
 
         if cfg.load_path is not None:
             log.info(f"Loading checkpoint from {cfg.load_path}...")
-            trainer.restore_checkpoint(
-                cfg.load_path,
-                load_optimizer_state=not cfg.reset_optimizer_state,
-                load_trainer_state=not cfg.reset_trainer_state,
-                sharded_checkpointer=cfg.load_path_sharded_checkpointer,
-            )
+            if cfg.restart_from_unsharded_checkpoint:
+                trainer.restore_checkpoint(
+                    cfg.load_path,
+                    load_optimizer_state=not cfg.reset_optimizer_state,
+                    checkpoint_type=CheckpointType.unsharded, # ! This is a hack
+                    load_trainer_state=not cfg.reset_trainer_state,
+                    sharded_checkpointer=cfg.load_path_sharded_checkpointer,
+                )
+            else:
+                trainer.restore_checkpoint(
+                    cfg.load_path,
+                    load_optimizer_state=not cfg.reset_optimizer_state,
+                    load_trainer_state=not cfg.reset_trainer_state,
+                    sharded_checkpointer=cfg.load_path_sharded_checkpointer,
+                )
             log.info("Checkpoint successfully loaded")
 
             # If we have to, set a new scheduler:
