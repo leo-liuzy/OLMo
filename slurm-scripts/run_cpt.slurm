@@ -1,11 +1,11 @@
 #!/bin/bash
-#SBATCH -J olmo-sample           # Job name
-#SBATCH -o slurm-outputs/olmo-sample.o%j       # Name of stdout output file
-#SBATCH -e slurm-outputs/olmo-sample.e%j       # Name of stderr output file
+#SBATCH -J olmo-10k           # Job name
+#SBATCH -o slurm-outputs/olmo-10k.o%j       # Name of stdout output file
+#SBATCH -e slurm-outputs/olmo-10k.e%j       # Name of stderr output file
 #SBATCH -p gh          # Queue (partition) name
 #SBATCH -N 1              # Total # of nodes
 ##SBATCH --ntasks-per-node=1 
-#SBATCH -t 00:30:00        # Run time (hh:mm:ss)
+#SBATCH -t 08:00:00        # Run time (hh:mm:ss)
 #SBATCH -A AST24021       # Allocation name (req'd if you have more than 1)
 
 # conda init
@@ -56,12 +56,18 @@ export NCCL_NSOCKS_PERTHREAD=4
 export NCCL_SOCKET_NTHREADS=2
 export NCCL_MIN_CHANNELS=32
 
-save_root="/home1/09636/zyliu/scratch/checkpoints/leo"
+# save_root="/home1/09636/zyliu/scratch/checkpoints/leo/tenk_dump_package_dedup"
 data_folder=/home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup
+data_folder=/home1/09636/zyliu/scratch/processed_data/tenk_dump_package/dedup
 path_to_checkpoint="/home1/09636/zyliu/scratch/base_models/OLMo/olmo/OLMo-1B-final"
-# no_biblio_mds no_html_mds no_tab_fig_mds
-filter_strategy=cat_mds
+# no_biblio_mds,11 no_html_mds,8 no_tab_fig_mds,9 cat_mds,14 # sample
+# no_biblio_mds,132 no_html_mds,67 no_tab_fig_mds,102 cat_mds,155 # 10k
+filter_warmup_pair=no_biblio_mds,11
 
+# echo $filter_strategy
+# echo $t_warmup
+
+IFS=, read -r filter_strategy t_warmup <<< $filter_warmup_pair
 torchrun --nproc_per_node=1 \
     scripts/train.py \
     configs/astro-cpt/OLMo-1B.yaml \
@@ -73,7 +79,9 @@ torchrun --nproc_per_node=1 \
     --load_path=${path_to_checkpoint} \
     --save_folder=${save_root}/${filter_strategy}/OLMo-1B-final \
     --restart_from_unsharded_checkpoint=True \
-    --filter_strategy=${filter_strategy}
+    --filter_strategy=${filter_strategy} \
+    --scheduler.t_warmup=${t_warmup} \
+
     # --evaluators=null
     # --wandb=null \
 # --rdzv_conf 'read_timeout=420' \
@@ -82,7 +90,6 @@ torchrun --nproc_per_node=1 \
     # --rdzv_backend static \
     # --rdzv_endpoint "${MASTER_ADDR}:${MASTER_PORT}" \
     # --master_addr ${MASTER_ADDR} \
-    
 
 # python scripts/train.py ${path_to_train_config} \
 #     --data.paths=${path_to_data}/input_ids.npy \

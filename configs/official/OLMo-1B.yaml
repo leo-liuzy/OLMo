@@ -59,10 +59,10 @@ save_folder: ${path.choose:${oc.env:SCRATCH_DIR,no_exist}/checkpoints,/results}/
 save_overwrite: false
 # Sharded checkpoints (best for restarts)
 save_interval: 1000
-save_num_checkpoints_to_keep: 9
+save_num_checkpoints_to_keep: 0
 # Unsharded checkpoints (for final storage)
-save_interval_unsharded: 10000
-save_num_unsharded_checkpoints_to_keep: -1
+save_interval_unsharded: 1000
+save_num_unsharded_checkpoints_to_keep: 1
 
 load_path: null
 

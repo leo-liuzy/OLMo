@@ -1,7 +1,7 @@
 
-PROCESSED_DATA_DIR=${SCRATCH}/processed_data/sample_dump_package/dedup
+PROCESSED_DATA_DIR=${SCRATCH}/processed_data/tenk_dump_package/dedup
 
-processed_strategy=cat_mds
+# processed_strategy=cat_mds
 # processed_strategy=no_biblio_mds
 # processed_strategy=no_html_mds
 # processed_strategy=no_tab_fig_mds

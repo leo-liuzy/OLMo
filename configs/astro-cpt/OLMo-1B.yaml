@@ -53,7 +53,7 @@ optimizer:
   metrics_log_interval: 10
 scheduler:
   name: cosine_with_warmup
-  t_warmup: 1
+  t_warmup: 14
   t_max: null
   alpha_f: 0.1
   grad_clip_warmup_steps: null
@@ -67,7 +67,7 @@ data:
   datasets: null
   pad_direction: right
   num_workers: 0
-  drop_last: false
+  drop_last: true
   pin_memory: true
   prefetch_factor: 16
   persistent_workers: true
@@ -78,12 +78,12 @@ evaluators:
 - label: astro-small-ppl-validation
   data:
     num_workers: 0
-    drop_last: false
+    drop_last: true
     datasets:
       astro-small-ppl-validation:
         - /home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup/${filter_strategy}/valid/part-0-00000.npy
 
-eval_interval: 2
+eval_interval: 256
 tokenizer:
   identifier: tokenizers/allenai_eleuther-ai-gpt-neox-20b-pii-special.json
   truncate_direction: right
@@ -104,7 +104,7 @@ reset_optimizer_state: false
 sharded_checkpointer: torch_legacy
 new_style_checkpoints: null
 max_duration: 3ep # Use `ep` for #epoch, `T` for #tokens
-global_train_batch_size: 2048
+global_train_batch_size: 8
 device_train_batch_size: 8
 device_train_microbatch_size: 8
 device_eval_batch_size: 8
