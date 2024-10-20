@@ -68,8 +68,6 @@ def main(cfg: TrainConfig) -> None:
     log.info(f"World size: {get_world_size()}")
     log.info(f"Local world size: {get_local_world_size()}")
 
-    # Set CUDA device.
-    torch.cuda.set_device(f"cuda:{get_local_rank()}")
     device = torch.device("cuda")
 
     # Fill some configuration options.
@@ -363,6 +361,9 @@ if __name__ == "__main__":
     except RuntimeError as e:
         print(f"failed to set multiprocessing start method: {e}")
     log.info(f"Multiprocessing start method set to '{mp.get_start_method()}'")
+
+    # Set CUDA device.
+    torch.cuda.set_device(f"cuda:{get_local_rank()}")
 
     # Initialize process group.
     dist.init_process_group(backend="nccl", timeout=timedelta(minutes=30))
