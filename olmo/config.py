@@ -319,7 +319,7 @@ class ModelConfig(BaseConfig):
     """
     The theta setting for RoPE.
     """
-
+    
     flash_attention: bool = False
     """
     If ``True``, use ``FlashAttention``.
@@ -473,6 +473,14 @@ class ModelConfig(BaseConfig):
     Apply norm after the attention/feedforward layers rather than before, as introduced in the Swin transformer paper (Liu et al).
     """
 
+    # Belows are Leo's customization
+    rope_factor: Optional[float] = None
+    """
+    Factors to linearly scaling the frequencies.
+    inv_freq /= rope_factor.
+    This is to convert from deepseek's hf checkpoint
+    """
+    
     @property
     def effective_n_kv_heads(self) -> int:
         if self.n_kv_heads is None:
@@ -809,7 +817,7 @@ class FSDPConfig(BaseConfig):
     """
 
     precision: Optional[FSDPPrecision] = FSDPPrecision.pure
-
+    
     hybrid_sharding_num_model_replicas: Optional[int] = None
     """
     The number of model instances, when using a hybrid sharding strategy.
@@ -817,6 +825,8 @@ class FSDPConfig(BaseConfig):
     a model instance is used per node (as determined by ``get_world_size() // get_local_world_size()``).
     PyTorch's default HSDP behavior matches this default behavior.
     """
+    
+    # cpu_offload: bool = False
 
 
 class CheckpointType(StrEnum):

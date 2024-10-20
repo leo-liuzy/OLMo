@@ -2,13 +2,7 @@
 HOST=$1
 NODES=$2
 
-export PATH="/work/07144/yw23374/vista/miniconda3/condabin:$PATH"
-export TORCH_CPP_LOG_LEVEL=INFO NCCL_DEBUG=INFO
-source /work/07144/yw23374/vista/miniconda3/etc/profile.d/conda.sh
-conda activate olmo
-
-
-cd /work/07144/yw23374/vista/OLMo
+cd ${WORK}/OLMo
 
 export NCCL_DEBUG=INFO
 export NODENAME=$(hostname -s)
@@ -45,10 +39,11 @@ export NCCL_MIN_CHANNELS=32
 # for debugging
 export NCCL_DEBUG=INFO
 
-save_root=/scratch/07144/yw23374/checkpoints/tenk_dump_package_dedup
-data_folder=/scratch/07144/yw23374/processed_data/sample_dump_package/dedup
-data_folder=/scratch/07144/yw23374/processed_data/tenk_dump_package/dedup
-path_to_checkpoint="/scratch/07144/yw23374/base_models/OLMo/OLMo-1B-final"
+save_root=${SCRATCH}/checkpoints/tenk_dump_package_dedup
+data_folder=${SCRATCH}/processed_data/sample_dump_package/dedup
+data_folder=${SCRATCH}/processed_data/tenk_dump_package/dedup
+path_to_checkpoint="${SCRATCH}/base_models/OLMo/OLMo-1B-final"
+
 # no_biblio_mds,11 no_html_mds,8 no_tab_fig_mds,9 cat_mds,14 # sample bs=8
 
 # no_biblio_mds,132 no_html_mds,67 no_tab_fig_mds,102 cat_mds,155 # 10k bs=8

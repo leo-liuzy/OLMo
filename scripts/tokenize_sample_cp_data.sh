@@ -8,13 +8,13 @@ PROCESSED_DATA_DIR=${SCRATCH}/processed_data/tenk_dump_package/dedup
 
 for processed_strategy in cat_mds no_biblio_mds no_html_mds no_tab_fig_mds
 do 
-    for split in train valid
+    for split in train
     do 
         dolma tokens \
-            --documents ${PROCESSED_DATA_DIR}/${processed_strategy}/${split}/raw.jsonl \
+            --documents ${PROCESSED_DATA_DIR}/${split}/${processed_strategy}/raw.jsonl \
             --tokenizer.name_or_path allenai/eleuther-ai-gpt-neox-20b-pii-special \
             --tokenizer.eos_token_id 50279 \
-            --destination ${PROCESSED_DATA_DIR}/${processed_strategy}/${split} \
+            --destination ${PROCESSED_DATA_DIR}/${split}/${processed_strategy} \
             --processes 16 \
 
     done

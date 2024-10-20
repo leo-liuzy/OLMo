@@ -1105,7 +1105,8 @@ class Trainer:
         if self.cfg.gen1_gc_interval is not None:
             gc.disable()
 
-        if self.cfg.load_path is not None and self.global_step > 0 and self.cfg.eval_on_load:
+        # if self.cfg.load_path is not None and self.global_step > 0 and self.cfg.eval_on_load: # original one
+        if self.cfg.load_path is not None and self.cfg.eval_on_load:
             eval_metrics = self.eval()
             if wandb.run is not None:
                 wandb.log(eval_metrics, step=self.global_step)
