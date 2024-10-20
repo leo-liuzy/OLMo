@@ -13,13 +13,6 @@
 module load cuda/12.4
 module list
 
-# path_to_checkpoint="/home1/09636/zyliu/work/shared_resources/models/OLMo-7B-final"
-# path_to_checkpoint="/home1/09636/zyliu/work/shared_resources/models/OLMo-7B"
-# path_to_train_config="configs/official/OLMo-7B-tulu.yaml"
-
-# path_to_checkpoint="https://olmo-checkpoints.org/ai2-llm/olmo-small/g4g72enr/step738020-unsharded/"
-# path_to_checkpoint=https://olmo-checkpoints.org/ai2-llm/olmo-medium/p067ktg9/step558223-unsharded
-
 # conda activate astro
 # export NCCL_DEBUG=WARN
 export NCCL_DEBUG=INFO
@@ -56,11 +49,9 @@ export NCCL_NSOCKS_PERTHREAD=4
 export NCCL_SOCKET_NTHREADS=2
 export NCCL_MIN_CHANNELS=32
 
-save_root="/home1/09636/zyliu/scratch/checkpoints/leo/tenk_dump_package_dedup"
-# data_folder=/home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup
-data_folder=/home1/09636/zyliu/scratch/processed_data/tenk_dump_package/dedup
-path_to_checkpoint="/home1/09636/zyliu/scratch/base_models/OLMo/olmo/OLMo-1B-final"
-# path_to_checkpoint="/home1/09636/zyliu/scratch/base_models/OLMo/olmo/OLMo-7B-final"
+save_root=${SCRATCH}/checkpoints/${USER}/tenk_dump_package_dedup
+data_folder=${SCRATCH}/processed_data/tenk_dump_package/dedup
+path_to_checkpoint=${SCRATCH}/base_models/OLMo/olmo/OLMo-1B-final
 # no_biblio_mds,11 no_html_mds,8 no_tab_fig_mds,9 cat_mds,14 # sample bs=8
 # no_biblio_mds,132 no_html_mds,67 no_tab_fig_mds,102 cat_mds,155 # 10k bs=8
 # no_biblio_mds,4 no_html_mds,2 no_tab_fig_mds,3 cat_mds,4 # 10k bs=2048
@@ -72,9 +63,6 @@ lr=5e-7
 # echo $t_warmup
 
 IFS=, read -r filter_strategy t_warmup <<< $filter_warmup_pair
-
-# export TORCH_LOGS="+dynamo"
-# export TORCHDYNAMO_VERBOSE=1
 
 torchrun --nproc_per_node=1 \
     scripts/train.py \
@@ -90,25 +78,3 @@ torchrun --nproc_per_node=1 \
     --filter_strategy=${filter_strategy} \
     --scheduler.t_warmup=${t_warmup} \
     --optimizer.learning_rate=${lr} \
-
-# --data.paths=[${data_folder}/train/${filter_strategy}/part-0-00000.npy] \
-# --rdzv_conf 'read_timeout=420' \
-#     --nnodes="${WORLD_SIZE}" \
-#     --rdzv_id 12349 \
-#     --rdzv_backend c10d \
-#     --rdzv_endpoint "${MASTER_ADDR}:${MASTER_PORT}" \
-#     --master_addr ${MASTER_ADDR} \
-#     # --evaluators=null
-    # --wandb=null \
-# --rdzv_conf 'read_timeout=420' \
-    # --nnodes="${WORLD_SIZE}" \
-    # --rdzv_id 12349 \
-    # --rdzv_backend static \
-    # --rdzv_endpoint "${MASTER_ADDR}:${MASTER_PORT}" \
-    # --master_addr ${MASTER_ADDR} \
-
-# python scripts/train.py ${path_to_train_config} \
-#     --data.paths=${path_to_data}/input_ids.npy \
-#     --data.label_mask_paths=${path_to_data}/label_mask.npy \
-#     --load_path=${path_to_checkpoint} \
-#     --reset_trainer_state
