@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH -J olmo-10k           # Job name
-#SBATCH -o slurm-outputs/olmo-10k.o%j       # Name of stdout output file
-#SBATCH -e slurm-outputs/olmo-10k.e%j       # Name of stderr output file
+#SBATCH -J olmo-10k-1B           # Job name
+#SBATCH -o slurm-outputs/%x.o%j       # Name of stdout output file
+#SBATCH -e slurm-outputs/%x.e%j       # Name of stderr output file
 #SBATCH -p gh          # Queue (partition) name
 #SBATCH -N 1              # Total # of nodes
 ##SBATCH --ntasks-per-node=1 
@@ -56,18 +56,26 @@ export NCCL_NSOCKS_PERTHREAD=4
 export NCCL_SOCKET_NTHREADS=2
 export NCCL_MIN_CHANNELS=32
 
-# save_root="/home1/09636/zyliu/scratch/checkpoints/leo/tenk_dump_package_dedup"
-data_folder=/home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup
+save_root="/home1/09636/zyliu/scratch/checkpoints/leo/tenk_dump_package_dedup"
+# data_folder=/home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup
 data_folder=/home1/09636/zyliu/scratch/processed_data/tenk_dump_package/dedup
 path_to_checkpoint="/home1/09636/zyliu/scratch/base_models/OLMo/olmo/OLMo-1B-final"
-# no_biblio_mds,11 no_html_mds,8 no_tab_fig_mds,9 cat_mds,14 # sample
-# no_biblio_mds,132 no_html_mds,67 no_tab_fig_mds,102 cat_mds,155 # 10k
-filter_warmup_pair=no_biblio_mds,11
+# path_to_checkpoint="/home1/09636/zyliu/scratch/base_models/OLMo/olmo/OLMo-7B-final"
+# no_biblio_mds,11 no_html_mds,8 no_tab_fig_mds,9 cat_mds,14 # sample bs=8
+# no_biblio_mds,132 no_html_mds,67 no_tab_fig_mds,102 cat_mds,155 # 10k bs=8
+# no_biblio_mds,4 no_html_mds,2 no_tab_fig_mds,3 cat_mds,4 # 10k bs=2048
+filter_warmup_pair=cat_mds,4
 
+# 2e-4 1e-4 5e-5 2e-5 1e-5 5e-6 2e-6 1e-6 5e-7
+lr=5e-7
 # echo $filter_strategy
 # echo $t_warmup
 
 IFS=, read -r filter_strategy t_warmup <<< $filter_warmup_pair
+
+# export TORCH_LOGS="+dynamo"
+# export TORCHDYNAMO_VERBOSE=1
+
 torchrun --nproc_per_node=1 \
     scripts/train.py \
     configs/astro-cpt/OLMo-1B.yaml \
@@ -75,14 +83,22 @@ torchrun --nproc_per_node=1 \
     --remote_save_folder=null \
     --save_overwrite \
     --reset_optimizer_state \
-    --data.paths=[${data_folder}/${filter_strategy}/train/part-0-00000.npy] \
     --load_path=${path_to_checkpoint} \
-    --save_folder=${save_root}/${filter_strategy}/OLMo-1B-final \
+    --data.paths=[${data_folder}/train/${filter_strategy}/part-0-00000.npy] \
+    --save_folder=${save_root}/${filter_strategy}/OLMo-1B-final_lr${lr} \
     --restart_from_unsharded_checkpoint=True \
     --filter_strategy=${filter_strategy} \
     --scheduler.t_warmup=${t_warmup} \
+    --optimizer.learning_rate=${lr} \
 
-    # --evaluators=null
+# --data.paths=[${data_folder}/train/${filter_strategy}/part-0-00000.npy] \
+# --rdzv_conf 'read_timeout=420' \
+#     --nnodes="${WORLD_SIZE}" \
+#     --rdzv_id 12349 \
+#     --rdzv_backend c10d \
+#     --rdzv_endpoint "${MASTER_ADDR}:${MASTER_PORT}" \
+#     --master_addr ${MASTER_ADDR} \
+#     # --evaluators=null
     # --wandb=null \
 # --rdzv_conf 'read_timeout=420' \
     # --nnodes="${WORLD_SIZE}" \

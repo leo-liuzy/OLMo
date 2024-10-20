@@ -21,9 +21,17 @@ from typing import Any, Dict
 
 import torch
 import yaml
+import numpy as np
 from tokenizers import Tokenizer
 from transformers import OlmoConfig, OlmoForCausalLM
 from transformers.models.gpt_neox.tokenization_gpt_neox_fast import GPTNeoXTokenizerFast
+from transformers import AutoTokenizer, AutoConfig, AutoModelForCausalLM
+from collections import OrderedDict
+from olmo.config import TrainConfig, LayerNormType, TokenizerConfig
+from olmo.tokenizer import Tokenizer
+from tokenizers import Tokenizer as BaseTokenizer
+from olmo.model import OLMo
+from olmo.checkpoint import FullCheckpointer
 
 """
 Sample usage:
@@ -66,133 +74,216 @@ def write_model(
     tmp_cleanup=True,
 ):
     os.makedirs(model_path, exist_ok=True)
-    tmp_model_path = os.path.join(model_path, "tmp")
-    os.makedirs(tmp_model_path, exist_ok=True)
+    # tmp_model_path = os.path.join(model_path, "tmp")
+    # os.makedirs(tmp_model_path, exist_ok=True)
+    
+    hf_config = AutoConfig.from_pretrained(input_base_path)
+    olmo_config = TrainConfig()
+    
+    # Convert tokenizer
+    tokenizer_path = input_base_path
 
-    config_path = Path(input_base_path) / "config.yaml"
-    olmo_config = yaml.safe_load(config_path.read_text())["model"]
-
-    n_layers = olmo_config["n_layers"]
-    n_heads = olmo_config["n_heads"]
-    dim = olmo_config["d_model"]
+    hf_tokenizer = AutoTokenizer.from_pretrained(tokenizer_path)
+    
+    olmo_config.model.pad_token_id = hf_tokenizer.pad_token_id # type: ignore
+    olmo_config.model.eos_token_id = hf_tokenizer.eos_token_id # type: ignore
+    olmo_config.tokenizer.truncate_direction = hf_tokenizer.truncation_side # type: ignore
+    model_name = os.path.basename(tokenizer_path)
+    base_tokenizer = BaseTokenizer.from_file(os.path.join(tokenizer_path, 'tokenizer.json'))
+    olmo_tokenizer = Tokenizer(
+        base_tokenizer, 
+        eos_token_id=hf_tokenizer.eos_token_id, # type: ignore
+        pad_token_id=hf_tokenizer.pad_token_id,
+        truncate_direction=hf_tokenizer.truncation_side
+    )
+    shutil.copyfile(os.path.join(tokenizer_path, 'tokenizer.json'), f"/home1/09636/zyliu/work/OLMo/olmo_data/tokenizers/{model_name}.json")
+    # config_path = Path(input_base_path) / "config.yaml"
+    # olmo_config = yaml.safe_load(config_path.read_text())["model"]
+    # Set all model setting in olmo's config
+    olmo_config.model.d_model = dim = hf_config.hidden_size
+    olmo_config.model.n_heads = n_heads = hf_config.num_attention_heads
+    
     dims_per_head = dim // n_heads
-    base = 10000.0
-    inv_freq = 1.0 / (base ** (torch.arange(0, dims_per_head, 2).float() / dims_per_head))
-    max_position_embeddings = olmo_config["max_sequence_length"]
-
-    vocab_size = olmo_config.get("embedding_size", olmo_config["vocab_size"])
-
-    if olmo_config.get("n_kv_heads", None) is not None:
-        num_key_value_heads = olmo_config["n_kv_heads"]  # for GQA / MQA
-    elif olmo_config["multi_query_attention"]:  # compatibility with other checkpoints
-        num_key_value_heads = 1
-    else:
-        num_key_value_heads = n_heads
-
+    
+    olmo_config.model.n_kv_heads = num_key_value_heads = hf_config.num_key_value_heads
+    olmo_config.model.clip_qkv = None
+    olmo_config.model.n_layers = n_layers = hf_config.num_hidden_layers
+    olmo_config.model.mlp_hidden_size = hf_config.intermediate_size
+    olmo_config.model.activation_type = "swiglu" if hf_config.hidden_act == "silu" else hf_config.hidden_act # type: ignore
+    # ! the next line is a hack to overwrite the built-in multiplier in each activation function
+    olmo_config.model.activation_output_multiplier = 1 if hf_config.hidden_act == "silu" else None # type: ignore
+    olmo_config.model.rope = True
+    olmo_config.model.rope_theta = rope_theta = hf_config.rope_theta
+    if hf_config.rope_scaling['rope_type'] == 'linear':
+        olmo_config.model.rope_factor = hf_config.rope_scaling['factor']
+    olmo_config.model.attention_dropout = hf_config.attention_dropout
+    # Apply layer norm to the keys and queries within the attention mechanism.
+    olmo_config.model.attention_layer_norm = False
+    olmo_config.model.attention_layer_norm_with_affine = False
+    olmo_config.model.embedding_dropout = 0.
+    olmo_config.model.residual_dropout = 0.
+    olmo_config.model.embedding_layer_norm = False
+    olmo_config.model.layer_norm_type = LayerNormType.rms
+    olmo_config.model.layer_norm_with_affine = True
+    olmo_config.model.layer_norm_eps = hf_config.rms_norm_eps
+    olmo_config.model.max_sequence_length = max_position_embeddings = hf_config.max_position_embeddings
+    include_attn_bias = hf_config.attention_bias
+    include_mlp_bias = hf_config.mlp_bias
+    assert include_attn_bias == include_mlp_bias
+    olmo_config.model.include_bias = include_attn_bias
+    olmo_config.model.bias_for_layer_norm = False
+    olmo_config.model.scale_logits = False
+    olmo_config.model.embedding_size = olmo_config.model.vocab_size = vocab_size = hf_config.vocab_size
+    olmo_config.model.weight_tying = hf_config.tie_word_embeddings
+    olmo_config.model.eos_token_id = hf_config.eos_token_id
+    olmo_config.model.pad_token_id = hf_tokenizer.pad_token_id # type: ignore
+    
+    inv_freq = 1.0 / (rope_theta ** (torch.arange(0, dims_per_head, 2).float() / dims_per_head))
+    
+    olmo_config.model.norm_after = False
+    
     print(f"Fetching all parameters from the checkpoint at {input_base_path}.")
-
+    
     # Not sharded
     # (The sharded implementation would also work, but this is simpler.)
-    loaded = torch.load(os.path.join(input_base_path, "model.pt"), map_location="cpu")
-
-    param_count = 0
-    index_dict: Dict[str, Any] = {"weight_map": {}}
-    for layer_i in range(n_layers):
-        filename = f"pytorch_model-{layer_i + 1}-of-{n_layers + 1}.bin"
+    # loaded = torch.load("/home1/09636/zyliu/scratch/base_models/OLMo/olmo/OLMo-1B-final/model.pt", map_location="cpu")
+    hf_model = AutoModelForCausalLM.from_pretrained(input_base_path)
+    
+    output_olmo = OrderedDict()
+    
+    output_olmo["transformer.wte.weight"] = hf_model.model.embed_tokens.weight
+    components = ["self_attn.o_proj.weight", "self_attn.q_proj.weight", "self_attn.k_proj.weight", "self_attn.v_proj.weight", "mlp.up_proj.weight", "mlp.gate_proj.weight", "mlp.down_proj.weight", "input_layernorm.weight", "post_attention_layernorm.weight", "model.embed_tokens.weight", "norm.weight"]
+    
+    
+    if not hf_config.tie_word_embeddings:
+        output_olmo["transformer.ff_out.weight"] = hf_model.lm_head.weight.data
+        components.append("lm_head.weight")
+    
+    recorded_param_count = 0
+    for layer_i, layer in enumerate(hf_model.model.layers):
         # Unsharded
         # TODO: Layernorm stuff
         # TODO: multi query attention
         fused_dims = [dim, dims_per_head * num_key_value_heads, dims_per_head * num_key_value_heads]
-        q_proj_weight, k_proj_weight, v_proj_weight = torch.split(
-            loaded[f"transformer.blocks.{layer_i}.att_proj.weight"], fused_dims, dim=0
-        )
-        up_proj_weight, gate_proj_weight = torch.chunk(
-            loaded[f"transformer.blocks.{layer_i}.ff_proj.weight"], 2, dim=0
-        )
-        state_dict = {
-            f"model.layers.{layer_i}.self_attn.q_proj.weight": q_proj_weight,
-            f"model.layers.{layer_i}.self_attn.k_proj.weight": k_proj_weight,
-            f"model.layers.{layer_i}.self_attn.v_proj.weight": v_proj_weight,
-            f"model.layers.{layer_i}.self_attn.o_proj.weight": loaded[
-                f"transformer.blocks.{layer_i}.attn_out.weight"
-            ],
-            f"model.layers.{layer_i}.mlp.gate_proj.weight": gate_proj_weight,
-            f"model.layers.{layer_i}.mlp.down_proj.weight": loaded[f"transformer.blocks.{layer_i}.ff_out.weight"],
-            f"model.layers.{layer_i}.mlp.up_proj.weight": up_proj_weight,
-        }
+        if hasattr(layer, "input_layernorm"):
+            output_olmo[f"transformer.blocks.{layer_i}.attn_norm.weight"] = layer.input_layernorm.weight.data
+            recorded_param_count += layer.input_layernorm.weight.data.numel()
+            if hasattr(layer.input_layernorm, "bias"):
+                output_olmo[f"transformer.blocks.{layer_i}.attn_norm.bias"] = layer.input_layernorm.bias.data
+                recorded_param_count += layer.input_layernorm.bias.data
+            
+        output_olmo[f"transformer.blocks.{layer_i}.att_proj.weight"] = \
+            torch.cat(
+                [
+                    layer.self_attn.q_proj.weight.data,
+                    layer.self_attn.k_proj.weight.data,
+                    layer.self_attn.v_proj.weight.data,
+                ]
+            )
+        # recorded_param_count += output_olmo[f"transformer.blocks.{layer_i}.att_proj.weight"].numel()
+        assert output_olmo[f"transformer.blocks.{layer_i}.att_proj.weight"].shape == (sum(fused_dims), dim)
+        output_olmo[f"transformer.blocks.{layer_i}.attn_out.weight"] = \
+            layer.self_attn.o_proj.weight.data
+        # recorded_param_count += output_olmo[f"transformer.blocks.{layer_i}.attn_out.weight"].numel()
+        
+        if include_attn_bias:
+            output_olmo[f"transformer.blocks.{layer_i}.att_proj.bias"] = \
+            torch.cat(
+                [
+                    layer.self_attn.q_proj.bias.data,
+                    layer.self_attn.k_proj.bias.data,
+                    layer.self_attn.v_proj.bias.data,
+                ]
+            )
+            # recorded_param_count += output_olmo[f"transformer.blocks.{layer_i}.att_proj.bias"].numel()
+            
+            output_olmo[f"transformer.blocks.{layer_i}.attn_out.bias"] = \
+            layer.self_attn.o_proj.bias.data
+            # recorded_param_count += output_olmo[f"transformer.blocks.{layer_i}.attn_out.bias"].numel()
+        
+        if hasattr(layer, "post_attention_layernorm"):
+            output_olmo[f"transformer.blocks.{layer_i}.ff_norm.weight"] = layer.post_attention_layernorm.weight.data
+            if hasattr(layer.post_attention_layernorm, "bias"):
+                output_olmo[f"transformer.blocks.{layer_i}.ff_norm.bias"] = layer.post_attention_layernorm.bias.data
+        
+        output_olmo[f"transformer.blocks.{layer_i}.ff_proj.weight"] = layer.mlp.up_proj.weight.data
+        
+        if hasattr(layer.mlp, "gate_proj"):
+            olmo_config.model.use_gated_mlp = True
+            output_olmo[f"transformer.blocks.{layer_i}.ff_gate.weight"] = layer.mlp.gate_proj.weight.data
+        output_olmo[f"transformer.blocks.{layer_i}.ff_out.weight"] = layer.mlp.down_proj.weight.data
+        # recorded_param_count += output_olmo[f"transformer.blocks.{layer_i}.ff_proj.weight"].numel()
+        # recorded_param_count += output_olmo[f"transformer.blocks.{layer_i}.ff_out.weight"].numel()
+        
+        if include_mlp_bias:
+            output_olmo[f"transformer.blocks.{layer_i}.ff_proj.bias"] = \
+            torch.cat(
+                [
+                    layer.mlp.up_proj.bias,
+                    layer.mlp.gate_proj.bias,
+                ]
+            )
+            output_olmo[f"transformer.blocks.{layer_i}.ff_out.bias"] = layer.mlp.down_proj.bias
 
-        state_dict[f"model.layers.{layer_i}.self_attn.rotary_emb.inv_freq"] = inv_freq
 
-        for k, v in state_dict.items():
-            index_dict["weight_map"][k] = filename
-            param_count += v.numel()
-        torch.save(state_dict, os.path.join(tmp_model_path, filename))
-
-    filename = f"pytorch_model-{n_layers + 1}-of-{n_layers + 1}.bin"
-
-    # Unsharded
-    # TODO: Deal with weight-tying
-    state_dict = {
-        "model.embed_tokens.weight": loaded["transformer.wte.weight"],
-        "lm_head.weight": loaded["transformer.ff_out.weight"]
-        if "transformer.ff_out.weight" in loaded
-        else loaded["transformer.wte.weight"],
-    }
-
-    for k, v in state_dict.items():
-        index_dict["weight_map"][k] = filename
-        param_count += v.numel()
-    torch.save(state_dict, os.path.join(tmp_model_path, filename))
-
-    # Write configs
-    index_dict["metadata"] = {"total_size": param_count * 2}
-    write_json(index_dict, os.path.join(tmp_model_path, "pytorch_model.bin.index.json"))
-
-    if olmo_config.get("mlp_hidden_size", None) is not None:
-        intermediate_size = olmo_config["mlp_hidden_size"] // 2
-    else:
-        intermediate_size = (dim * olmo_config["mlp_ratio"]) // 2
-
-    if fix_eos_token_id and olmo_config["eos_token_id"] == 0:
-        # Fixing a bug in OLMo where eos token id was incorrectly set
-        print("Changing eos_token_id from 0 to 50279.")
-        olmo_config["eos_token_id"] = 50279
-
-    config = OlmoConfig(
-        vocab_size=vocab_size,
-        hidden_size=dim,
-        intermediate_size=intermediate_size,
-        num_hidden_layers=n_layers,
-        num_attention_heads=n_heads,
-        num_key_value_heads=num_key_value_heads,
-        max_position_embeddings=max_position_embeddings,
-        pad_token_id=olmo_config["pad_token_id"],
-        bos_token_id=None,
-        eos_token_id=olmo_config["eos_token_id"],
-        tie_word_embeddings=olmo_config.get("weight_tying", True),
-        rope_theta=base,
-        clip_qkv=olmo_config.get("clip_qkv"),
-    )
-    config.save_pretrained(tmp_model_path)
-
+    output_olmo["transformer.ln_f.weight"] = hf_model.model.norm.weight.data
+    if hasattr(hf_model.model.norm, "bias"):
+        output_olmo["transformer.ln_f.bias"] = hf_model.model.norm.bias.data
+    
+    
+    # Sanity checking sucess of converting the model
+    converted_param_count = 0
+    for k, v in output_olmo.items():
+        # index_dict["weight_map"][k] = filename
+        converted_param_count += v.numel()
+    
+    model_param_names = [n for n, _ in hf_model.named_parameters()]
+    unconverted_model_params = [n for n in model_param_names if not any(x in n for x in components)]
+    original_model_params_count = sum([np.prod(p.size()) for p in hf_model.parameters()])
+    assert original_model_params_count == converted_param_count, "!!!!! Parameter count mismatch !!!!!"
+    assert len(unconverted_model_params) == 0, "!!!!! Unconverted module in hf checkpoint !!!!!\n" + str(unconverted_model_params)
+    
+    
+    olmo_model = OLMo(olmo_config.model)
+    olmo_model.load_state_dict(output_olmo)
+    
+    test_sentence = "Writing checkpoint converter is fun!"
+    with torch.no_grad():
+        hf_input = hf_tokenizer(test_sentence, return_tensors="pt", add_special_tokens=False)
+        hf_output = hf_model(**hf_input)
+        
+        olmo_input_ids = olmo_tokenizer.encode_batch([test_sentence], add_special_tokens=False)
+        assert hf_input['input_ids'].tolist() == olmo_input_ids # type: ignore
+        # olmo_input = ol
+        # labels = get_labels(hf_input)
+        olmo_output = olmo_model(**hf_input)
+    torch.save(output_olmo, os.path.join(model_path, "model.pt"))
+    olmo_config.save(os.path.join(model_path, "config.yaml"))
     # Make space so we can load the model properly now.
-    del state_dict
-    del loaded
+    # del loaded
+    # 
     gc.collect()
 
+    
+    
     if include_tokenizer:
         _write_tokenizer(model_path, config, input_base_path, tokenizer_path)
 
-    print("Loading the checkpoint in a OLMo model.")
-    model = OlmoForCausalLM.from_pretrained(tmp_model_path, torch_dtype=torch.float32, low_cpu_mem_usage=True)
-    # Avoid saving this as part of the config.
-    del model.config._name_or_path
-    print("Saving in the Transformers format.")
-    model.save_pretrained(model_path, safe_serialization=safe_serialization)
-    if tmp_cleanup:
-        # Make cleanup optional; attempting to `rmtree` the `tmp_model_path` causes
-        # errors if using NFS.
-        shutil.rmtree(tmp_model_path)
+def get_labels(batch: Dict[str, Any]) -> torch.Tensor:
+    # Labels are just input IDs shifted to the left (first item is ignored).
+    labels, label_mask, attention_mask, instance_mask = (
+        batch["input_ids"].clone(),
+        batch.get("label_mask"),
+        batch.get("attention_mask"),
+        batch.get("instance_mask"),
+    )
+    if label_mask is not None:
+        labels.masked_fill_(~label_mask, -100)
+    if attention_mask is not None:
+        labels.masked_fill_(attention_mask == 0.0, -100)
+    if instance_mask is not None:
+        labels.masked_fill_(~instance_mask.unsqueeze(-1), value=-100)
+    return labels[..., 1:].contiguous()
 
 
 def _write_tokenizer(
@@ -273,7 +364,6 @@ def main():
         input_base_path=args.input_dir,
         safe_serialization=args.safe_serialization,
         include_tokenizer=args.include_tokenizer,
-        tokenizer_path=args.tokenizer_json_path,
         fix_eos_token_id=args.fix_eos_token_id,
         tmp_cleanup=args.tmp_cleanup,
     )

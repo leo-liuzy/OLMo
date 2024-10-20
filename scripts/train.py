@@ -47,7 +47,8 @@ from olmo.util import (
 )
 
 log = logging.getLogger("train")
-
+import torch._dynamo
+torch._dynamo.config.suppress_errors = True
 
 def main(cfg: TrainConfig) -> None:
     # Ensure run name set.
@@ -195,7 +196,9 @@ def main(cfg: TrainConfig) -> None:
 
             device_mesh = init_device_mesh("cuda", (num_model_replicas, get_world_size() // num_model_replicas))
             hybrid_sharding_fsdp_kwargs["device_mesh"] = device_mesh
-
+        # from torch.distributed.fsdp.api import CPUOffload
+        # cpu_offload = CPUOffload(offload_params=True)
+        # log.info(f"CPU offload: {cpu_offload}")
         dist_model = FSDP(
             olmo_model,
             sharding_strategy=cfg.fsdp.sharding_strategy,

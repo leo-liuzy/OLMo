@@ -1,14 +1,14 @@
-run_name: OLMo-1B-sample-cpt
+run_name: OLMo-7B-sample-cpt
 seed: 6198
 epoch: 0
 dry_run: false
 
 model:
-  d_model: 2048
-  n_heads: 16
-  n_layers: 16
-  mlp_ratio: 8
-  mlp_hidden_size: null
+  d_model: 4096
+  n_heads: 32
+  n_layers: 32
+  mlp_ratio: 4
+  mlp_hidden_size: 22016
   activation_type: swiglu
   block_type: sequential
   block_group_size: 1
@@ -16,7 +16,7 @@ model:
   alibi_bias_max: 8.0
   rope: true
   rope_full_precision: true
-  flash_attention: false
+  flash_attention: true
   attention_dropout: 0.0
   multi_query_attention: false
   attention_layer_norm: false
@@ -25,7 +25,7 @@ model:
   layer_norm_type: default
   layer_norm_with_affine: false
   attention_layer_norm_with_affine: false
-  max_sequence_length: 2048
+  max_sequence_length: 512 # 2048
   include_bias: false
   bias_for_layer_norm: false
   scale_logits: false
@@ -39,10 +39,9 @@ model:
   init_std: 0.02
   init_cutoff_factor: null
   precision: amp_bf16
-
 optimizer:
   name: adamw
-  learning_rate: 0.0004
+  learning_rate: 2.3e-05
   weight_decay: 0.1
   betas:
   - 0.9
@@ -51,12 +50,11 @@ optimizer:
   decay_norm_and_bias: false
   decay_embeddings: false
   metrics_log_interval: 10
-
 scheduler:
-  name: cosine_with_warmup
-  t_warmup: 20
-  t_max: null
-  alpha_f: 0.1
+  name: linear_with_warmup
+  t_warmup: 556000
+  t_max: 558223
+  alpha_f: 0.001
   grad_clip_warmup_steps: null
   grad_clip_warmup_factor: null
 
@@ -64,7 +62,7 @@ filter_strategy: cat_mds
 
 data:
   paths:
-  - /home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup/train/${filter_strategy}/part-000-00000.npy
+  - /home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup/${filter_strategy}/train/part-000-00000.npy
   datasets: null
   pad_direction: right
   num_workers: 0
@@ -73,7 +71,7 @@ data:
   prefetch_factor: 16
   persistent_workers: true
   timeout: 0
-restore_dataloader: true
+restore_dataloader: true # false
 fast_forward_batches: null
 evaluators:
 - label: astro-small-ppl-validation
@@ -82,7 +80,7 @@ evaluators:
     drop_last: true
     datasets:
       astro-small-ppl-validation:
-        - /home1/09636/zyliu/scratch/processed_data/tenk_dump_package/dedup/valid/part-0-00000.npy
+        - /home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup/${filter_strategy}/valid/part-0-00000.npy
 
 eval_interval: 10
 tokenizer:
@@ -94,7 +92,7 @@ canceled_check_interval: 50
 save_interval: 1000
 save_interval_unsharded: 10000
 save_interval_ephemeral: null
-save_num_checkpoints_to_keep: 9
+save_num_checkpoints_to_keep: -1
 save_num_unsharded_checkpoints_to_keep: -1
 save_overwrite: false
 force_save_unsharded: false
@@ -105,13 +103,13 @@ reset_optimizer_state: false
 sharded_checkpointer: torch_legacy
 new_style_checkpoints: null
 max_duration: 3ep # Use `ep` for #epoch, `T` for #tokens
-global_train_batch_size: 2048
-device_train_batch_size: 8
-device_train_microbatch_size: 8
-device_eval_batch_size: 8
+global_train_batch_size: 2
+device_train_batch_size: 1
+device_train_microbatch_size: 1
+device_eval_batch_size: 4
 eval_subset_num_batches: -1
 eval_on_load: true
-device_train_grad_accum: 1
+device_train_grad_accum: 16
 max_grad_norm: 1.0
 max_grad_norm_ratio: null
 precision: amp_bf16
@@ -130,17 +128,22 @@ speed_monitor:
   gpu_flops_available: null
 console_log_interval: 1
 compile: null
-fsdp:
-  use_orig_params: true
-  sharding_strategy: FULL_SHARD
-  wrapping_strategy: null
-  precision: mixed
+  # mode: max-autotune
+  # fullgraph: false
+  # backend: "inductor"
+# fsdp:
+#   use_orig_params: true
+#   sharding_strategy: FULL_SHARD
+#   # wrapping_strategy: by_block
+#   wrapping_strategy: one_in_two
+#   precision: mixed
+  # cpu_offload: true
+
 softmax_auxiliary_loss: false
-time_limit: 171000.0
-extra_steps_after_cancel: 10
+time_limit: null
 early_stopping_factor: null
 save_data_indices: true
 python_profiling: false
 torch_profiling: false
 stop_at: null
-activation_checkpointing: null
+activation_checkpointing: whole_layer
