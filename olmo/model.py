@@ -350,13 +350,13 @@ class Activation(nn.Module):
 class GELU(nn.GELU):
     @property
     def output_multiplier(self) -> float:
-        return self.config.activation_output_multiplier or 1.0
+        return 1.0
 
 
 class ReLU(nn.ReLU):
     @property
     def output_multiplier(self) -> float:
-        return self.config.activation_output_multiplier or 1.0
+        return 1.0
 
 
 class SwiGLU(Activation):
@@ -366,7 +366,7 @@ class SwiGLU(Activation):
 
     @property
     def output_multiplier(self) -> float:
-        return self.config.activation_output_multiplier or 0.5
+        return 0.5
 
 
 def causal_attention_bias(seq_len: int, device: torch.device) -> torch.FloatTensor:
@@ -691,13 +691,7 @@ class OLMoSequentialBlock(OLMoBlock):
         # Feed-forward input projection.
         self.ff_proj = nn.Linear(
             config.d_model, self.hidden_size, bias=config.include_bias, device=config.init_device
-        )
-        
-        self.use_gated_mlp = config.use_gated_mlp
-        if self.use_gated_mlp:
-            self.ff_gate = nn.Linear(
-                config.d_model, self.hidden_size, bias=config.include_bias, device=config.init_device
-            )
+        ) 
 
         # Layer norms.
         self.attn_norm = LayerNorm.build(config, size=config.d_model)
@@ -801,25 +795,13 @@ class OLMoSequentialBlock(OLMoBlock):
                 x = self._activation_checkpoint_fn(self.ff_norm, x)  # type: ignore
             else:
                 x = self.ff_norm(x)
-
-        if self.use_gated_mlp:
-            gating = self.ff_gate(x)
         
         x = self.ff_proj(x)
 
         if self._activation_checkpoint_fn is not None:
-            if self.use_gated_mlp:
-                gating = self._activation_checkpoint_fn(self.act, gating) 
-            else:
-                x = self._activation_checkpoint_fn(self.act, x)  # type: ignore
+            x = self._activation_checkpoint_fn(self.act, x)  # type: ignore
         else:
-            if self.use_gated_mlp:
-                gating = self.act(gating)
-            else:
-                x = self.act(x)
-        
-        if self.use_gated_mlp:
-            x *= gating
+            x = self.act(x)
         
         x = self.ff_out(x)
 
@@ -868,13 +850,7 @@ class OLMoLlamaBlock(OLMoBlock):
         self.v_proj = nn.Linear(
             config.d_model, v_proj_out_dim, bias=config.include_bias, device=config.init_device
         )
-        self.use_gated_mlp = config.use_gated_mlp
         
-        assert self.use_gated_mlp, "Llama is using gated MLP"
-        if self.use_gated_mlp:
-            self.ff_gate = nn.Linear(
-                config.d_model, self.hidden_size, bias=config.include_bias, device=config.init_device
-            )
         # Feed-forward input projection.
         self.ff_proj = nn.Linear(
             config.d_model, self.hidden_size, bias=config.include_bias, device=config.init_device
@@ -984,27 +960,11 @@ class OLMoLlamaBlock(OLMoBlock):
             x = self._activation_checkpoint_fn(self.ff_norm, x)  # type: ignore
         else:
             x = self.ff_norm(x)
-        
-        # implement gated MLP
-        if self.use_gated_mlp:
-            gating = self.ff_gate(x)
-        
         x = self.ff_proj(x)
-
         if self._activation_checkpoint_fn is not None:
-            if self.use_gated_mlp:
-                gating = self._activation_checkpoint_fn(self.act, gating) 
-            else:
-                x = self._activation_checkpoint_fn(self.act, x)  # type: ignore
+            x = self._activation_checkpoint_fn(self.act, x)  # type: ignore
         else:
-            if self.use_gated_mlp:
-                gating = self.act(gating)
-            else:
-                x = self.act(x)
-        
-        if self.use_gated_mlp:
-            x *= gating
-            
+            x = self.act(x)
         x = self.ff_out(x)
         x = self.dropout(x)
         x = og_x + x

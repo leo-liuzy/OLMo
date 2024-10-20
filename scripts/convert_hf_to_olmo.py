@@ -67,11 +67,6 @@ def write_json(text, path):
 def write_model(
     model_path,
     input_base_path,
-    include_tokenizer=True,
-    tokenizer_path=None,
-    safe_serialization=True,
-    fix_eos_token_id=True,
-    tmp_cleanup=True,
 ):
     os.makedirs(model_path, exist_ok=True)
     # tmp_model_path = os.path.join(model_path, "tmp")
@@ -110,8 +105,10 @@ def write_model(
     olmo_config.model.n_layers = n_layers = hf_config.num_hidden_layers
     olmo_config.model.mlp_hidden_size = hf_config.intermediate_size
     olmo_config.model.activation_type = "swiglu" if hf_config.hidden_act == "silu" else hf_config.hidden_act # type: ignore
-    # ! the next line is a hack to overwrite the built-in multiplier in each activation function
-    olmo_config.model.activation_output_multiplier = 1 if hf_config.hidden_act == "silu" else None # type: ignore
+    if olmo_config.model.activation_type == "swiglu":
+        # this is how olmo implement gated MLP (by concatenating the two up projecting); 
+        # this might have some speedup (two separate smaller call to cuda v.s. a big one)
+        olmo_config.model.mlp_hidden_size *= 2 # type: ignore
     olmo_config.model.rope = True
     olmo_config.model.rope_theta = rope_theta = hf_config.rope_theta
     if hf_config.rope_scaling['rope_type'] == 'linear':
@@ -126,14 +123,14 @@ def write_model(
     olmo_config.model.layer_norm_type = LayerNormType.rms
     olmo_config.model.layer_norm_with_affine = True
     olmo_config.model.layer_norm_eps = hf_config.rms_norm_eps
-    olmo_config.model.max_sequence_length = max_position_embeddings = hf_config.max_position_embeddings
+    olmo_config.model.max_sequence_length = hf_config.max_position_embeddings
     include_attn_bias = hf_config.attention_bias
     include_mlp_bias = hf_config.mlp_bias
     assert include_attn_bias == include_mlp_bias
     olmo_config.model.include_bias = include_attn_bias
     olmo_config.model.bias_for_layer_norm = False
     olmo_config.model.scale_logits = False
-    olmo_config.model.embedding_size = olmo_config.model.vocab_size = vocab_size = hf_config.vocab_size
+    olmo_config.model.embedding_size = olmo_config.model.vocab_size = hf_config.vocab_size
     olmo_config.model.weight_tying = hf_config.tie_word_embeddings
     olmo_config.model.eos_token_id = hf_config.eos_token_id
     olmo_config.model.pad_token_id = hf_tokenizer.pad_token_id # type: ignore
@@ -147,7 +144,8 @@ def write_model(
     # Not sharded
     # (The sharded implementation would also work, but this is simpler.)
     # loaded = torch.load("/home1/09636/zyliu/scratch/base_models/OLMo/olmo/OLMo-1B-final/model.pt", map_location="cpu")
-    hf_model = AutoModelForCausalLM.from_pretrained(input_base_path)
+    print("Loading hf_model")
+    hf_model = AutoModelForCausalLM.from_pretrained(input_base_path, use_cache=False)
     
     output_olmo = OrderedDict()
     
@@ -206,24 +204,24 @@ def write_model(
             if hasattr(layer.post_attention_layernorm, "bias"):
                 output_olmo[f"transformer.blocks.{layer_i}.ff_norm.bias"] = layer.post_attention_layernorm.bias.data
         
-        output_olmo[f"transformer.blocks.{layer_i}.ff_proj.weight"] = layer.mlp.up_proj.weight.data
-        
-        if hasattr(layer.mlp, "gate_proj"):
-            olmo_config.model.use_gated_mlp = True
-            output_olmo[f"transformer.blocks.{layer_i}.ff_gate.weight"] = layer.mlp.gate_proj.weight.data
+        output_olmo[f"transformer.blocks.{layer_i}.ff_proj.weight"] = \
+            torch.cat(
+                [
+                    layer.mlp.up_proj.weight.data,
+                    layer.mlp.gate_proj.weight.data
+                ]
+            )
         output_olmo[f"transformer.blocks.{layer_i}.ff_out.weight"] = layer.mlp.down_proj.weight.data
-        # recorded_param_count += output_olmo[f"transformer.blocks.{layer_i}.ff_proj.weight"].numel()
-        # recorded_param_count += output_olmo[f"transformer.blocks.{layer_i}.ff_out.weight"].numel()
         
         if include_mlp_bias:
             output_olmo[f"transformer.blocks.{layer_i}.ff_proj.bias"] = \
             torch.cat(
                 [
-                    layer.mlp.up_proj.bias,
-                    layer.mlp.gate_proj.bias,
+                    layer.mlp.up_proj.bias.data,
+                    layer.mlp.gate_proj.bias.data,
                 ]
             )
-            output_olmo[f"transformer.blocks.{layer_i}.ff_out.bias"] = layer.mlp.down_proj.bias
+            output_olmo[f"transformer.blocks.{layer_i}.ff_out.bias"] = layer.mlp.down_proj.bias.data
 
 
     output_olmo["transformer.ln_f.weight"] = hf_model.model.norm.weight.data
@@ -245,9 +243,15 @@ def write_model(
     
     
     olmo_model = OLMo(olmo_config.model)
+    print(f"Set of hf_model parameter dtypes: {set([p.dtype for p in hf_model.parameters()])}")
+    print(f"Set of olmo_model parameter dtypes: {set([p.dtype for p in olmo_model.parameters()])}")
     olmo_model.load_state_dict(output_olmo)
     
     test_sentence = "Writing checkpoint converter is fun!"
+    
+    hf_model.eval()
+    olmo_model.eval()
+    
     with torch.no_grad():
         hf_input = hf_tokenizer(test_sentence, return_tensors="pt", add_special_tokens=False)
         hf_output = hf_model(**hf_input)
@@ -257,67 +261,15 @@ def write_model(
         # olmo_input = ol
         # labels = get_labels(hf_input)
         olmo_output = olmo_model(**hf_input)
+        
+        for i in range(len(olmo_input_ids[0])):
+            print(f"{i}th logits match: {torch.equal(hf_output.logits[0, i], olmo_output.logits[0, i])} (total abs diff = {(hf_output.logits[0, i] - olmo_output.logits[0, i]).abs().sum()})")
     torch.save(output_olmo, os.path.join(model_path, "model.pt"))
     olmo_config.save(os.path.join(model_path, "config.yaml"))
     # Make space so we can load the model properly now.
     # del loaded
     # 
     gc.collect()
-
-    
-    
-    if include_tokenizer:
-        _write_tokenizer(model_path, config, input_base_path, tokenizer_path)
-
-def get_labels(batch: Dict[str, Any]) -> torch.Tensor:
-    # Labels are just input IDs shifted to the left (first item is ignored).
-    labels, label_mask, attention_mask, instance_mask = (
-        batch["input_ids"].clone(),
-        batch.get("label_mask"),
-        batch.get("attention_mask"),
-        batch.get("instance_mask"),
-    )
-    if label_mask is not None:
-        labels.masked_fill_(~label_mask, -100)
-    if attention_mask is not None:
-        labels.masked_fill_(attention_mask == 0.0, -100)
-    if instance_mask is not None:
-        labels.masked_fill_(~instance_mask.unsqueeze(-1), value=-100)
-    return labels[..., 1:].contiguous()
-
-
-def _write_tokenizer(
-    output_path: Path,
-    config: OlmoConfig,
-    checkpoint_dir: str,
-    input_tokenizer_path: Path | None,
-) -> None:
-    print(f"Saving a {GPTNeoXTokenizerFast.__name__} to {output_path}.")
-
-    if input_tokenizer_path is not None:
-        base_tokenizer = Tokenizer.from_file(str(input_tokenizer_path))
-    else:
-        config_path = Path(checkpoint_dir) / "config.yaml"
-        tokenizer_config = yaml.safe_load(config_path.read_text())["tokenizer"]
-
-        # Initialize tokenizer and validate vocab size.
-        if Path(tokenizer_config["identifier"]).is_file():
-            base_tokenizer = Tokenizer.from_file(tokenizer_config["identifier"])
-        else:
-            base_tokenizer = Tokenizer.from_pretrained(tokenizer_config["identifier"])
-
-    eos_token_id = config.eos_token_id if config.eos_token_id is not None else base_tokenizer.get_vocab_size() - 1
-    pad_token_id = config.pad_token_id if config.pad_token_id is not None else eos_token_id
-
-    tokenizer = GPTNeoXTokenizerFast(
-        tokenizer_object=base_tokenizer,
-        eos_token=base_tokenizer.decode([eos_token_id], skip_special_tokens=False),
-        pad_token=base_tokenizer.decode([pad_token_id], skip_special_tokens=False),
-        unk_token=None,
-        bos_token=None,
-    )
-
-    tokenizer.save_pretrained(output_path)
 
 
 def main():
@@ -327,45 +279,17 @@ def main():
         required=True,
         help="Location of OLMo weights, which contains config.yaml and model.pt.",
     )
-    parser.add_argument(
-        "--no_tokenizer",
-        action="store_false",
-        dest="include_tokenizer",
-        help="If set, do not convert OLMo tokenizer to HF tokenizer.",
-    )
-    parser.add_argument(
-        "--tokenizer_json_path",
-        type=Path,
-        default=None,
-        help="Location of OLMo tokenizer json file. Defaults to what is set in the config file.",
-    )
+    
     parser.add_argument(
         "--output_dir",
         required=True,
         help="Location to write HF model and tokenizer",
     )
-    parser.add_argument(
-        "--no_fix_eos_token_id",
-        action="store_false",
-        dest="fix_eos_token_id",
-        help="If set, does not change eos token id from 0 to 50279 if it is 0. Changing 0 to 50279 is a bug fix, so use this option with care.",
-    )
-    parser.add_argument(
-        "--no_tmp_cleanup",
-        action="store_false",
-        dest="tmp_cleanup",
-        help="If passed, don't remove temp dir at end of HF conversion.",
-    )
-    parser.add_argument("--safe_serialization", type=bool, help="Whether or not to save using `safetensors`.")
     # Different OLMo versions used different default values for max_position_embeddings, hence the need to be able to specify which version is being used.
     args = parser.parse_args()
     write_model(
         model_path=args.output_dir,
         input_base_path=args.input_dir,
-        safe_serialization=args.safe_serialization,
-        include_tokenizer=args.include_tokenizer,
-        fix_eos_token_id=args.fix_eos_token_id,
-        tmp_cleanup=args.tmp_cleanup,
     )
 
 

@@ -474,22 +474,13 @@ class ModelConfig(BaseConfig):
     """
 
     # Belows are Leo's customization
-    rope_factor: Optional[int] = None
+    rope_factor: Optional[float] = None
     """
     Factors to linearly scaling the frequencies.
     inv_freq /= rope_factor.
     This is to convert from deepseek's hf checkpoint
     """
     
-    activation_output_multiplier: Optional[float] = None
-    """
-    This allow users to overwrite `output_multiplier` bounded with each activation function
-    """
-    
-    use_gated_mlp: bool = False
-    """
-    llama-based model is using gated MLP (i.e., having two up-projection matrices instead of one)
-    """
     @property
     def effective_n_kv_heads(self) -> int:
         if self.n_kv_heads is None:
