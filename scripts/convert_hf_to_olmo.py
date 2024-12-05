@@ -32,7 +32,7 @@ from olmo.tokenizer import Tokenizer
 from tokenizers import Tokenizer as BaseTokenizer
 from olmo.model import OLMo
 from olmo.checkpoint import FullCheckpointer
-
+from transformers import enable_full_determinism
 """
 Sample usage:
 ```
@@ -71,7 +71,7 @@ def write_model(
     os.makedirs(model_path, exist_ok=True)
     # tmp_model_path = os.path.join(model_path, "tmp")
     # os.makedirs(tmp_model_path, exist_ok=True)
-    
+    enable_full_determinism(42, warn_only=False)
     hf_config = AutoConfig.from_pretrained(input_base_path)
     olmo_config = TrainConfig()
     
@@ -242,28 +242,41 @@ def write_model(
     assert len(unconverted_model_params) == 0, "!!!!! Unconverted module in hf checkpoint !!!!!\n" + str(unconverted_model_params)
     
     
-    olmo_model = OLMo(olmo_config.model)
-    print(f"Set of hf_model parameter dtypes: {set([p.dtype for p in hf_model.parameters()])}")
-    print(f"Set of olmo_model parameter dtypes: {set([p.dtype for p in olmo_model.parameters()])}")
-    olmo_model.load_state_dict(output_olmo)
     
-    test_sentence = "Writing checkpoint converter is fun!"
+    
+    # test_sentence = "Writing checkpoint converter is fun!"
+    # test_sentence = "We are on our way to Nobel Prize."
+    # test_sentence = "Astrophysics is a really hard domain to adapt large language model to."
+    test_sentence = "train.py simply takes as argument the path to a config file and will load that config. The behavior here is as follows:"
     
     hf_model.eval()
-    olmo_model.eval()
     
+    k = 25
+    soft_unmatch_count = 0
     with torch.no_grad():
         hf_input = hf_tokenizer(test_sentence, return_tensors="pt", add_special_tokens=False)
         hf_output = hf_model(**hf_input)
+        # hf_pos shape:  torch.Size([1, 1, 26, 128])
         
         olmo_input_ids = olmo_tokenizer.encode_batch([test_sentence], add_special_tokens=False)
         assert hf_input['input_ids'].tolist() == olmo_input_ids # type: ignore
         # olmo_input = ol
         # labels = get_labels(hf_input)
+        
+        olmo_model = OLMo(olmo_config.model)
+        print(f"Set of hf_model parameter dtypes: {set([p.dtype for p in hf_model.parameters()])}")
+        print(f"Set of olmo_model parameter dtypes: {set([p.dtype for p in olmo_model.parameters()])}")
+        olmo_model.load_state_dict(output_olmo)
+        olmo_model.eval()
         olmo_output = olmo_model(**hf_input)
         
         for i in range(len(olmo_input_ids[0])):
-            print(f"{i}th logits match: {torch.equal(hf_output.logits[0, i], olmo_output.logits[0, i])} (total abs diff = {(hf_output.logits[0, i] - olmo_output.logits[0, i]).abs().sum()})")
+            print(f"{i}th logits match: {torch.equal(hf_output.logits[0, i], olmo_output.logits[0, i])} (mean abs diff = {(hf_output.logits[0, i] - olmo_output.logits[0, i]).abs().mean()})")
+            soft_unmatch_count += torch.equal(hf_output.logits[0, i].topk(k).indices, olmo_output.logits[0, i].topk(k).indices)
+            print(f"{i}th top-{k} match: {soft_unmatch_count}")
+            print()
+    
+    print(f"soft_unmatch_count[topk={k}]: {soft_unmatch_count} / {len(olmo_input_ids[0])}")
     torch.save(output_olmo, os.path.join(model_path, "model.pt"))
     olmo_config.save(os.path.join(model_path, "config.yaml"))
     # Make space so we can load the model properly now.

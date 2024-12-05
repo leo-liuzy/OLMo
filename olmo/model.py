@@ -320,7 +320,6 @@ class RotaryEmbedding(nn.Module):
             k_ = self.apply_rotary_pos_emb(pos_sin, pos_cos, k_)
         return q_.type_as(q), k_.type_as(k)
 
-
 class Activation(nn.Module):
     def __init__(self, config: ModelConfig):
         super().__init__()
@@ -461,6 +460,7 @@ class OLMoBlock(nn.Module):
 
         # Rotary embeddings.
         if self.config.rope:
+            # self.rotary_emb = DeepSeekRotaryEmbedding(config, self.__cache)
             self.rotary_emb = RotaryEmbedding(config, self.__cache)
 
         self.flash_attn_func = None
