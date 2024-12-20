@@ -7,4 +7,5 @@
 #SBATCH -t 01:00:00        # Run time (hh:mm:ss)
 #SBATCH -A AST24021       # Allocation name (req'd if you have more than 1)
 
-srun ${WORK}/OLMo/slurm-scripts/run_cpt_7B_multi_node.sh $SLURM_JOB_NODELIST $SLURM_JOB_NUM_NODES
+# srun ${WORK}/OLMo/slurm-scripts/run_cpt_7B_multi_node.sh $SLURM_JOB_NODELIST $SLURM_JOB_NUM_NODES
+srun ${WORK}/OLMo/slurm-scripts/run_sft_multi_node.sh $SLURM_JOB_NODELIST $SLURM_JOB_NUM_NODES

@@ -685,6 +685,7 @@ class FullCheckpointer(Checkpointer):
         *,
         local_cache: Optional[PathOrStr] = None,
         load_optimizer_state: bool = True,
+        load_trainer_state: bool = True
     ) -> Dict[str, Any]:
         if isinstance(dist_model, FSDP):
             with FSDP.state_dict_type(
@@ -781,11 +782,14 @@ class FullCheckpointer(Checkpointer):
             )
 
         # Load other state.
-        try:
-            trainer_state = load_state_dict(load_path, "train.pt", local_cache=local_cache)
-        except FileNotFoundError:
-            # for backwards compatibility
-            trainer_state = load_state_dict(load_path, "other.pt", local_cache=local_cache)
+        # Leo: for starting from DS-Coder. we do not have trainer.state
+        trainer_state = {}
+        if load_trainer_state:
+            try:
+                trainer_state = load_state_dict(load_path, "train.pt", local_cache=local_cache)
+            except FileNotFoundError:
+                # for backwards compatibility
+                trainer_state = load_state_dict(load_path, "other.pt", local_cache=local_cache)
         barrier()
         return trainer_state
 

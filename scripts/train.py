@@ -311,7 +311,8 @@ def main(cfg: TrainConfig) -> None:
                     cfg.load_path,
                     load_optimizer_state=not cfg.reset_optimizer_state,
                     checkpoint_type=CheckpointType.unsharded, # ! This is a hack
-                    load_trainer_state=not cfg.reset_trainer_state,
+                    # TODO(Leo): reconsider if CPT of SFT requires separate treatment for trainer state
+                    load_trainer_state=not cfg.reset_trainer_state,  
                     sharded_checkpointer=cfg.load_path_sharded_checkpointer,
                 )
             else:

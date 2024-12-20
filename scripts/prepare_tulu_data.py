@@ -9,13 +9,91 @@ from pathlib import Path
 
 import datasets as ds
 import numpy as np
+import pandas as pd
 from rich.progress import track
 
 from olmo.tokenizer import Tokenizer
 from olmo.util import prepare_cli_environment
 
 log = logging.getLogger(__name__)
+import json
+import os
 
+def load_jsonlines(fname: str):
+    """Read jsonlines file."""
+    with open(fname, "r") as f:
+        return [json.loads(line) for line in f]
+
+
+def preprocess(example, tokenizer: Tokenizer, max_seq_len: int):
+    input_ids = [tokenizer.eos_token_id]
+    label_mask = [False]
+
+    for msg in example["messages"]:
+        role_tokens = tokenizer.encode(f"<|{msg['role']}|>\n", add_special_tokens=False)
+        label_mask += [False] * len(role_tokens)
+        input_ids += role_tokens
+
+        if msg["role"] == "assistant":
+            content_tokens = tokenizer.encode(
+                msg["content"].strip() + tokenizer.eos_token + "\n", add_special_tokens=False
+            )
+            label_mask += [True] * len(content_tokens)
+            # mask out the last '\n'
+            assert content_tokens[-2] == tokenizer.eos_token_id
+            label_mask[-1] = False
+        else:
+            content_tokens = tokenizer.encode(msg["content"].strip() + "\n", add_special_tokens=False)
+            label_mask += [False] * len(content_tokens)
+        input_ids += content_tokens
+
+    input_ids = input_ids[:max_seq_len]
+    label_mask = label_mask[:max_seq_len]
+
+    if len(input_ids) < max_seq_len:
+        pad_len = max_seq_len - len(input_ids)
+        input_ids += [tokenizer.pad_token_id] * pad_len
+        label_mask += [False] * pad_len
+
+    assert len(input_ids) == len(label_mask)
+    n_labels = sum(label_mask)
+
+    return {"input_ids": input_ids, "label_mask": label_mask, "n_labels": n_labels}
+
+def dscoder_preprocess(example, tokenizer: Tokenizer, max_seq_len: int):
+    input_ids = [tokenizer.eos_token_id]
+    label_mask = [False]
+
+    for msg in example["messages"]:
+        role_tokens = tokenizer.encode(f"<|{msg['role'].title()}|>\n", add_special_tokens=False)
+        label_mask += [False] * len(role_tokens)
+        input_ids += role_tokens
+
+        if msg["role"] == "assistant":
+            content_tokens = tokenizer.encode(
+                msg["content"].strip() + tokenizer.eos_token + "\n", add_special_tokens=False
+            )
+            label_mask += [True] * len(content_tokens)
+            # mask out the last '\n'
+            assert content_tokens[-2] == tokenizer.eos_token_id
+            label_mask[-1] = False
+        else:
+            content_tokens = tokenizer.encode(msg["content"].strip() + "\n", add_special_tokens=False)
+            label_mask += [False] * len(content_tokens)
+        input_ids += content_tokens
+
+    input_ids = input_ids[:max_seq_len]
+    label_mask = label_mask[:max_seq_len]
+
+    if len(input_ids) < max_seq_len:
+        pad_len = max_seq_len - len(input_ids)
+        input_ids += [tokenizer.pad_token_id] * pad_len
+        label_mask += [False] * pad_len
+
+    assert len(input_ids) == len(label_mask)
+    n_labels = sum(label_mask)
+
+    return {"input_ids": input_ids, "label_mask": label_mask, "n_labels": n_labels}
 
 def main(opts) -> None:
     tokenizer: Tokenizer
@@ -23,16 +101,28 @@ def main(opts) -> None:
         tokenizer = Tokenizer.from_file(opts.tokenizer, eos_token_id=opts.eos, pad_token_id=opts.pad)
     else:
         tokenizer = Tokenizer.from_pretrained(opts.tokenizer, eos_token_id=opts.eos, pad_token_id=opts.pad)
-
-    dataset = ds.load_dataset("allenai/tulu-v2-sft-mixture", split="train")
-
+    
     log.info("Tokenizing dataset...")
-    dataset = dataset.map(
-        partial(preprocess, tokenizer=tokenizer, max_seq_len=opts.seq_len),
-        batched=False,
-        remove_columns=["dataset", "id", "messages"],
-        num_proc=opts.num_proc,  # type: ignore
-    )
+    if opts.dataset == "allenai/tulu-v2-sft-mixture":
+        dataset = ds.load_dataset("allenai/tulu-v2-sft-mixture", split="train")    
+        dataset = dataset.map(
+            partial(preprocess, tokenizer=tokenizer, max_seq_len=opts.seq_len),
+            batched=False,
+            remove_columns=["dataset", "id", "messages"],
+            num_proc=opts.num_proc,  # type: ignore
+        )
+    else:
+        assert os.path.exists(opts.dataset)
+        
+        rows = load_jsonlines(opts.dataset)
+        dataset = ds.Dataset.from_pandas(pd.DataFrame(rows))
+        dataset = dataset.map(
+            partial(dscoder_preprocess, tokenizer=tokenizer, max_seq_len=opts.seq_len),
+            batched=False,
+            remove_columns=dataset.column_names,
+            num_proc=opts.num_proc,  # type: ignore
+        )
+    
 
     log.info("Filtering dataset...")
     n = len(dataset)  # type: ignore
@@ -72,45 +162,17 @@ def filter(example):
     return example["n_labels"] > 0
 
 
-def preprocess(example, tokenizer: Tokenizer, max_seq_len: int):
-    input_ids = [tokenizer.eos_token_id]
-    label_mask = [False]
-
-    for msg in example["messages"]:
-        role_tokens = tokenizer.encode(f"<|{msg['role']}|>\n", add_special_tokens=False)
-        label_mask += [False] * len(role_tokens)
-        input_ids += role_tokens
-
-        if msg["role"] == "assistant":
-            content_tokens = tokenizer.encode(
-                msg["content"].strip() + tokenizer.eos_token + "\n", add_special_tokens=False
-            )
-            label_mask += [True] * len(content_tokens)
-            # mask out the last '\n'
-            assert content_tokens[-2] == tokenizer.eos_token_id
-            label_mask[-1] = False
-        else:
-            content_tokens = tokenizer.encode(msg["content"].strip() + "\n", add_special_tokens=False)
-            label_mask += [False] * len(content_tokens)
-        input_ids += content_tokens
-
-    input_ids = input_ids[:max_seq_len]
-    label_mask = label_mask[:max_seq_len]
-
-    if len(input_ids) < max_seq_len:
-        pad_len = max_seq_len - len(input_ids)
-        input_ids += [tokenizer.pad_token_id] * pad_len
-        label_mask += [False] * pad_len
-
-    assert len(input_ids) == len(label_mask)
-    n_labels = sum(label_mask)
-
-    return {"input_ids": input_ids, "label_mask": label_mask, "n_labels": n_labels}
 
 
 def get_parser() -> ArgumentParser:
     parser = ArgumentParser(description="Prepare Tulu V2 dataset")
     parser.add_argument("output_dir", type=str, help="""Directory to save the results to.""")
+    parser.add_argument(
+        "--dataset",
+        type=str,
+        help="""Tokenizer path or identifier.""",
+        default="allenai/tulu-v2-sft-mixture",
+    )
     parser.add_argument(
         "-t",
         "--tokenizer",
