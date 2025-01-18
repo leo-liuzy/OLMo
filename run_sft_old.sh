@@ -24,16 +24,12 @@ seed=42
 warmup_ratio=0.03
 max_seq_length=2048
 
-# for lr in 2e-5 1e-5 5e-6 1e-6 5e-7 2e-7
-lr=2e-5
-split_file_root=/home1/09636/zyliu/scratch/data/astro_sft
+for lr in 5e-5 1e-4 2e-4 5e-4 1e-3
+do
 
 output_dir=${SCRATCH}/sft/dscode-1B-lr${lr}-wd${weight_decay}-warmup${warmup_ratio}-norm${max_grad_norm}-len${max_seq_length}-seed${seed}
 # model_name_or_path=${SCRATCH}/base_models/deepseek/hf/deepseek-coder-1.3b-base
 
-for split_file in domain_stratified-seed1-subsample0.25 domain_stratified-seed1-subsample0.5 domain_stratified-seed1-subsample0.75 domain_stratified-seed1-subsample1.0
-
-do
 accelerate launch --config_file="fsdp_config.yaml" \
     --main_process_port 29600 \
     sft_train.py \
@@ -60,6 +56,5 @@ accelerate launch --config_file="fsdp_config.yaml" \
     --eval_on_start=True \
     --report_to="wandb" \
     --run_name="sft-dscoder-1B" \
-    --data_split_fpath="${split_file_root}/${split_file}.pkl" \
-    --output_dir_suffix="${split_file}"
+
 done

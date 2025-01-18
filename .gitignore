@@ -62,3 +62,4 @@ eval-data/
 # slurm-scripts/
 slurm-outputs/
 *.pkl
+olmo_data/
