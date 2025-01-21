@@ -30,12 +30,12 @@ model:
   layer_norm_with_affine: true
   layer_norm_eps: 1.0e-06
   attention_layer_norm_with_affine: false
-  max_sequence_length: 16384
+  max_sequence_length: 2048 # 16384
   include_bias: false
   bias_for_layer_norm: false
   scale_logits: false
   vocab_size: 32022
-  embedding_size: null
+  embedding_size: 32022
   weight_tying: false
   eos_token_id: 32014
   pad_token_id: 32014
@@ -51,8 +51,8 @@ model:
 
 optimizer:
   name: adamw
-  learning_rate: 2e-6
-  weight_decay: 0.0
+  learning_rate: 2e-5
+  weight_decay: 0.1
   betas:
   - 0.9
   - 0.95
@@ -63,7 +63,7 @@ optimizer:
 
 scheduler:
   name: cosine_with_warmup
-  t_warmup: 20
+  t_warmup: 9
   t_max: null
   alpha_f: 0.1
   grad_clip_warmup_steps: null
@@ -93,7 +93,7 @@ evaluators:
     - /home1/09636/zyliu/work/OLMo/olmo_data/astro_sft_dscoder/valid/label_mask.npy
     datasets: null
 
-eval_interval: 10
+eval_interval: 40
 tokenizer:
   identifier: tokenizers/deepseek-coder-1.3b-base.json
   truncate_direction: right
@@ -114,7 +114,7 @@ reset_optimizer_state: false
 sharded_checkpointer: torch_legacy
 new_style_checkpoints: null
 max_duration: 3ep # Use `ep` for #epoch, `T` for #tokens
-global_train_batch_size: 4
+global_train_batch_size: 32
 device_train_batch_size: null
 device_train_microbatch_size: 2
 device_eval_batch_size: 8

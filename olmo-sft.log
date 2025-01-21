@@ -1,0 +1,3038 @@
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+Nodelist:= 
+Number of nodes:= 
+Ntasks per node:= 
+NODE_RANK:=  0
+WORLD_SIZE:= 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX 
+expr: syntax error: missing argument after ‘+’
+MASTER_PORT=
+WORLD_SIZE=
+MASTER_ADDR=
+2025-01-21 10:55:43.670	c608-052.vista.tacc.utexas.edu:0	train:374	INFO	CLI environment prepared
+c608-052:3560989:3560989 [0] NCCL INFO Bootstrap : Using ibP2s2:192.168.17.11<0>
+c608-052:3560989:3560989 [0] NCCL INFO NET/Plugin : dlerror=libnccl-net.so: cannot open shared object file: No such file or directory No plugin found (libnccl-net.so), using internal implementation
+c608-052:3560989:3560989 [0] NCCL INFO cudaDriverVersion 12060
+NCCL version 2.20.5+cuda12.4
+c608-052:3560989:3561182 [0] NCCL INFO NET/IB : Using [0]mlx5_0:1/IB [RO]; OOB ibP2s2:192.168.17.11<0>
+c608-052:3560989:3561182 [0] NCCL INFO Using non-device net plugin version 0
+c608-052:3560989:3561182 [0] NCCL INFO Using network IB
+c608-052:3560989:3561182 [0] NCCL INFO DMA-BUF is available on GPU device 0
+c608-052:3560989:3561182 [0] NCCL INFO comm 0x21cc6d80 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 901000 commId 0x4f7d0eaa2809158 - Init START
+c608-052:3560989:3561182 [0] NCCL INFO Setting affinity for GPU 0 to ff,ffffffff,ffffffff
+c608-052:3560989:3561182 [0] NCCL INFO comm 0x21cc6d80 rank 0 nRanks 1 nNodes 1 localRanks 1 localRank 0 MNNVL 0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 00/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 01/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 02/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 03/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 04/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 05/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 06/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 07/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 08/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 09/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 10/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 11/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 12/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 13/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 14/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 15/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 16/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 17/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 18/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 19/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 20/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 21/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 22/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 23/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 24/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 25/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 26/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 27/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 28/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 29/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 30/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Channel 31/32 :    0
+c608-052:3560989:3561182 [0] NCCL INFO Trees [0] -1/-1/-1->0->-1 [1] -1/-1/-1->0->-1 [2] -1/-1/-1->0->-1 [3] -1/-1/-1->0->-1 [4] -1/-1/-1->0->-1 [5] -1/-1/-1->0->-1 [6] -1/-1/-1->0->-1 [7] -1/-1/-1->0->-1 [8] -1/-1/-1->0->-1 [9] -1/-1/-1->0->-1 [10] -1/-1/-1->0->-1 [11] -1/-1/-1->0->-1 [12] -1/-1/-1->0->-1 [13] -1/-1/-1->0->-1 [14] -1/-1/-1->0->-1 [15] -1/-1/-1->0->-1 [16] -1/-1/-1->0->-1 [17] -1/-1/-1->0->-1 [18] -1/-1/-1->0->-1 [19] -1/-1/-1->0->-1 [20] -1/-1/-1->0->-1 [21] -1/-1/-1->0->-1 [22] -1/-1/-1->0->-1 [23] -1/-1/-1->0->-1 [24] -1/-1/-1->0->-1 [25] -1/-1/-1->0->-1 [26] -1/-1/-1->0->-1 [27] -1/-1/-1->0->-1 [28] -1/-1/-1->0->-1 [29] -1/-1/-1->0->-1 [30] -1/-1/-1->0->-1 [31] -1/-1/-1->0->-1
+c608-052:3560989:3561182 [0] NCCL INFO P2P Chunksize set to 131072
+c608-052:3560989:3561182 [0] NCCL INFO Connected all rings
+c608-052:3560989:3561182 [0] NCCL INFO Connected all trees
+c608-052:3560989:3561182 [0] NCCL INFO 32 coll channels, 0 collnet channels, 0 nvls channels, 32 p2p channels, 32 p2p channels per peer
+c608-052:3560989:3561182 [0] NCCL INFO comm 0x21cc6d80 rank 0 nranks 1 cudaDev 0 nvmlDev 0 busId 901000 commId 0x4f7d0eaa2809158 - Init COMPLETE
+2025-01-21 10:55:43.882	c608-052.vista.tacc.utexas.edu:0	train:68	INFO	World size: 1
+2025-01-21 10:55:43.882	c608-052.vista.tacc.utexas.edu:0	train:69	INFO	Local world size: 1
+2025-01-21 10:55:43.882	c608-052.vista.tacc.utexas.edu:0	train:91	INFO	Configuration:
+2025-01-21 10:55:43.882	c608-052.vista.tacc.utexas.edu:0	train:92	INFO	TrainConfig(run_name='DSCoder-1B-sft', seed=6198, epoch=0, dry_run=False, model=ModelConfig(d_model=2048, n_heads=16, n_kv_heads=16, clip_qkv=None, n_layers=24, mlp_ratio=4, mlp_hidden_size=11008, activation_type='swiglu', block_type='sequential', block_group_size=1, alibi=False, alibi_bias_max=8.0, rope=True, rope_full_precision=True, rope_theta=100000, flash_attention=False, attention_dropout=0.0, multi_query_attention=False, attention_layer_norm=False, residual_dropout=0.0, embedding_dropout=0.0, embedding_layer_norm=False, layer_norm_type='rms', layer_norm_with_affine=True, layer_norm_eps=1e-06, attention_layer_norm_with_affine=False, max_sequence_length=2048, include_bias=False, bias_for_layer_norm=False, scale_logits=False, vocab_size=32022, embedding_size=None, weight_tying=False, eos_token_id=32014, pad_token_id=32014, init_device='meta', init_fn='mitchell', init_std=0.02, init_cutoff_factor=None, precision='amp_bf16', scale_emb_init=False, emb_init_std=None, norm_after=False, rope_factor=4.0), optimizer=OptimizerConfig(name='adamw', learning_rate=2e-05, weight_decay=0.1, betas=(0.9, 0.95), eps=1e-05, no_decay_norm_and_bias=None, selective_updates=False, decay_norm_and_bias=False, decay_embeddings=False, metrics_log_interval=10, record_update_metrics=False), scheduler=SchedulerConfig(name='cosine_with_warmup', units='steps', t_warmup=20, t_max=None, alpha_f=0.1, grad_clip_warmup_steps=None, grad_clip_warmup_factor=None, warmup_min_lr=None), data=DataConfig(paths=['/home1/09636/zyliu/work/OLMo/olmo_data/astro_sft_dscoder/train/input_ids.npy'], memmap_dtype='uint16', datasets=None, label_mask_paths=['/home1/09636/zyliu/work/OLMo/olmo_data/astro_sft_dscoder/train/label_mask.npy'], pad_direction='right', generate_attention_mask=False, generate_doc_lengths=False, num_workers=0, drop_last=True, pin_memory=True, prefetch_factor=16, persistent_workers=True, timeout=0, seed=None, instance_filter=None), restore_dataloader=True, fast_forward_batches=None, evaluators=[EvaluatorConfig(label='astro-sft-small-ppl-validation', type='lm', data=DataConfig(paths=['/home1/09636/zyliu/work/OLMo/olmo_data/astro_sft_dscoder/valid/input_ids.npy'], memmap_dtype='uint16', datasets=None, label_mask_paths=['/home1/09636/zyliu/work/OLMo/olmo_data/astro_sft_dscoder/valid/label_mask.npy'], pad_direction='right', generate_attention_mask=False, generate_doc_lengths=False, num_workers=0, drop_last=False, pin_memory=False, prefetch_factor=None, persistent_workers=False, timeout=0, seed=None, instance_filter=None), device_eval_batch_size=None, subset_num_batches=None)], eval_interval=40, tokenizer=TokenizerConfig(identifier='tokenizers/deepseek-coder-1.3b-base.json', truncate_direction='right'), save_folder='/scratch/09636/zyliu/checkpoints/sft/SFT-DS-Coder-1B-final', remote_save_folder=None, canceled_check_interval=50, save_interval=1000, save_interval_unsharded=10000, save_interval_ephemeral=None, save_num_checkpoints_to_keep=9, save_num_unsharded_checkpoints_to_keep=-1, save_overwrite=True, force_save_unsharded=False, no_pre_train_checkpoint=True, load_path='/scratch/09636/zyliu/base_models/deepseek/olmo/deepseek-coder-1.3b-base', load_path_sharded_checkpointer=None, try_load_latest_save=False, reset_optimizer_state=True, reset_trainer_state=True, sharded_checkpointer='torch_legacy', new_style_checkpoints=None, max_duration='3ep', global_train_batch_size=32, device_train_batch_size=32, device_train_microbatch_size=2, device_eval_batch_size=8, eval_subset_num_batches=-1, eval_on_load=True, device_train_grad_accum=16, max_grad_norm=1.0, max_grad_norm_ratio=None, precision='amp_bf16', wandb=WandbConfig(project='astro-sft-olmo-small', entity='leo-liuzy', group='astro-sft-olmo-small', name='astro-sft-olmo-small', tags=['watching'], log_artifacts=False, rank_zero_only=True, log_interval=1), speed_monitor=SpeedMonitorConfig(window_size=20, gpu_flops_available=None), console_log_interval=1, gen1_gc_interval=1, compile=None, distributed_strategy='fsdp', fsdp=FSDPConfig(use_orig_params=True, sharding_strategy=<ShardingStrategy.FULL_SHARD: 1>, wrapping_strategy=None, precision='mixed', hybrid_sharding_num_model_replicas=None), ddp=None, softmax_auxiliary_loss=False, auxiliary_loss_multiplier=0.0001, time_limit=171000.0, extra_steps_after_cancel=10, early_stopping_factor=None, save_data_indices=True, python_profiling=False, torch_profiling=False, stop_at=None, stop_after=None, activation_checkpointing=None, fused_loss=None, hf_datasets_cache_dir=None, module_outputs_save_steps=None, restart_from_unsharded_checkpoint=True, filter_strategy=None)
+2025-01-21 10:55:43.882	c608-052.vista.tacc.utexas.edu:0	train:99	INFO	Saving config to /scratch/09636/zyliu/checkpoints/sft/SFT-DS-Coder-1B-final/config.yaml
+wandb: Using wandb-core as the SDK backend. Please refer to https://wandb.me/wandb-core for more information.
+wandb: Tracking run with wandb version 0.18.3
+wandb: W&B syncing is set to `offline` in this directory.  
+wandb: Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+2025-01-21 10:55:44.415	c608-052.vista.tacc.utexas.edu:0	botocore.credentials:1278	INFO	Found credentials in shared credentials file: ~/.aws/credentials
+2025-01-21 10:55:44.631	c608-052.vista.tacc.utexas.edu:0	olmo.data.iterable_dataset:78	INFO	Saving global data order indices...
+2025-01-21 10:55:44.638	c608-052.vista.tacc.utexas.edu:0	olmo.data.iterable_dataset:87	INFO	Global data order indices saved to '/scratch/09636/zyliu/checkpoints/sft/SFT-DS-Coder-1B-final/train_data/global_indices.npy'
+2025-01-21 10:55:44.688	c608-052.vista.tacc.utexas.edu:0	train:134	INFO	Building model...
+2025-01-21 10:55:44.722	c608-052.vista.tacc.utexas.edu:0	train:136	INFO	Total number of parameters: 1,345,513,472
+2025-01-21 10:55:44.723	c608-052.vista.tacc.utexas.edu:0	train:137	INFO	Number of non-embedding parameters: 1,279,932,416
+2025-01-21 10:55:44.723	c608-052.vista.tacc.utexas.edu:0	train:138	INFO	Peak GPU Memory (MB) before fsdp: 3
+2025-01-21 10:55:44.724	c608-052.vista.tacc.utexas.edu:0	train:160	INFO	Wrapping model with FSDP...
+2025-01-21 10:55:44.726	c608-052.vista.tacc.utexas.edu:0	py.warnings:110	WARNING	/work/09636/zyliu/vista/miniconda3/envs/astro/lib/python3.11/site-packages/torch/distributed/fsdp/_init_utils.py:440: UserWarning: FSDP is switching to use `NO_SHARD` instead of ShardingStrategy.FULL_SHARD since the world size is 1.
+  warnings.warn(
+
+2025-01-21 10:55:44.775	c608-052.vista.tacc.utexas.edu:0	olmo.model:1171	INFO	Initializing model parameters...
+2025-01-21 10:55:44.799	c608-052.vista.tacc.utexas.edu:0	train:218	INFO	Peak GPU Memory (MB) after fsdp: 10790
+2025-01-21 10:55:44.799	c608-052.vista.tacc.utexas.edu:0	train:219	INFO	Model:
+2025-01-21 10:55:44.799	c608-052.vista.tacc.utexas.edu:0	train:220	INFO	FullyShardedDataParallel(
+  (_fsdp_wrapped_module): OLMo(
+    (transformer): ModuleDict(
+      (wte): Embedding(32022, 2048)
+      (emb_drop): Dropout(p=0.0, inplace=False)
+      (ln_f): RMSLayerNorm()
+      (blocks): ModuleList(
+        (0-23): 24 x OLMoSequentialBlock(
+          (dropout): Dropout(p=0.0, inplace=False)
+          (act): SwiGLU()
+          (attn_out): Linear(in_features=2048, out_features=2048, bias=False)
+          (ff_out): Linear(in_features=5504, out_features=2048, bias=False)
+          (rotary_emb): RotaryEmbedding()
+          (att_proj): Linear(in_features=2048, out_features=6144, bias=False)
+          (ff_proj): Linear(in_features=2048, out_features=11008, bias=False)
+          (attn_norm): RMSLayerNorm()
+          (ff_norm): RMSLayerNorm()
+        )
+      )
+      (ff_out): Linear(in_features=2048, out_features=32022, bias=False)
+    )
+  )
+)
+2025-01-21 10:55:44.802	c608-052.vista.tacc.utexas.edu:0	olmo.optim:933	INFO	Constructing optimizer with 2 param groups
+2025-01-21 10:55:44.807	c608-052.vista.tacc.utexas.edu:0	train:248	INFO	Max duration: 3ep
+2025-01-21 10:55:44.807	c608-052.vista.tacc.utexas.edu:0	train:249	INFO	Max #tokens: 19267584
+2025-01-21 10:55:44.807	c608-052.vista.tacc.utexas.edu:0	train:250	INFO	Max #steps: 294
+2025-01-21 10:55:44.807	c608-052.vista.tacc.utexas.edu:0	train:251	INFO	#batches / epoch: 98
+2025-01-21 10:55:44.807	c608-052.vista.tacc.utexas.edu:0	train:252	INFO	#tokens / batch: 65536
+2025-01-21 10:55:44.807	c608-052.vista.tacc.utexas.edu:0	train:308	INFO	Loading checkpoint from /scratch/09636/zyliu/base_models/deepseek/olmo/deepseek-coder-1.3b-base...
+2025-01-21 10:55:44.809	c608-052.vista.tacc.utexas.edu:0	py.warnings:110	WARNING	/work/09636/zyliu/vista/miniconda3/envs/astro/lib/python3.11/site-packages/torch/distributed/fsdp/fully_sharded_data_parallel.py:689: FutureWarning: FSDP.state_dict_type() and FSDP.set_state_dict_type() are being deprecated. Please use APIs, get_state_dict() and set_state_dict(), which can support different parallelisms, FSDP1, FSDP2, DDP. API doc: https://pytorch.org/docs/stable/distributed.checkpoint.html#torch.distributed.checkpoint.state_dict.get_state_dict .Tutorial: https://pytorch.org/tutorials/recipes/distributed_checkpoint_recipe.html .
+  warnings.warn(
+
+2025-01-21 10:55:44.811	c608-052.vista.tacc.utexas.edu:0	py.warnings:110	WARNING	/work/09636/zyliu/vista/OLMo/olmo/checkpoint.py:316: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  return torch.load(path, map_location=map_location)
+
+2025-01-21 10:55:45.507	c608-052.vista.tacc.utexas.edu:0	train:325	INFO	Checkpoint successfully loaded
+2025-01-21 10:55:45.507	c608-052.vista.tacc.utexas.edu:0	train:352	INFO	Starting training...
+2025-01-21 10:55:45.508	c608-052.vista.tacc.utexas.edu:0	olmo.train:1006	INFO	Running evaluation for 'astro-sft-small-ppl-validation'...
+2025-01-21 10:55:45.766	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=1/-1]
+2025-01-21 10:55:45.924	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=2/-1]
+2025-01-21 10:55:46.082	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=3/-1]
+2025-01-21 10:55:46.239	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=4/-1]
+2025-01-21 10:55:46.396	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=5/-1]
+2025-01-21 10:55:46.553	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=6/-1]
+2025-01-21 10:55:46.710	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=7/-1]
+2025-01-21 10:55:46.867	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=8/-1]
+2025-01-21 10:55:47.024	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=9/-1]
+2025-01-21 10:55:47.181	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=10/-1]
+2025-01-21 10:55:47.337	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=11/-1]
+2025-01-21 10:55:47.494	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=12/-1]
+2025-01-21 10:55:47.651	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=13/-1]
+2025-01-21 10:55:47.808	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=14/-1]
+2025-01-21 10:55:47.965	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=15/-1]
+2025-01-21 10:55:48.122	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=16/-1]
+2025-01-21 10:55:48.279	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=17/-1]
+2025-01-21 10:55:48.436	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=18/-1]
+2025-01-21 10:55:48.593	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=19/-1]
+2025-01-21 10:55:48.750	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=20/-1]
+2025-01-21 10:55:48.908	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=21/-1]
+2025-01-21 10:55:49.046	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=22/-1]
+2025-01-21 10:55:49.048	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	astro-sft-small-ppl-validation
+    eval/astro-sft-small-ppl-validation/CrossEntropyLoss=0.1248
+    eval/astro-sft-small-ppl-validation/Perplexity=1.133
+2025-01-21 10:55:49.049	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	Pre-train system metrics
+    System/Peak GPU Memory (MB)=10,790
+2025-01-21 10:55:51.373	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=1/294,epoch=0]
+    optim/total_grad_norm=0.6571
+    train/CrossEntropyLoss=0.1169
+    train/Perplexity=1.124
+    throughput/total_tokens=65,536
+    throughput/total_training_Gflops=599,646
+    throughput/total_training_log_Gflops=13.30
+    System/Peak GPU Memory (MB)=26,229
+2025-01-21 10:55:53.599	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=2/294,epoch=0]
+    optim/total_grad_norm=0.6112
+    train/CrossEntropyLoss=0.1322
+    train/Perplexity=1.141
+    throughput/total_tokens=131,072
+    throughput/total_training_Gflops=1,199,292
+    throughput/total_training_log_Gflops=14.00
+    throughput/device/tokens_per_second=29,526
+    throughput/device/batches_per_second=0.4505
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:55:55.815	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=3/294,epoch=0]
+    optim/total_grad_norm=0.5074
+    train/CrossEntropyLoss=0.1369
+    train/Perplexity=1.147
+    throughput/total_tokens=196,608
+    throughput/total_training_Gflops=1,798,939
+    throughput/total_training_log_Gflops=14.40
+    throughput/device/tokens_per_second=29,551
+    throughput/device/batches_per_second=0.4509
+2025-01-21 10:55:58.030	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=4/294,epoch=0]
+    optim/total_grad_norm=0.4229
+    train/CrossEntropyLoss=0.1228
+    train/Perplexity=1.131
+    throughput/total_tokens=262,144
+    throughput/total_training_Gflops=2,398,585
+    throughput/total_training_log_Gflops=14.69
+    throughput/device/tokens_per_second=29,564
+    throughput/device/batches_per_second=0.4511
+2025-01-21 10:56:00.246	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=5/294,epoch=0]
+    optim/total_grad_norm=0.3585
+    train/CrossEntropyLoss=0.1232
+    train/Perplexity=1.131
+    throughput/total_tokens=327,680
+    throughput/total_training_Gflops=2,998,232
+    throughput/total_training_log_Gflops=14.91
+    throughput/device/tokens_per_second=29,565
+    throughput/device/batches_per_second=0.4511
+2025-01-21 10:56:02.465	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=6/294,epoch=0]
+    optim/total_grad_norm=0.4690
+    train/CrossEntropyLoss=0.1198
+    train/Perplexity=1.127
+    throughput/total_tokens=393,216
+    throughput/total_training_Gflops=3,597,878
+    throughput/total_training_log_Gflops=15.10
+    throughput/device/tokens_per_second=29,559
+    throughput/device/batches_per_second=0.4510
+2025-01-21 10:56:04.684	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=7/294,epoch=0]
+    optim/total_grad_norm=0.3318
+    train/CrossEntropyLoss=0.1214
+    train/Perplexity=1.129
+    throughput/total_tokens=458,752
+    throughput/total_training_Gflops=4,197,524
+    throughput/total_training_log_Gflops=15.25
+    throughput/device/tokens_per_second=29,556
+    throughput/device/batches_per_second=0.4510
+2025-01-21 10:56:06.902	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=8/294,epoch=0]
+    optim/total_grad_norm=0.4287
+    train/CrossEntropyLoss=0.1141
+    train/Perplexity=1.121
+    throughput/total_tokens=524,288
+    throughput/total_training_Gflops=4,797,171
+    throughput/total_training_log_Gflops=15.38
+    throughput/device/tokens_per_second=29,553
+    throughput/device/batches_per_second=0.4510
+2025-01-21 10:56:09.120	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=9/294,epoch=0]
+    optim/total_grad_norm=0.2752
+    train/CrossEntropyLoss=0.1073
+    train/Perplexity=1.113
+    throughput/total_tokens=589,824
+    throughput/total_training_Gflops=5,396,817
+    throughput/total_training_log_Gflops=15.50
+    throughput/device/tokens_per_second=29,554
+    throughput/device/batches_per_second=0.4510
+2025-01-21 10:56:11.452	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=10/294,epoch=0]
+    optim/total_grad_norm=0.2903
+    train/CrossEntropyLoss=0.1129
+    train/Perplexity=1.119
+    throughput/total_tokens=655,360
+    throughput/total_training_Gflops=5,996,464
+    throughput/total_training_log_Gflops=15.61
+    throughput/device/tokens_per_second=29,385
+    throughput/device/batches_per_second=0.4484
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:56:13.680	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=11/294,epoch=0]
+    optim/total_grad_norm=0.2295
+    train/CrossEntropyLoss=0.1273
+    train/Perplexity=1.136
+    throughput/total_tokens=720,896
+    throughput/total_training_Gflops=6,596,110
+    throughput/total_training_log_Gflops=15.70
+    throughput/device/tokens_per_second=29,388
+    throughput/device/batches_per_second=0.4484
+2025-01-21 10:56:15.896	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=12/294,epoch=0]
+    optim/total_grad_norm=0.2534
+    train/CrossEntropyLoss=0.1108
+    train/Perplexity=1.117
+    throughput/total_tokens=786,432
+    throughput/total_training_Gflops=7,195,757
+    throughput/total_training_log_Gflops=15.79
+    throughput/device/tokens_per_second=29,404
+    throughput/device/batches_per_second=0.4487
+2025-01-21 10:56:18.113	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=13/294,epoch=0]
+    optim/total_grad_norm=0.2777
+    train/CrossEntropyLoss=0.1167
+    train/Perplexity=1.124
+    throughput/total_tokens=851,968
+    throughput/total_training_Gflops=7,795,403
+    throughput/total_training_log_Gflops=15.87
+    throughput/device/tokens_per_second=29,417
+    throughput/device/batches_per_second=0.4489
+2025-01-21 10:56:20.329	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=14/294,epoch=0]
+    optim/total_grad_norm=0.2459
+    train/CrossEntropyLoss=0.1244
+    train/Perplexity=1.132
+    throughput/total_tokens=917,504
+    throughput/total_training_Gflops=8,395,049
+    throughput/total_training_log_Gflops=15.94
+    throughput/device/tokens_per_second=29,430
+    throughput/device/batches_per_second=0.4491
+2025-01-21 10:56:22.544	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=15/294,epoch=0]
+    optim/total_grad_norm=0.4564
+    train/CrossEntropyLoss=0.1087
+    train/Perplexity=1.115
+    throughput/total_tokens=983,040
+    throughput/total_training_Gflops=8,994,696
+    throughput/total_training_log_Gflops=16.01
+    throughput/device/tokens_per_second=29,440
+    throughput/device/batches_per_second=0.4492
+2025-01-21 10:56:24.761	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=16/294,epoch=0]
+    optim/total_grad_norm=0.2219
+    train/CrossEntropyLoss=0.1035
+    train/Perplexity=1.109
+    throughput/total_tokens=1,048,576
+    throughput/total_training_Gflops=9,594,342
+    throughput/total_training_log_Gflops=16.08
+    throughput/device/tokens_per_second=29,448
+    throughput/device/batches_per_second=0.4494
+2025-01-21 10:56:26.978	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=17/294,epoch=0]
+    optim/total_grad_norm=0.1635
+    train/CrossEntropyLoss=0.1102
+    train/Perplexity=1.116
+    throughput/total_tokens=1,114,112
+    throughput/total_training_Gflops=10,193,989
+    throughput/total_training_log_Gflops=16.14
+    throughput/device/tokens_per_second=29,456
+    throughput/device/batches_per_second=0.4495
+2025-01-21 10:56:29.194	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=18/294,epoch=0]
+    optim/total_grad_norm=0.4781
+    train/CrossEntropyLoss=0.1109
+    train/Perplexity=1.117
+    throughput/total_tokens=1,179,648
+    throughput/total_training_Gflops=10,793,635
+    throughput/total_training_log_Gflops=16.19
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:56:31.410	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=19/294,epoch=0]
+    optim/total_grad_norm=0.1645
+    train/CrossEntropyLoss=0.1091
+    train/Perplexity=1.115
+    throughput/total_tokens=1,245,184
+    throughput/total_training_Gflops=11,393,282
+    throughput/total_training_log_Gflops=16.25
+    throughput/device/tokens_per_second=29,468
+    throughput/device/batches_per_second=0.4497
+2025-01-21 10:56:33.730	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=20/294,epoch=0]
+    optim/total_grad_norm=0.1572
+    train/CrossEntropyLoss=0.0988
+    train/Perplexity=1.104
+    throughput/total_tokens=1,310,720
+    throughput/total_training_Gflops=11,992,928
+    throughput/total_training_log_Gflops=16.30
+    throughput/device/tokens_per_second=29,402
+    throughput/device/batches_per_second=0.4486
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:56:35.952	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=21/294,epoch=0]
+    optim/total_grad_norm=0.1507
+    train/CrossEntropyLoss=0.0970
+    train/Perplexity=1.102
+    throughput/total_tokens=1,376,256
+    throughput/total_training_Gflops=12,592,574
+    throughput/total_training_log_Gflops=16.35
+    throughput/device/tokens_per_second=29,406
+    throughput/device/batches_per_second=0.4487
+2025-01-21 10:56:38.169	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=22/294,epoch=0]
+    optim/total_grad_norm=0.1822
+    train/CrossEntropyLoss=0.1076
+    train/Perplexity=1.114
+    throughput/total_tokens=1,441,792
+    throughput/total_training_Gflops=13,192,221
+    throughput/total_training_log_Gflops=16.40
+    throughput/device/tokens_per_second=29,412
+    throughput/device/batches_per_second=0.4488
+2025-01-21 10:56:40.385	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=23/294,epoch=0]
+    optim/total_grad_norm=0.2043
+    train/CrossEntropyLoss=0.1004
+    train/Perplexity=1.106
+    throughput/total_tokens=1,507,328
+    throughput/total_training_Gflops=13,791,867
+    throughput/total_training_log_Gflops=16.44
+    throughput/device/tokens_per_second=29,411
+    throughput/device/batches_per_second=0.4488
+2025-01-21 10:56:42.601	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=24/294,epoch=0]
+    optim/total_grad_norm=0.1578
+    train/CrossEntropyLoss=0.0972
+    train/Perplexity=1.102
+    throughput/total_tokens=1,572,864
+    throughput/total_training_Gflops=14,391,514
+    throughput/total_training_log_Gflops=16.48
+    throughput/device/tokens_per_second=29,410
+    throughput/device/batches_per_second=0.4488
+2025-01-21 10:56:44.818	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=25/294,epoch=0]
+    optim/total_grad_norm=0.1807
+    train/CrossEntropyLoss=0.0966
+    train/Perplexity=1.101
+    throughput/total_tokens=1,638,400
+    throughput/total_training_Gflops=14,991,160
+    throughput/total_training_log_Gflops=16.52
+    throughput/device/tokens_per_second=29,411
+    throughput/device/batches_per_second=0.4488
+2025-01-21 10:56:47.033	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=26/294,epoch=0]
+    optim/total_grad_norm=0.1645
+    train/CrossEntropyLoss=0.1036
+    train/Perplexity=1.109
+    throughput/total_tokens=1,703,936
+    throughput/total_training_Gflops=15,590,806
+    throughput/total_training_log_Gflops=16.56
+    throughput/device/tokens_per_second=29,413
+    throughput/device/batches_per_second=0.4488
+2025-01-21 10:56:49.247	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=27/294,epoch=0]
+    optim/total_grad_norm=0.2015
+    train/CrossEntropyLoss=0.1094
+    train/Perplexity=1.116
+    throughput/total_tokens=1,769,472
+    throughput/total_training_Gflops=16,190,453
+    throughput/total_training_log_Gflops=16.60
+    throughput/device/tokens_per_second=29,416
+    throughput/device/batches_per_second=0.4489
+2025-01-21 10:56:51.461	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=28/294,epoch=0]
+    optim/total_grad_norm=0.1592
+    train/CrossEntropyLoss=0.0958
+    train/Perplexity=1.101
+    throughput/total_tokens=1,835,008
+    throughput/total_training_Gflops=16,790,099
+    throughput/total_training_log_Gflops=16.64
+    throughput/device/tokens_per_second=29,419
+    throughput/device/batches_per_second=0.4489
+2025-01-21 10:56:53.675	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=29/294,epoch=0]
+    optim/total_grad_norm=0.1474
+    train/CrossEntropyLoss=0.1008
+    train/Perplexity=1.106
+    throughput/total_tokens=1,900,544
+    throughput/total_training_Gflops=17,389,746
+    throughput/total_training_log_Gflops=16.67
+    throughput/device/tokens_per_second=29,422
+    throughput/device/batches_per_second=0.4489
+2025-01-21 10:56:55.991	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=30/294,epoch=0]
+    optim/total_grad_norm=0.1850
+    train/CrossEntropyLoss=0.0892
+    train/Perplexity=1.093
+    throughput/total_tokens=1,966,080
+    throughput/total_training_Gflops=17,989,392
+    throughput/total_training_log_Gflops=16.71
+    throughput/device/tokens_per_second=29,439
+    throughput/device/batches_per_second=0.4492
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:56:58.213	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=31/294,epoch=0]
+    optim/total_grad_norm=0.1547
+    train/CrossEntropyLoss=0.1033
+    train/Perplexity=1.109
+    throughput/total_tokens=2,031,616
+    throughput/total_training_Gflops=18,589,039
+    throughput/total_training_log_Gflops=16.74
+    throughput/device/tokens_per_second=29,436
+    throughput/device/batches_per_second=0.4492
+2025-01-21 10:57:00.428	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=32/294,epoch=0]
+    optim/total_grad_norm=0.1715
+    train/CrossEntropyLoss=0.1076
+    train/Perplexity=1.114
+    throughput/total_tokens=2,097,152
+    throughput/total_training_Gflops=19,188,685
+    throughput/total_training_log_Gflops=16.77
+    throughput/device/tokens_per_second=29,437
+    throughput/device/batches_per_second=0.4492
+2025-01-21 10:57:02.642	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=33/294,epoch=0]
+    optim/total_grad_norm=0.1573
+    train/CrossEntropyLoss=0.1051
+    train/Perplexity=1.111
+    throughput/total_tokens=2,162,688
+    throughput/total_training_Gflops=19,788,331
+    throughput/total_training_log_Gflops=16.80
+    throughput/device/tokens_per_second=29,438
+    throughput/device/batches_per_second=0.4492
+2025-01-21 10:57:04.857	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=34/294,epoch=0]
+    optim/total_grad_norm=0.1751
+    train/CrossEntropyLoss=0.1028
+    train/Perplexity=1.108
+    throughput/total_tokens=2,228,224
+    throughput/total_training_Gflops=20,387,978
+    throughput/total_training_log_Gflops=16.83
+    throughput/device/tokens_per_second=29,439
+    throughput/device/batches_per_second=0.4492
+2025-01-21 10:57:07.070	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=35/294,epoch=0]
+    optim/total_grad_norm=0.1400
+    train/CrossEntropyLoss=0.0806
+    train/Perplexity=1.084
+    throughput/total_tokens=2,293,760
+    throughput/total_training_Gflops=20,987,624
+    throughput/total_training_log_Gflops=16.86
+    throughput/device/tokens_per_second=29,441
+    throughput/device/batches_per_second=0.4492
+2025-01-21 10:57:09.284	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=36/294,epoch=0]
+    optim/total_grad_norm=0.1349
+    train/CrossEntropyLoss=0.0884
+    train/Perplexity=1.092
+    throughput/total_tokens=2,359,296
+    throughput/total_training_Gflops=21,587,271
+    throughput/total_training_log_Gflops=16.89
+    throughput/device/tokens_per_second=29,443
+    throughput/device/batches_per_second=0.4493
+2025-01-21 10:57:11.497	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=37/294,epoch=0]
+    optim/total_grad_norm=0.1399
+    train/CrossEntropyLoss=0.0833
+    train/Perplexity=1.087
+    throughput/total_tokens=2,424,832
+    throughput/total_training_Gflops=22,186,917
+    throughput/total_training_log_Gflops=16.92
+    throughput/device/tokens_per_second=29,445
+    throughput/device/batches_per_second=0.4493
+2025-01-21 10:57:13.712	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=38/294,epoch=0]
+    optim/total_grad_norm=0.1512
+    train/CrossEntropyLoss=0.0915
+    train/Perplexity=1.096
+    throughput/total_tokens=2,490,368
+    throughput/total_training_Gflops=22,786,564
+    throughput/total_training_log_Gflops=16.94
+    throughput/device/tokens_per_second=29,446
+    throughput/device/batches_per_second=0.4493
+2025-01-21 10:57:15.926	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=39/294,epoch=0]
+    optim/total_grad_norm=0.1327
+    train/CrossEntropyLoss=0.0899
+    train/Perplexity=1.094
+    throughput/total_tokens=2,555,904
+    throughput/total_training_Gflops=23,386,210
+    throughput/total_training_log_Gflops=16.97
+    throughput/device/tokens_per_second=29,447
+    throughput/device/batches_per_second=0.4493
+2025-01-21 10:57:18.243	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=40/294,epoch=0]
+    optim/total_grad_norm=0.1344
+    train/CrossEntropyLoss=0.0908
+    train/Perplexity=1.095
+    throughput/total_tokens=2,621,440
+    throughput/total_training_Gflops=23,985,856
+    throughput/total_training_log_Gflops=16.99
+    throughput/device/tokens_per_second=29,454
+    throughput/device/batches_per_second=0.4494
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:57:18.251	c608-052.vista.tacc.utexas.edu:0	olmo.train:1006	INFO	Running evaluation for 'astro-sft-small-ppl-validation'...
+2025-01-21 10:57:18.410	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=1/-1]
+2025-01-21 10:57:18.567	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=2/-1]
+2025-01-21 10:57:18.724	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=3/-1]
+2025-01-21 10:57:18.881	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=4/-1]
+2025-01-21 10:57:19.038	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=5/-1]
+2025-01-21 10:57:19.195	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=6/-1]
+2025-01-21 10:57:19.352	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=7/-1]
+2025-01-21 10:57:19.509	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=8/-1]
+2025-01-21 10:57:19.666	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=9/-1]
+2025-01-21 10:57:19.823	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=10/-1]
+2025-01-21 10:57:19.980	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=11/-1]
+2025-01-21 10:57:20.137	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=12/-1]
+2025-01-21 10:57:20.294	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=13/-1]
+2025-01-21 10:57:20.451	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=14/-1]
+2025-01-21 10:57:20.608	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=15/-1]
+2025-01-21 10:57:20.765	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=16/-1]
+2025-01-21 10:57:20.922	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=17/-1]
+2025-01-21 10:57:21.079	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=18/-1]
+2025-01-21 10:57:21.236	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=19/-1]
+2025-01-21 10:57:21.393	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=20/-1]
+2025-01-21 10:57:21.550	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=21/-1]
+2025-01-21 10:57:21.690	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=22/-1]
+2025-01-21 10:57:21.691	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	astro-sft-small-ppl-validation
+    eval/astro-sft-small-ppl-validation/CrossEntropyLoss=0.0930
+    eval/astro-sft-small-ppl-validation/Perplexity=1.097
+2025-01-21 10:57:23.903	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=41/294,epoch=0]
+    optim/total_grad_norm=0.1420
+    train/CrossEntropyLoss=0.0989
+    train/Perplexity=1.104
+    throughput/total_tokens=2,686,976
+    throughput/total_training_Gflops=24,585,503
+    throughput/total_training_log_Gflops=17.02
+    throughput/device/tokens_per_second=29,707
+    throughput/device/batches_per_second=0.4533
+2025-01-21 10:57:26.117	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=42/294,epoch=0]
+    optim/total_grad_norm=0.1351
+    train/CrossEntropyLoss=0.0979
+    train/Perplexity=1.103
+    throughput/total_tokens=2,752,512
+    throughput/total_training_Gflops=25,185,149
+    throughput/total_training_log_Gflops=17.04
+    throughput/device/tokens_per_second=29,656
+    throughput/device/batches_per_second=0.4525
+2025-01-21 10:57:28.329	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=43/294,epoch=0]
+    optim/total_grad_norm=0.1429
+    train/CrossEntropyLoss=0.0969
+    train/Perplexity=1.102
+    throughput/total_tokens=2,818,048
+    throughput/total_training_Gflops=25,784,796
+    throughput/total_training_log_Gflops=17.07
+    throughput/device/tokens_per_second=29,643
+    throughput/device/batches_per_second=0.4523
+2025-01-21 10:57:30.543	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=44/294,epoch=0]
+    optim/total_grad_norm=0.1354
+    train/CrossEntropyLoss=0.0940
+    train/Perplexity=1.099
+    throughput/total_tokens=2,883,584
+    throughput/total_training_Gflops=26,384,442
+    throughput/total_training_log_Gflops=17.09
+    throughput/device/tokens_per_second=29,635
+    throughput/device/batches_per_second=0.4522
+2025-01-21 10:57:32.755	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=45/294,epoch=0]
+    optim/total_grad_norm=0.1621
+    train/CrossEntropyLoss=0.0769
+    train/Perplexity=1.080
+    throughput/total_tokens=2,949,120
+    throughput/total_training_Gflops=26,984,089
+    throughput/total_training_log_Gflops=17.11
+    throughput/device/tokens_per_second=29,632
+    throughput/device/batches_per_second=0.4521
+2025-01-21 10:57:34.970	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=46/294,epoch=0]
+    optim/total_grad_norm=0.1512
+    train/CrossEntropyLoss=0.0972
+    train/Perplexity=1.102
+    throughput/total_tokens=3,014,656
+    throughput/total_training_Gflops=27,583,735
+    throughput/total_training_log_Gflops=17.13
+    throughput/device/tokens_per_second=29,625
+    throughput/device/batches_per_second=0.4521
+2025-01-21 10:57:37.182	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=47/294,epoch=0]
+    optim/total_grad_norm=0.1778
+    train/CrossEntropyLoss=0.0888
+    train/Perplexity=1.093
+    throughput/total_tokens=3,080,192
+    throughput/total_training_Gflops=28,183,381
+    throughput/total_training_log_Gflops=17.15
+    throughput/device/tokens_per_second=29,624
+    throughput/device/batches_per_second=0.4520
+2025-01-21 10:57:39.396	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=48/294,epoch=0]
+    optim/total_grad_norm=0.1284
+    train/CrossEntropyLoss=0.0896
+    train/Perplexity=1.094
+    throughput/total_tokens=3,145,728
+    throughput/total_training_Gflops=28,783,028
+    throughput/total_training_log_Gflops=17.18
+    throughput/device/tokens_per_second=29,622
+    throughput/device/batches_per_second=0.4520
+2025-01-21 10:57:41.608	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=49/294,epoch=0]
+    optim/total_grad_norm=0.1474
+    train/CrossEntropyLoss=0.0987
+    train/Perplexity=1.104
+    throughput/total_tokens=3,211,264
+    throughput/total_training_Gflops=29,382,674
+    throughput/total_training_log_Gflops=17.20
+    throughput/device/tokens_per_second=29,622
+    throughput/device/batches_per_second=0.4520
+2025-01-21 10:57:43.926	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=50/294,epoch=0]
+    optim/total_grad_norm=0.1504
+    train/CrossEntropyLoss=0.0805
+    train/Perplexity=1.084
+    throughput/total_tokens=3,276,800
+    throughput/total_training_Gflops=29,982,321
+    throughput/total_training_log_Gflops=17.22
+    throughput/device/tokens_per_second=29,482
+    throughput/device/batches_per_second=0.4499
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:57:44.041	c608-052.vista.tacc.utexas.edu:0	olmo.train:1075	INFO	Failed to check if W&B run is cancelled, continuing run.
+2025-01-21 10:57:46.254	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=51/294,epoch=0]
+    optim/total_grad_norm=0.1608
+    train/CrossEntropyLoss=0.0942
+    train/Perplexity=1.099
+    throughput/total_tokens=3,342,336
+    throughput/total_training_Gflops=30,581,967
+    throughput/total_training_log_Gflops=17.24
+    throughput/device/tokens_per_second=29,355
+    throughput/device/batches_per_second=0.4479
+2025-01-21 10:57:48.468	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=52/294,epoch=0]
+    optim/total_grad_norm=0.1387
+    train/CrossEntropyLoss=0.0870
+    train/Perplexity=1.091
+    throughput/total_tokens=3,407,872
+    throughput/total_training_Gflops=31,181,613
+    throughput/total_training_log_Gflops=17.26
+    throughput/device/tokens_per_second=29,375
+    throughput/device/batches_per_second=0.4482
+2025-01-21 10:57:50.681	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=53/294,epoch=0]
+    optim/total_grad_norm=0.1486
+    train/CrossEntropyLoss=0.0965
+    train/Perplexity=1.101
+    throughput/total_tokens=3,473,408
+    throughput/total_training_Gflops=31,781,260
+    throughput/total_training_log_Gflops=17.27
+    throughput/device/tokens_per_second=29,394
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:57:52.894	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=54/294,epoch=0]
+    optim/total_grad_norm=0.1417
+    train/CrossEntropyLoss=0.0935
+    train/Perplexity=1.098
+    throughput/total_tokens=3,538,944
+    throughput/total_training_Gflops=32,380,906
+    throughput/total_training_log_Gflops=17.29
+    throughput/device/tokens_per_second=29,409
+    throughput/device/batches_per_second=0.4488
+2025-01-21 10:57:55.108	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=55/294,epoch=0]
+    optim/total_grad_norm=0.1442
+    train/CrossEntropyLoss=0.1019
+    train/Perplexity=1.107
+    throughput/total_tokens=3,604,480
+    throughput/total_training_Gflops=32,980,553
+    throughput/total_training_log_Gflops=17.31
+    throughput/device/tokens_per_second=29,422
+    throughput/device/batches_per_second=0.4490
+2025-01-21 10:57:57.321	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=56/294,epoch=0]
+    optim/total_grad_norm=0.1328
+    train/CrossEntropyLoss=0.0833
+    train/Perplexity=1.087
+    throughput/total_tokens=3,670,016
+    throughput/total_training_Gflops=33,580,199
+    throughput/total_training_log_Gflops=17.33
+    throughput/device/tokens_per_second=29,434
+    throughput/device/batches_per_second=0.4491
+2025-01-21 10:57:59.534	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=57/294,epoch=0]
+    optim/total_grad_norm=0.1369
+    train/CrossEntropyLoss=0.0851
+    train/Perplexity=1.089
+    throughput/total_tokens=3,735,552
+    throughput/total_training_Gflops=34,179,846
+    throughput/total_training_log_Gflops=17.35
+    throughput/device/tokens_per_second=29,444
+    throughput/device/batches_per_second=0.4493
+2025-01-21 10:58:01.748	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=58/294,epoch=0]
+    optim/total_grad_norm=0.1294
+    train/CrossEntropyLoss=0.0782
+    train/Perplexity=1.081
+    throughput/total_tokens=3,801,088
+    throughput/total_training_Gflops=34,779,492
+    throughput/total_training_log_Gflops=17.36
+    throughput/device/tokens_per_second=29,453
+    throughput/device/batches_per_second=0.4494
+2025-01-21 10:58:03.961	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=59/294,epoch=0]
+    optim/total_grad_norm=0.1386
+    train/CrossEntropyLoss=0.0804
+    train/Perplexity=1.084
+    throughput/total_tokens=3,866,624
+    throughput/total_training_Gflops=35,379,138
+    throughput/total_training_log_Gflops=17.38
+    throughput/device/tokens_per_second=29,461
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:58:06.278	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=60/294,epoch=0]
+    optim/total_grad_norm=0.1272
+    train/CrossEntropyLoss=0.0833
+    train/Perplexity=1.087
+    throughput/total_tokens=3,932,160
+    throughput/total_training_Gflops=35,978,785
+    throughput/total_training_log_Gflops=17.40
+    throughput/device/tokens_per_second=29,400
+    throughput/device/batches_per_second=0.4486
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:58:08.499	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=61/294,epoch=0]
+    optim/total_grad_norm=0.1457
+    train/CrossEntropyLoss=0.0839
+    train/Perplexity=1.088
+    throughput/total_tokens=3,997,696
+    throughput/total_training_Gflops=36,578,431
+    throughput/total_training_log_Gflops=17.41
+    throughput/device/tokens_per_second=29,396
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:58:10.712	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=62/294,epoch=0]
+    optim/total_grad_norm=0.1507
+    train/CrossEntropyLoss=0.1049
+    train/Perplexity=1.111
+    throughput/total_tokens=4,063,232
+    throughput/total_training_Gflops=37,178,078
+    throughput/total_training_log_Gflops=17.43
+    throughput/device/tokens_per_second=29,395
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:58:12.926	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=63/294,epoch=0]
+    optim/total_grad_norm=0.1401
+    train/CrossEntropyLoss=0.0861
+    train/Perplexity=1.090
+    throughput/total_tokens=4,128,768
+    throughput/total_training_Gflops=37,777,724
+    throughput/total_training_log_Gflops=17.45
+    throughput/device/tokens_per_second=29,394
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:58:15.140	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=64/294,epoch=0]
+    optim/total_grad_norm=0.1505
+    train/CrossEntropyLoss=0.0969
+    train/Perplexity=1.102
+    throughput/total_tokens=4,194,304
+    throughput/total_training_Gflops=38,377,371
+    throughput/total_training_log_Gflops=17.46
+    throughput/device/tokens_per_second=29,393
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:58:17.354	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=65/294,epoch=0]
+    optim/total_grad_norm=0.1526
+    train/CrossEntropyLoss=0.0813
+    train/Perplexity=1.085
+    throughput/total_tokens=4,259,840
+    throughput/total_training_Gflops=38,977,017
+    throughput/total_training_log_Gflops=17.48
+    throughput/device/tokens_per_second=29,393
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:58:19.568	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=66/294,epoch=0]
+    optim/total_grad_norm=0.1379
+    train/CrossEntropyLoss=0.0893
+    train/Perplexity=1.093
+    throughput/total_tokens=4,325,376
+    throughput/total_training_Gflops=39,576,663
+    throughput/total_training_log_Gflops=17.49
+    throughput/device/tokens_per_second=29,393
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:58:21.781	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=67/294,epoch=0]
+    optim/total_grad_norm=0.1322
+    train/CrossEntropyLoss=0.0780
+    train/Perplexity=1.081
+    throughput/total_tokens=4,390,912
+    throughput/total_training_Gflops=40,176,310
+    throughput/total_training_log_Gflops=17.51
+    throughput/device/tokens_per_second=29,393
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:58:23.994	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=68/294,epoch=0]
+    optim/total_grad_norm=0.1387
+    train/CrossEntropyLoss=0.0846
+    train/Perplexity=1.088
+    throughput/total_tokens=4,456,448
+    throughput/total_training_Gflops=40,775,956
+    throughput/total_training_log_Gflops=17.52
+    throughput/device/tokens_per_second=29,392
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:58:26.209	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=69/294,epoch=0]
+    optim/total_grad_norm=0.1413
+    train/CrossEntropyLoss=0.0985
+    train/Perplexity=1.104
+    throughput/total_tokens=4,521,984
+    throughput/total_training_Gflops=41,375,603
+    throughput/total_training_log_Gflops=17.54
+    throughput/device/tokens_per_second=29,391
+    throughput/device/batches_per_second=0.4485
+2025-01-21 10:58:28.524	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=70/294,epoch=0]
+    optim/total_grad_norm=0.1422
+    train/CrossEntropyLoss=0.0873
+    train/Perplexity=1.091
+    throughput/total_tokens=4,587,520
+    throughput/total_training_Gflops=41,975,249
+    throughput/total_training_log_Gflops=17.55
+    throughput/device/tokens_per_second=29,469
+    throughput/device/batches_per_second=0.4497
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:58:30.744	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=71/294,epoch=0]
+    optim/total_grad_norm=0.1713
+    train/CrossEntropyLoss=0.0847
+    train/Perplexity=1.088
+    throughput/total_tokens=4,653,056
+    throughput/total_training_Gflops=42,574,895
+    throughput/total_training_log_Gflops=17.57
+    throughput/device/tokens_per_second=29,465
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:58:32.958	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=72/294,epoch=0]
+    optim/total_grad_norm=0.1317
+    train/CrossEntropyLoss=0.0823
+    train/Perplexity=1.086
+    throughput/total_tokens=4,718,592
+    throughput/total_training_Gflops=43,174,542
+    throughput/total_training_log_Gflops=17.58
+    throughput/device/tokens_per_second=29,464
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:58:35.172	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=73/294,epoch=0]
+    optim/total_grad_norm=0.1330
+    train/CrossEntropyLoss=0.0854
+    train/Perplexity=1.089
+    throughput/total_tokens=4,784,128
+    throughput/total_training_Gflops=43,774,188
+    throughput/total_training_log_Gflops=17.59
+    throughput/device/tokens_per_second=29,464
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:58:37.386	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=74/294,epoch=0]
+    optim/total_grad_norm=0.1370
+    train/CrossEntropyLoss=0.0826
+    train/Perplexity=1.086
+    throughput/total_tokens=4,849,664
+    throughput/total_training_Gflops=44,373,835
+    throughput/total_training_log_Gflops=17.61
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:58:39.599	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=75/294,epoch=0]
+    optim/total_grad_norm=0.1411
+    train/CrossEntropyLoss=0.0782
+    train/Perplexity=1.081
+    throughput/total_tokens=4,915,200
+    throughput/total_training_Gflops=44,973,481
+    throughput/total_training_log_Gflops=17.62
+    throughput/device/tokens_per_second=29,464
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:58:41.814	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=76/294,epoch=0]
+    optim/total_grad_norm=0.1400
+    train/CrossEntropyLoss=0.0945
+    train/Perplexity=1.099
+    throughput/total_tokens=4,980,736
+    throughput/total_training_Gflops=45,573,128
+    throughput/total_training_log_Gflops=17.63
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:58:44.028	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=77/294,epoch=0]
+    optim/total_grad_norm=0.1278
+    train/CrossEntropyLoss=0.0808
+    train/Perplexity=1.084
+    throughput/total_tokens=5,046,272
+    throughput/total_training_Gflops=46,172,774
+    throughput/total_training_log_Gflops=17.65
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:58:46.242	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=78/294,epoch=0]
+    optim/total_grad_norm=0.1444
+    train/CrossEntropyLoss=0.0852
+    train/Perplexity=1.089
+    throughput/total_tokens=5,111,808
+    throughput/total_training_Gflops=46,772,420
+    throughput/total_training_log_Gflops=17.66
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 10:58:48.457	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=79/294,epoch=0]
+    optim/total_grad_norm=0.1349
+    train/CrossEntropyLoss=0.0856
+    train/Perplexity=1.089
+    throughput/total_tokens=5,177,344
+    throughput/total_training_Gflops=47,372,067
+    throughput/total_training_log_Gflops=17.67
+    throughput/device/tokens_per_second=29,461
+    throughput/device/batches_per_second=0.4495
+2025-01-21 10:58:50.775	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=80/294,epoch=0]
+    optim/total_grad_norm=0.1292
+    train/CrossEntropyLoss=0.0834
+    train/Perplexity=1.087
+    throughput/total_tokens=5,242,880
+    throughput/total_training_Gflops=47,971,713
+    throughput/total_training_log_Gflops=17.69
+    throughput/device/tokens_per_second=29,465
+    throughput/device/batches_per_second=0.4496
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:58:50.784	c608-052.vista.tacc.utexas.edu:0	olmo.train:1006	INFO	Running evaluation for 'astro-sft-small-ppl-validation'...
+2025-01-21 10:58:50.942	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=1/-1]
+2025-01-21 10:58:51.099	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=2/-1]
+2025-01-21 10:58:51.256	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=3/-1]
+2025-01-21 10:58:51.413	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=4/-1]
+2025-01-21 10:58:51.570	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=5/-1]
+2025-01-21 10:58:51.727	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=6/-1]
+2025-01-21 10:58:51.884	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=7/-1]
+2025-01-21 10:58:52.041	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=8/-1]
+2025-01-21 10:58:52.198	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=9/-1]
+2025-01-21 10:58:52.355	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=10/-1]
+2025-01-21 10:58:52.512	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=11/-1]
+2025-01-21 10:58:52.669	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=12/-1]
+2025-01-21 10:58:52.826	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=13/-1]
+2025-01-21 10:58:52.983	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=14/-1]
+2025-01-21 10:58:53.140	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=15/-1]
+2025-01-21 10:58:53.297	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=16/-1]
+2025-01-21 10:58:53.454	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=17/-1]
+2025-01-21 10:58:53.611	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=18/-1]
+2025-01-21 10:58:53.768	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=19/-1]
+2025-01-21 10:58:53.925	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=20/-1]
+2025-01-21 10:58:54.082	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=21/-1]
+2025-01-21 10:58:54.221	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=22/-1]
+2025-01-21 10:58:54.222	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	astro-sft-small-ppl-validation
+    eval/astro-sft-small-ppl-validation/CrossEntropyLoss=0.0853
+    eval/astro-sft-small-ppl-validation/Perplexity=1.089
+2025-01-21 10:58:56.434	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=81/294,epoch=0]
+    optim/total_grad_norm=0.1374
+    train/CrossEntropyLoss=0.0829
+    train/Perplexity=1.086
+    throughput/total_tokens=5,308,416
+    throughput/total_training_Gflops=48,571,360
+    throughput/total_training_log_Gflops=17.70
+    throughput/device/tokens_per_second=29,696
+    throughput/device/batches_per_second=0.4531
+2025-01-21 10:58:58.648	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=82/294,epoch=0]
+    optim/total_grad_norm=0.1509
+    train/CrossEntropyLoss=0.0932
+    train/Perplexity=1.098
+    throughput/total_tokens=5,373,952
+    throughput/total_training_Gflops=49,171,006
+    throughput/total_training_log_Gflops=17.71
+    throughput/device/tokens_per_second=29,646
+    throughput/device/batches_per_second=0.4524
+2025-01-21 10:59:00.861	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=83/294,epoch=0]
+    optim/total_grad_norm=0.1348
+    train/CrossEntropyLoss=0.0861
+    train/Perplexity=1.090
+    throughput/total_tokens=5,439,488
+    throughput/total_training_Gflops=49,770,653
+    throughput/total_training_log_Gflops=17.72
+    throughput/device/tokens_per_second=29,636
+    throughput/device/batches_per_second=0.4522
+2025-01-21 10:59:03.076	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=84/294,epoch=0]
+    optim/total_grad_norm=0.1534
+    train/CrossEntropyLoss=0.0971
+    train/Perplexity=1.102
+    throughput/total_tokens=5,505,024
+    throughput/total_training_Gflops=50,370,299
+    throughput/total_training_log_Gflops=17.73
+    throughput/device/tokens_per_second=29,625
+    throughput/device/batches_per_second=0.4521
+2025-01-21 10:59:05.289	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=85/294,epoch=0]
+    optim/total_grad_norm=0.1528
+    train/CrossEntropyLoss=0.0826
+    train/Perplexity=1.086
+    throughput/total_tokens=5,570,560
+    throughput/total_training_Gflops=50,969,945
+    throughput/total_training_log_Gflops=17.75
+    throughput/device/tokens_per_second=29,622
+    throughput/device/batches_per_second=0.4520
+2025-01-21 10:59:07.503	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=86/294,epoch=0]
+    optim/total_grad_norm=0.1564
+    train/CrossEntropyLoss=0.0918
+    train/Perplexity=1.096
+    throughput/total_tokens=5,636,096
+    throughput/total_training_Gflops=51,569,592
+    throughput/total_training_log_Gflops=17.76
+    throughput/device/tokens_per_second=29,617
+    throughput/device/batches_per_second=0.4519
+2025-01-21 10:59:09.717	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=87/294,epoch=0]
+    optim/total_grad_norm=0.1324
+    train/CrossEntropyLoss=0.0782
+    train/Perplexity=1.081
+    throughput/total_tokens=5,701,632
+    throughput/total_training_Gflops=52,169,238
+    throughput/total_training_log_Gflops=17.77
+    throughput/device/tokens_per_second=29,615
+    throughput/device/batches_per_second=0.4519
+2025-01-21 10:59:11.932	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=88/294,epoch=0]
+    optim/total_grad_norm=0.1556
+    train/CrossEntropyLoss=0.0883
+    train/Perplexity=1.092
+    throughput/total_tokens=5,767,168
+    throughput/total_training_Gflops=52,768,885
+    throughput/total_training_log_Gflops=17.78
+    throughput/device/tokens_per_second=29,612
+    throughput/device/batches_per_second=0.4519
+2025-01-21 10:59:14.147	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=89/294,epoch=0]
+    optim/total_grad_norm=0.1343
+    train/CrossEntropyLoss=0.0859
+    train/Perplexity=1.090
+    throughput/total_tokens=5,832,704
+    throughput/total_training_Gflops=53,368,531
+    throughput/total_training_log_Gflops=17.79
+    throughput/device/tokens_per_second=29,610
+    throughput/device/batches_per_second=0.4518
+2025-01-21 10:59:16.462	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=90/294,epoch=0]
+    optim/total_grad_norm=0.1429
+    train/CrossEntropyLoss=0.0843
+    train/Perplexity=1.088
+    throughput/total_tokens=5,898,240
+    throughput/total_training_Gflops=53,968,178
+    throughput/total_training_log_Gflops=17.80
+    throughput/device/tokens_per_second=29,474
+    throughput/device/batches_per_second=0.4497
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:59:18.684	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=91/294,epoch=0]
+    optim/total_grad_norm=0.1653
+    train/CrossEntropyLoss=0.0884
+    train/Perplexity=1.092
+    throughput/total_tokens=5,963,776
+    throughput/total_training_Gflops=54,567,824
+    throughput/total_training_log_Gflops=17.81
+    throughput/device/tokens_per_second=29,476
+    throughput/device/batches_per_second=0.4498
+2025-01-21 10:59:20.898	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=92/294,epoch=0]
+    optim/total_grad_norm=0.1480
+    train/CrossEntropyLoss=0.0816
+    train/Perplexity=1.085
+    throughput/total_tokens=6,029,312
+    throughput/total_training_Gflops=55,167,470
+    throughput/total_training_log_Gflops=17.83
+    throughput/device/tokens_per_second=29,486
+    throughput/device/batches_per_second=0.4499
+2025-01-21 10:59:23.111	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=93/294,epoch=0]
+    optim/total_grad_norm=0.1267
+    train/CrossEntropyLoss=0.0824
+    train/Perplexity=1.086
+    throughput/total_tokens=6,094,848
+    throughput/total_training_Gflops=55,767,117
+    throughput/total_training_log_Gflops=17.84
+    throughput/device/tokens_per_second=29,496
+    throughput/device/batches_per_second=0.4501
+2025-01-21 10:59:25.325	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=94/294,epoch=0]
+    optim/total_grad_norm=0.1495
+    train/CrossEntropyLoss=0.0875
+    train/Perplexity=1.091
+    throughput/total_tokens=6,160,384
+    throughput/total_training_Gflops=56,366,763
+    throughput/total_training_log_Gflops=17.85
+    throughput/device/tokens_per_second=29,503
+    throughput/device/batches_per_second=0.4502
+2025-01-21 10:59:27.540	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=95/294,epoch=0]
+    optim/total_grad_norm=0.1362
+    train/CrossEntropyLoss=0.0778
+    train/Perplexity=1.081
+    throughput/total_tokens=6,225,920
+    throughput/total_training_Gflops=56,966,410
+    throughput/total_training_log_Gflops=17.86
+    throughput/device/tokens_per_second=29,509
+    throughput/device/batches_per_second=0.4503
+2025-01-21 10:59:29.753	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=96/294,epoch=0]
+    optim/total_grad_norm=0.1372
+    train/CrossEntropyLoss=0.0752
+    train/Perplexity=1.078
+    throughput/total_tokens=6,291,456
+    throughput/total_training_Gflops=57,566,056
+    throughput/total_training_log_Gflops=17.87
+    throughput/device/tokens_per_second=29,515
+    throughput/device/batches_per_second=0.4504
+2025-01-21 10:59:31.963	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=97/294,epoch=0]
+    optim/total_grad_norm=0.1483
+    train/CrossEntropyLoss=0.0735
+    train/Perplexity=1.076
+    throughput/total_tokens=6,356,992
+    throughput/total_training_Gflops=58,165,702
+    throughput/total_training_log_Gflops=17.88
+    throughput/device/tokens_per_second=29,524
+    throughput/device/batches_per_second=0.4505
+2025-01-21 10:59:34.170	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=98/294,epoch=0]
+    optim/total_grad_norm=0.1333
+    train/CrossEntropyLoss=0.0766
+    train/Perplexity=1.080
+    throughput/total_tokens=6,422,528
+    throughput/total_training_Gflops=58,765,349
+    throughput/total_training_log_Gflops=17.89
+    throughput/device/tokens_per_second=29,533
+    throughput/device/batches_per_second=0.4506
+2025-01-21 10:59:34.171	c608-052.vista.tacc.utexas.edu:0	olmo.train:1334	INFO	Training epoch complete
+2025-01-21 10:59:34.171	c608-052.vista.tacc.utexas.edu:0	olmo.train:1339	INFO	Reshuffling data loader for epoch 1...
+2025-01-21 10:59:34.171	c608-052.vista.tacc.utexas.edu:0	olmo.data.iterable_dataset:78	INFO	Saving global data order indices...
+2025-01-21 10:59:34.240	c608-052.vista.tacc.utexas.edu:0	olmo.data.iterable_dataset:87	INFO	Global data order indices saved to '/scratch/09636/zyliu/checkpoints/sft/SFT-DS-Coder-1B-final/train_data/global_indices.npy'
+2025-01-21 10:59:36.464	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=99/294,epoch=1]
+    optim/total_grad_norm=0.1290
+    train/CrossEntropyLoss=0.0748
+    train/Perplexity=1.078
+    throughput/total_tokens=6,488,064
+    throughput/total_training_Gflops=59,364,995
+    throughput/total_training_log_Gflops=17.90
+    throughput/device/tokens_per_second=29,481
+    throughput/device/batches_per_second=0.4498
+2025-01-21 10:59:38.780	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=100/294,epoch=1]
+    optim/total_grad_norm=0.1230
+    train/CrossEntropyLoss=0.0742
+    train/Perplexity=1.077
+    throughput/total_tokens=6,553,600
+    throughput/total_training_Gflops=59,964,642
+    throughput/total_training_log_Gflops=17.91
+    throughput/device/tokens_per_second=29,419
+    throughput/device/batches_per_second=0.4489
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 10:59:38.900	c608-052.vista.tacc.utexas.edu:0	olmo.train:1075	INFO	Failed to check if W&B run is cancelled, continuing run.
+2025-01-21 10:59:41.114	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=101/294,epoch=1]
+    optim/total_grad_norm=0.1392
+    train/CrossEntropyLoss=0.0859
+    train/Perplexity=1.090
+    throughput/total_tokens=6,619,136
+    throughput/total_training_Gflops=60,564,288
+    throughput/total_training_log_Gflops=17.92
+    throughput/device/tokens_per_second=29,339
+    throughput/device/batches_per_second=0.4477
+2025-01-21 10:59:43.327	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=102/294,epoch=1]
+    optim/total_grad_norm=0.1228
+    train/CrossEntropyLoss=0.0682
+    train/Perplexity=1.071
+    throughput/total_tokens=6,684,672
+    throughput/total_training_Gflops=61,163,935
+    throughput/total_training_log_Gflops=17.93
+    throughput/device/tokens_per_second=29,339
+    throughput/device/batches_per_second=0.4477
+2025-01-21 10:59:45.542	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=103/294,epoch=1]
+    optim/total_grad_norm=0.1358
+    train/CrossEntropyLoss=0.0815
+    train/Perplexity=1.085
+    throughput/total_tokens=6,750,208
+    throughput/total_training_Gflops=61,763,581
+    throughput/total_training_log_Gflops=17.94
+    throughput/device/tokens_per_second=29,339
+    throughput/device/batches_per_second=0.4477
+2025-01-21 10:59:47.755	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=104/294,epoch=1]
+    optim/total_grad_norm=0.1282
+    train/CrossEntropyLoss=0.0666
+    train/Perplexity=1.069
+    throughput/total_tokens=6,815,744
+    throughput/total_training_Gflops=62,363,227
+    throughput/total_training_log_Gflops=17.95
+    throughput/device/tokens_per_second=29,339
+    throughput/device/batches_per_second=0.4477
+2025-01-21 10:59:49.970	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=105/294,epoch=1]
+    optim/total_grad_norm=0.1594
+    train/CrossEntropyLoss=0.0911
+    train/Perplexity=1.095
+    throughput/total_tokens=6,881,280
+    throughput/total_training_Gflops=62,962,874
+    throughput/total_training_log_Gflops=17.96
+    throughput/device/tokens_per_second=29,340
+    throughput/device/batches_per_second=0.4477
+2025-01-21 10:59:52.184	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=106/294,epoch=1]
+    optim/total_grad_norm=0.1408
+    train/CrossEntropyLoss=0.0796
+    train/Perplexity=1.083
+    throughput/total_tokens=6,946,816
+    throughput/total_training_Gflops=63,562,520
+    throughput/total_training_log_Gflops=17.97
+    throughput/device/tokens_per_second=29,339
+    throughput/device/batches_per_second=0.4477
+2025-01-21 10:59:54.398	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=107/294,epoch=1]
+    optim/total_grad_norm=0.1322
+    train/CrossEntropyLoss=0.0716
+    train/Perplexity=1.074
+    throughput/total_tokens=7,012,352
+    throughput/total_training_Gflops=64,162,167
+    throughput/total_training_log_Gflops=17.98
+    throughput/device/tokens_per_second=29,339
+    throughput/device/batches_per_second=0.4477
+2025-01-21 10:59:56.614	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=108/294,epoch=1]
+    optim/total_grad_norm=0.1369
+    train/CrossEntropyLoss=0.0711
+    train/Perplexity=1.074
+    throughput/total_tokens=7,077,888
+    throughput/total_training_Gflops=64,761,813
+    throughput/total_training_log_Gflops=17.99
+    throughput/device/tokens_per_second=29,338
+    throughput/device/batches_per_second=0.4477
+2025-01-21 10:59:58.829	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=109/294,epoch=1]
+    optim/total_grad_norm=0.1448
+    train/CrossEntropyLoss=0.0724
+    train/Perplexity=1.075
+    throughput/total_tokens=7,143,424
+    throughput/total_training_Gflops=65,361,460
+    throughput/total_training_log_Gflops=18.00
+    throughput/device/tokens_per_second=29,337
+    throughput/device/batches_per_second=0.4477
+2025-01-21 11:00:01.148	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=110/294,epoch=1]
+    optim/total_grad_norm=0.1442
+    train/CrossEntropyLoss=0.0731
+    train/Perplexity=1.076
+    throughput/total_tokens=7,208,960
+    throughput/total_training_Gflops=65,961,106
+    throughput/total_training_log_Gflops=18.00
+    throughput/device/tokens_per_second=29,341
+    throughput/device/batches_per_second=0.4477
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:00:03.368	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=111/294,epoch=1]
+    optim/total_grad_norm=0.1601
+    train/CrossEntropyLoss=0.0723
+    train/Perplexity=1.075
+    throughput/total_tokens=7,274,496
+    throughput/total_training_Gflops=66,560,752
+    throughput/total_training_log_Gflops=18.01
+    throughput/device/tokens_per_second=29,336
+    throughput/device/batches_per_second=0.4476
+2025-01-21 11:00:05.582	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=112/294,epoch=1]
+    optim/total_grad_norm=0.1546
+    train/CrossEntropyLoss=0.0811
+    train/Perplexity=1.084
+    throughput/total_tokens=7,340,032
+    throughput/total_training_Gflops=67,160,399
+    throughput/total_training_log_Gflops=18.02
+    throughput/device/tokens_per_second=29,336
+    throughput/device/batches_per_second=0.4476
+2025-01-21 11:00:07.796	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=113/294,epoch=1]
+    optim/total_grad_norm=0.1401
+    train/CrossEntropyLoss=0.0756
+    train/Perplexity=1.078
+    throughput/total_tokens=7,405,568
+    throughput/total_training_Gflops=67,760,045
+    throughput/total_training_log_Gflops=18.03
+    throughput/device/tokens_per_second=29,336
+    throughput/device/batches_per_second=0.4476
+2025-01-21 11:00:10.010	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=114/294,epoch=1]
+    optim/total_grad_norm=0.1541
+    train/CrossEntropyLoss=0.0737
+    train/Perplexity=1.077
+    throughput/total_tokens=7,471,104
+    throughput/total_training_Gflops=68,359,692
+    throughput/total_training_log_Gflops=18.04
+    throughput/device/tokens_per_second=29,336
+    throughput/device/batches_per_second=0.4476
+2025-01-21 11:00:12.223	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=115/294,epoch=1]
+    optim/total_grad_norm=0.1431
+    train/CrossEntropyLoss=0.0746
+    train/Perplexity=1.078
+    throughput/total_tokens=7,536,640
+    throughput/total_training_Gflops=68,959,338
+    throughput/total_training_log_Gflops=18.05
+    throughput/device/tokens_per_second=29,337
+    throughput/device/batches_per_second=0.4477
+2025-01-21 11:00:14.437	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=116/294,epoch=1]
+    optim/total_grad_norm=0.1370
+    train/CrossEntropyLoss=0.0697
+    train/Perplexity=1.072
+    throughput/total_tokens=7,602,176
+    throughput/total_training_Gflops=69,558,985
+    throughput/total_training_log_Gflops=18.06
+    throughput/device/tokens_per_second=29,335
+    throughput/device/batches_per_second=0.4476
+2025-01-21 11:00:16.651	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=117/294,epoch=1]
+    optim/total_grad_norm=0.1415
+    train/CrossEntropyLoss=0.0763
+    train/Perplexity=1.079
+    throughput/total_tokens=7,667,712
+    throughput/total_training_Gflops=70,158,631
+    throughput/total_training_log_Gflops=18.07
+    throughput/device/tokens_per_second=29,331
+    throughput/device/batches_per_second=0.4476
+2025-01-21 11:00:18.865	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=118/294,epoch=1]
+    optim/total_grad_norm=0.1293
+    train/CrossEntropyLoss=0.0663
+    train/Perplexity=1.069
+    throughput/total_tokens=7,733,248
+    throughput/total_training_Gflops=70,758,277
+    throughput/total_training_log_Gflops=18.07
+    throughput/device/tokens_per_second=29,381
+    throughput/device/batches_per_second=0.4483
+2025-01-21 11:00:21.078	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=119/294,epoch=1]
+    optim/total_grad_norm=0.1336
+    train/CrossEntropyLoss=0.0744
+    train/Perplexity=1.077
+    throughput/total_tokens=7,798,784
+    throughput/total_training_Gflops=71,357,924
+    throughput/total_training_log_Gflops=18.08
+    throughput/device/tokens_per_second=29,383
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:00:23.395	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=120/294,epoch=1]
+    optim/total_grad_norm=0.1341
+    train/CrossEntropyLoss=0.0759
+    train/Perplexity=1.079
+    throughput/total_tokens=7,864,320
+    throughput/total_training_Gflops=71,957,570
+    throughput/total_training_log_Gflops=18.09
+    throughput/device/tokens_per_second=29,461
+    throughput/device/batches_per_second=0.4496
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:00:23.403	c608-052.vista.tacc.utexas.edu:0	olmo.train:1006	INFO	Running evaluation for 'astro-sft-small-ppl-validation'...
+2025-01-21 11:00:23.561	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=1/-1]
+2025-01-21 11:00:23.718	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=2/-1]
+2025-01-21 11:00:23.875	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=3/-1]
+2025-01-21 11:00:24.032	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=4/-1]
+2025-01-21 11:00:24.189	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=5/-1]
+2025-01-21 11:00:24.346	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=6/-1]
+2025-01-21 11:00:24.504	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=7/-1]
+2025-01-21 11:00:24.660	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=8/-1]
+2025-01-21 11:00:24.817	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=9/-1]
+2025-01-21 11:00:24.974	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=10/-1]
+2025-01-21 11:00:25.131	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=11/-1]
+2025-01-21 11:00:25.288	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=12/-1]
+2025-01-21 11:00:25.445	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=13/-1]
+2025-01-21 11:00:25.602	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=14/-1]
+2025-01-21 11:00:25.759	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=15/-1]
+2025-01-21 11:00:25.916	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=16/-1]
+2025-01-21 11:00:26.073	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=17/-1]
+2025-01-21 11:00:26.230	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=18/-1]
+2025-01-21 11:00:26.387	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=19/-1]
+2025-01-21 11:00:26.544	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=20/-1]
+2025-01-21 11:00:26.701	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=21/-1]
+2025-01-21 11:00:26.840	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=22/-1]
+2025-01-21 11:00:26.841	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	astro-sft-small-ppl-validation
+    eval/astro-sft-small-ppl-validation/CrossEntropyLoss=0.0818
+    eval/astro-sft-small-ppl-validation/Perplexity=1.085
+2025-01-21 11:00:29.056	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=121/294,epoch=1]
+    optim/total_grad_norm=0.1456
+    train/CrossEntropyLoss=0.0764
+    train/Perplexity=1.079
+    throughput/total_tokens=7,929,856
+    throughput/total_training_Gflops=72,557,217
+    throughput/total_training_log_Gflops=18.10
+    throughput/device/tokens_per_second=29,678
+    throughput/device/batches_per_second=0.4529
+2025-01-21 11:00:31.270	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=122/294,epoch=1]
+    optim/total_grad_norm=0.1420
+    train/CrossEntropyLoss=0.0749
+    train/Perplexity=1.078
+    throughput/total_tokens=7,995,392
+    throughput/total_training_Gflops=73,156,863
+    throughput/total_training_log_Gflops=18.11
+    throughput/device/tokens_per_second=29,637
+    throughput/device/batches_per_second=0.4522
+2025-01-21 11:00:33.483	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=123/294,epoch=1]
+    optim/total_grad_norm=0.1374
+    train/CrossEntropyLoss=0.0730
+    train/Perplexity=1.076
+    throughput/total_tokens=8,060,928
+    throughput/total_training_Gflops=73,756,509
+    throughput/total_training_log_Gflops=18.12
+    throughput/device/tokens_per_second=29,629
+    throughput/device/batches_per_second=0.4521
+2025-01-21 11:00:35.697	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=124/294,epoch=1]
+    optim/total_grad_norm=0.1481
+    train/CrossEntropyLoss=0.0731
+    train/Perplexity=1.076
+    throughput/total_tokens=8,126,464
+    throughput/total_training_Gflops=74,356,156
+    throughput/total_training_log_Gflops=18.12
+    throughput/device/tokens_per_second=29,623
+    throughput/device/batches_per_second=0.4520
+2025-01-21 11:00:37.911	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=125/294,epoch=1]
+    optim/total_grad_norm=0.1451
+    train/CrossEntropyLoss=0.0817
+    train/Perplexity=1.085
+    throughput/total_tokens=8,192,000
+    throughput/total_training_Gflops=74,955,802
+    throughput/total_training_log_Gflops=18.13
+    throughput/device/tokens_per_second=29,618
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:00:40.125	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=126/294,epoch=1]
+    optim/total_grad_norm=0.1482
+    train/CrossEntropyLoss=0.0759
+    train/Perplexity=1.079
+    throughput/total_tokens=8,257,536
+    throughput/total_training_Gflops=75,555,449
+    throughput/total_training_log_Gflops=18.14
+    throughput/device/tokens_per_second=29,616
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:00:42.338	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=127/294,epoch=1]
+    optim/total_grad_norm=0.1426
+    train/CrossEntropyLoss=0.0738
+    train/Perplexity=1.077
+    throughput/total_tokens=8,323,072
+    throughput/total_training_Gflops=76,155,095
+    throughput/total_training_log_Gflops=18.15
+    throughput/device/tokens_per_second=29,615
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:00:44.552	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=128/294,epoch=1]
+    optim/total_grad_norm=0.1281
+    train/CrossEntropyLoss=0.0658
+    train/Perplexity=1.068
+    throughput/total_tokens=8,388,608
+    throughput/total_training_Gflops=76,754,742
+    throughput/total_training_log_Gflops=18.16
+    throughput/device/tokens_per_second=29,613
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:00:46.765	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=129/294,epoch=1]
+    optim/total_grad_norm=0.1394
+    train/CrossEntropyLoss=0.0729
+    train/Perplexity=1.076
+    throughput/total_tokens=8,454,144
+    throughput/total_training_Gflops=77,354,388
+    throughput/total_training_log_Gflops=18.16
+    throughput/device/tokens_per_second=29,613
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:00:49.081	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=130/294,epoch=1]
+    optim/total_grad_norm=0.1488
+    train/CrossEntropyLoss=0.0737
+    train/Perplexity=1.076
+    throughput/total_tokens=8,519,680
+    throughput/total_training_Gflops=77,954,034
+    throughput/total_training_log_Gflops=18.17
+    throughput/device/tokens_per_second=29,477
+    throughput/device/batches_per_second=0.4498
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:00:51.302	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=131/294,epoch=1]
+    optim/total_grad_norm=0.1620
+    train/CrossEntropyLoss=0.0914
+    train/Perplexity=1.096
+    throughput/total_tokens=8,585,216
+    throughput/total_training_Gflops=78,553,681
+    throughput/total_training_log_Gflops=18.18
+    throughput/device/tokens_per_second=29,479
+    throughput/device/batches_per_second=0.4498
+2025-01-21 11:00:53.515	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=132/294,epoch=1]
+    optim/total_grad_norm=0.1433
+    train/CrossEntropyLoss=0.0791
+    train/Perplexity=1.082
+    throughput/total_tokens=8,650,752
+    throughput/total_training_Gflops=79,153,327
+    throughput/total_training_log_Gflops=18.19
+    throughput/device/tokens_per_second=29,490
+    throughput/device/batches_per_second=0.4500
+2025-01-21 11:00:55.726	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=133/294,epoch=1]
+    optim/total_grad_norm=0.1537
+    train/CrossEntropyLoss=0.0627
+    train/Perplexity=1.065
+    throughput/total_tokens=8,716,288
+    throughput/total_training_Gflops=79,752,974
+    throughput/total_training_log_Gflops=18.19
+    throughput/device/tokens_per_second=29,502
+    throughput/device/batches_per_second=0.4502
+2025-01-21 11:00:57.940	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=134/294,epoch=1]
+    optim/total_grad_norm=0.1420
+    train/CrossEntropyLoss=0.0822
+    train/Perplexity=1.086
+    throughput/total_tokens=8,781,824
+    throughput/total_training_Gflops=80,352,620
+    throughput/total_training_log_Gflops=18.20
+    throughput/device/tokens_per_second=29,509
+    throughput/device/batches_per_second=0.4503
+2025-01-21 11:01:00.153	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=135/294,epoch=1]
+    optim/total_grad_norm=0.1582
+    train/CrossEntropyLoss=0.0678
+    train/Perplexity=1.070
+    throughput/total_tokens=8,847,360
+    throughput/total_training_Gflops=80,952,267
+    throughput/total_training_log_Gflops=18.21
+    throughput/device/tokens_per_second=29,515
+    throughput/device/batches_per_second=0.4504
+2025-01-21 11:01:02.367	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=136/294,epoch=1]
+    optim/total_grad_norm=0.1401
+    train/CrossEntropyLoss=0.0656
+    train/Perplexity=1.068
+    throughput/total_tokens=8,912,896
+    throughput/total_training_Gflops=81,551,913
+    throughput/total_training_log_Gflops=18.22
+    throughput/device/tokens_per_second=29,521
+    throughput/device/batches_per_second=0.4505
+2025-01-21 11:01:04.579	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=137/294,epoch=1]
+    optim/total_grad_norm=0.1547
+    train/CrossEntropyLoss=0.0731
+    train/Perplexity=1.076
+    throughput/total_tokens=8,978,432
+    throughput/total_training_Gflops=82,151,559
+    throughput/total_training_log_Gflops=18.22
+    throughput/device/tokens_per_second=29,527
+    throughput/device/batches_per_second=0.4506
+2025-01-21 11:01:06.793	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=138/294,epoch=1]
+    optim/total_grad_norm=0.1378
+    train/CrossEntropyLoss=0.0685
+    train/Perplexity=1.071
+    throughput/total_tokens=9,043,968
+    throughput/total_training_Gflops=82,751,206
+    throughput/total_training_log_Gflops=18.23
+    throughput/device/tokens_per_second=29,531
+    throughput/device/batches_per_second=0.4506
+2025-01-21 11:01:09.007	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=139/294,epoch=1]
+    optim/total_grad_norm=0.1500
+    train/CrossEntropyLoss=0.0776
+    train/Perplexity=1.081
+    throughput/total_tokens=9,109,504
+    throughput/total_training_Gflops=83,350,852
+    throughput/total_training_log_Gflops=18.24
+    throughput/device/tokens_per_second=29,535
+    throughput/device/batches_per_second=0.4507
+2025-01-21 11:01:11.323	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=140/294,epoch=1]
+    optim/total_grad_norm=0.1378
+    train/CrossEntropyLoss=0.0681
+    train/Perplexity=1.070
+    throughput/total_tokens=9,175,040
+    throughput/total_training_Gflops=83,950,499
+    throughput/total_training_log_Gflops=18.25
+    throughput/device/tokens_per_second=29,471
+    throughput/device/batches_per_second=0.4497
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:01:13.543	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=141/294,epoch=1]
+    optim/total_grad_norm=0.1447
+    train/CrossEntropyLoss=0.0797
+    train/Perplexity=1.083
+    throughput/total_tokens=9,240,576
+    throughput/total_training_Gflops=84,550,145
+    throughput/total_training_log_Gflops=18.25
+    throughput/device/tokens_per_second=29,467
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:01:15.757	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=142/294,epoch=1]
+    optim/total_grad_norm=0.1477
+    train/CrossEntropyLoss=0.0725
+    train/Perplexity=1.075
+    throughput/total_tokens=9,306,112
+    throughput/total_training_Gflops=85,149,791
+    throughput/total_training_log_Gflops=18.26
+    throughput/device/tokens_per_second=29,467
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:01:17.969	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=143/294,epoch=1]
+    optim/total_grad_norm=0.1324
+    train/CrossEntropyLoss=0.0686
+    train/Perplexity=1.071
+    throughput/total_tokens=9,371,648
+    throughput/total_training_Gflops=85,749,438
+    throughput/total_training_log_Gflops=18.27
+    throughput/device/tokens_per_second=29,468
+    throughput/device/batches_per_second=0.4497
+2025-01-21 11:01:20.182	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=144/294,epoch=1]
+    optim/total_grad_norm=0.1339
+    train/CrossEntropyLoss=0.0677
+    train/Perplexity=1.070
+    throughput/total_tokens=9,437,184
+    throughput/total_training_Gflops=86,349,084
+    throughput/total_training_log_Gflops=18.27
+    throughput/device/tokens_per_second=29,468
+    throughput/device/batches_per_second=0.4497
+2025-01-21 11:01:22.395	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=145/294,epoch=1]
+    optim/total_grad_norm=0.1433
+    train/CrossEntropyLoss=0.0776
+    train/Perplexity=1.081
+    throughput/total_tokens=9,502,720
+    throughput/total_training_Gflops=86,948,731
+    throughput/total_training_log_Gflops=18.28
+    throughput/device/tokens_per_second=29,469
+    throughput/device/batches_per_second=0.4497
+2025-01-21 11:01:24.609	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=146/294,epoch=1]
+    optim/total_grad_norm=0.1368
+    train/CrossEntropyLoss=0.0700
+    train/Perplexity=1.073
+    throughput/total_tokens=9,568,256
+    throughput/total_training_Gflops=87,548,377
+    throughput/total_training_log_Gflops=18.29
+    throughput/device/tokens_per_second=29,469
+    throughput/device/batches_per_second=0.4497
+2025-01-21 11:01:26.822	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=147/294,epoch=1]
+    optim/total_grad_norm=0.1474
+    train/CrossEntropyLoss=0.0787
+    train/Perplexity=1.082
+    throughput/total_tokens=9,633,792
+    throughput/total_training_Gflops=88,148,024
+    throughput/total_training_log_Gflops=18.29
+    throughput/device/tokens_per_second=29,469
+    throughput/device/batches_per_second=0.4497
+2025-01-21 11:01:29.035	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=148/294,epoch=1]
+    optim/total_grad_norm=0.1321
+    train/CrossEntropyLoss=0.0679
+    train/Perplexity=1.070
+    throughput/total_tokens=9,699,328
+    throughput/total_training_Gflops=88,747,670
+    throughput/total_training_log_Gflops=18.30
+    throughput/device/tokens_per_second=29,469
+    throughput/device/batches_per_second=0.4497
+2025-01-21 11:01:31.249	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=149/294,epoch=1]
+    optim/total_grad_norm=0.1414
+    train/CrossEntropyLoss=0.0770
+    train/Perplexity=1.080
+    throughput/total_tokens=9,764,864
+    throughput/total_training_Gflops=89,347,316
+    throughput/total_training_log_Gflops=18.31
+    throughput/device/tokens_per_second=29,469
+    throughput/device/batches_per_second=0.4497
+2025-01-21 11:01:33.564	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=150/294,epoch=1]
+    optim/total_grad_norm=0.1346
+    train/CrossEntropyLoss=0.0619
+    train/Perplexity=1.064
+    throughput/total_tokens=9,830,400
+    throughput/total_training_Gflops=89,946,963
+    throughput/total_training_log_Gflops=18.31
+    throughput/device/tokens_per_second=29,474
+    throughput/device/batches_per_second=0.4498
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:01:33.689	c608-052.vista.tacc.utexas.edu:0	olmo.train:1075	INFO	Failed to check if W&B run is cancelled, continuing run.
+2025-01-21 11:01:35.903	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=151/294,epoch=1]
+    optim/total_grad_norm=0.1548
+    train/CrossEntropyLoss=0.0767
+    train/Perplexity=1.080
+    throughput/total_tokens=9,895,936
+    throughput/total_training_Gflops=90,546,609
+    throughput/total_training_log_Gflops=18.32
+    throughput/device/tokens_per_second=29,391
+    throughput/device/batches_per_second=0.4485
+2025-01-21 11:01:38.117	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=152/294,epoch=1]
+    optim/total_grad_norm=0.1439
+    train/CrossEntropyLoss=0.0770
+    train/Perplexity=1.080
+    throughput/total_tokens=9,961,472
+    throughput/total_training_Gflops=91,146,256
+    throughput/total_training_log_Gflops=18.33
+    throughput/device/tokens_per_second=29,389
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:01:40.330	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=153/294,epoch=1]
+    optim/total_grad_norm=0.1447
+    train/CrossEntropyLoss=0.0697
+    train/Perplexity=1.072
+    throughput/total_tokens=10,027,008
+    throughput/total_training_Gflops=91,745,902
+    throughput/total_training_log_Gflops=18.33
+    throughput/device/tokens_per_second=29,389
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:01:42.543	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=154/294,epoch=1]
+    optim/total_grad_norm=0.1478
+    train/CrossEntropyLoss=0.0808
+    train/Perplexity=1.084
+    throughput/total_tokens=10,092,544
+    throughput/total_training_Gflops=92,345,549
+    throughput/total_training_log_Gflops=18.34
+    throughput/device/tokens_per_second=29,390
+    throughput/device/batches_per_second=0.4485
+2025-01-21 11:01:44.758	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=155/294,epoch=1]
+    optim/total_grad_norm=0.1480
+    train/CrossEntropyLoss=0.0778
+    train/Perplexity=1.081
+    throughput/total_tokens=10,158,080
+    throughput/total_training_Gflops=92,945,195
+    throughput/total_training_log_Gflops=18.35
+    throughput/device/tokens_per_second=29,389
+    throughput/device/batches_per_second=0.4485
+2025-01-21 11:01:46.971	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=156/294,epoch=1]
+    optim/total_grad_norm=0.1442
+    train/CrossEntropyLoss=0.0704
+    train/Perplexity=1.073
+    throughput/total_tokens=10,223,616
+    throughput/total_training_Gflops=93,544,841
+    throughput/total_training_log_Gflops=18.35
+    throughput/device/tokens_per_second=29,388
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:01:49.185	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=157/294,epoch=1]
+    optim/total_grad_norm=0.1479
+    train/CrossEntropyLoss=0.0797
+    train/Perplexity=1.083
+    throughput/total_tokens=10,289,152
+    throughput/total_training_Gflops=94,144,488
+    throughput/total_training_log_Gflops=18.36
+    throughput/device/tokens_per_second=29,388
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:01:51.399	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=158/294,epoch=1]
+    optim/total_grad_norm=0.1498
+    train/CrossEntropyLoss=0.0818
+    train/Perplexity=1.085
+    throughput/total_tokens=10,354,688
+    throughput/total_training_Gflops=94,744,134
+    throughput/total_training_log_Gflops=18.37
+    throughput/device/tokens_per_second=29,388
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:01:53.612	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=159/294,epoch=1]
+    optim/total_grad_norm=0.1458
+    train/CrossEntropyLoss=0.0708
+    train/Perplexity=1.073
+    throughput/total_tokens=10,420,224
+    throughput/total_training_Gflops=95,343,781
+    throughput/total_training_log_Gflops=18.37
+    throughput/device/tokens_per_second=29,389
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:01:55.928	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=160/294,epoch=1]
+    optim/total_grad_norm=0.1451
+    train/CrossEntropyLoss=0.0799
+    train/Perplexity=1.083
+    throughput/total_tokens=10,485,760
+    throughput/total_training_Gflops=95,943,427
+    throughput/total_training_log_Gflops=18.38
+    throughput/device/tokens_per_second=29,393
+    throughput/device/batches_per_second=0.4485
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:01:55.936	c608-052.vista.tacc.utexas.edu:0	olmo.train:1006	INFO	Running evaluation for 'astro-sft-small-ppl-validation'...
+2025-01-21 11:01:56.094	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=1/-1]
+2025-01-21 11:01:56.250	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=2/-1]
+2025-01-21 11:01:56.408	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=3/-1]
+2025-01-21 11:01:56.565	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=4/-1]
+2025-01-21 11:01:56.722	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=5/-1]
+2025-01-21 11:01:56.879	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=6/-1]
+2025-01-21 11:01:57.036	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=7/-1]
+2025-01-21 11:01:57.193	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=8/-1]
+2025-01-21 11:01:57.350	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=9/-1]
+2025-01-21 11:01:57.506	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=10/-1]
+2025-01-21 11:01:57.663	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=11/-1]
+2025-01-21 11:01:57.820	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=12/-1]
+2025-01-21 11:01:57.977	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=13/-1]
+2025-01-21 11:01:58.134	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=14/-1]
+2025-01-21 11:01:58.291	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=15/-1]
+2025-01-21 11:01:58.448	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=16/-1]
+2025-01-21 11:01:58.605	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=17/-1]
+2025-01-21 11:01:58.762	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=18/-1]
+2025-01-21 11:01:58.919	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=19/-1]
+2025-01-21 11:01:59.076	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=20/-1]
+2025-01-21 11:01:59.233	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=21/-1]
+2025-01-21 11:01:59.372	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=22/-1]
+2025-01-21 11:01:59.373	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	astro-sft-small-ppl-validation
+    eval/astro-sft-small-ppl-validation/CrossEntropyLoss=0.0797
+    eval/astro-sft-small-ppl-validation/Perplexity=1.083
+2025-01-21 11:02:01.587	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=161/294,epoch=1]
+    optim/total_grad_norm=0.1475
+    train/CrossEntropyLoss=0.0702
+    train/Perplexity=1.073
+    throughput/total_tokens=10,551,296
+    throughput/total_training_Gflops=96,543,074
+    throughput/total_training_log_Gflops=18.39
+    throughput/device/tokens_per_second=29,680
+    throughput/device/batches_per_second=0.4529
+2025-01-21 11:02:03.804	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=162/294,epoch=1]
+    optim/total_grad_norm=0.1466
+    train/CrossEntropyLoss=0.0765
+    train/Perplexity=1.080
+    throughput/total_tokens=10,616,832
+    throughput/total_training_Gflops=97,142,720
+    throughput/total_training_log_Gflops=18.39
+    throughput/device/tokens_per_second=29,615
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:02:06.020	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=163/294,epoch=1]
+    optim/total_grad_norm=0.1517
+    train/CrossEntropyLoss=0.0698
+    train/Perplexity=1.072
+    throughput/total_tokens=10,682,368
+    throughput/total_training_Gflops=97,742,366
+    throughput/total_training_log_Gflops=18.40
+    throughput/device/tokens_per_second=29,602
+    throughput/device/batches_per_second=0.4517
+2025-01-21 11:02:08.235	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=164/294,epoch=1]
+    optim/total_grad_norm=0.1506
+    train/CrossEntropyLoss=0.0751
+    train/Perplexity=1.078
+    throughput/total_tokens=10,747,904
+    throughput/total_training_Gflops=98,342,013
+    throughput/total_training_log_Gflops=18.40
+    throughput/device/tokens_per_second=29,598
+    throughput/device/batches_per_second=0.4516
+2025-01-21 11:02:10.452	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=165/294,epoch=1]
+    optim/total_grad_norm=0.1463
+    train/CrossEntropyLoss=0.0748
+    train/Perplexity=1.078
+    throughput/total_tokens=10,813,440
+    throughput/total_training_Gflops=98,941,659
+    throughput/total_training_log_Gflops=18.41
+    throughput/device/tokens_per_second=29,590
+    throughput/device/batches_per_second=0.4515
+2025-01-21 11:02:12.669	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=166/294,epoch=1]
+    optim/total_grad_norm=0.2061
+    train/CrossEntropyLoss=0.0783
+    train/Perplexity=1.081
+    throughput/total_tokens=10,878,976
+    throughput/total_training_Gflops=99,541,306
+    throughput/total_training_log_Gflops=18.42
+    throughput/device/tokens_per_second=29,586
+    throughput/device/batches_per_second=0.4515
+2025-01-21 11:02:14.886	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=167/294,epoch=1]
+    optim/total_grad_norm=0.1481
+    train/CrossEntropyLoss=0.0804
+    train/Perplexity=1.084
+    throughput/total_tokens=10,944,512
+    throughput/total_training_Gflops=100,140,952
+    throughput/total_training_log_Gflops=18.42
+    throughput/device/tokens_per_second=29,582
+    throughput/device/batches_per_second=0.4514
+2025-01-21 11:02:17.103	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=168/294,epoch=1]
+    optim/total_grad_norm=0.1462
+    train/CrossEntropyLoss=0.0771
+    train/Perplexity=1.080
+    throughput/total_tokens=11,010,048
+    throughput/total_training_Gflops=100,740,598
+    throughput/total_training_log_Gflops=18.43
+    throughput/device/tokens_per_second=29,580
+    throughput/device/batches_per_second=0.4514
+2025-01-21 11:02:19.319	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=169/294,epoch=1]
+    optim/total_grad_norm=0.1494
+    train/CrossEntropyLoss=0.0764
+    train/Perplexity=1.079
+    throughput/total_tokens=11,075,584
+    throughput/total_training_Gflops=101,340,245
+    throughput/total_training_log_Gflops=18.43
+    throughput/device/tokens_per_second=29,579
+    throughput/device/batches_per_second=0.4514
+2025-01-21 11:02:21.639	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=170/294,epoch=1]
+    optim/total_grad_norm=0.1444
+    train/CrossEntropyLoss=0.0774
+    train/Perplexity=1.080
+    throughput/total_tokens=11,141,120
+    throughput/total_training_Gflops=101,939,891
+    throughput/total_training_log_Gflops=18.44
+    throughput/device/tokens_per_second=29,442
+    throughput/device/batches_per_second=0.4492
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:02:23.861	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=171/294,epoch=1]
+    optim/total_grad_norm=0.1391
+    train/CrossEntropyLoss=0.0667
+    train/Perplexity=1.069
+    throughput/total_tokens=11,206,656
+    throughput/total_training_Gflops=102,539,538
+    throughput/total_training_log_Gflops=18.45
+    throughput/device/tokens_per_second=29,445
+    throughput/device/batches_per_second=0.4493
+2025-01-21 11:02:26.079	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=172/294,epoch=1]
+    optim/total_grad_norm=0.1477
+    train/CrossEntropyLoss=0.0818
+    train/Perplexity=1.085
+    throughput/total_tokens=11,272,192
+    throughput/total_training_Gflops=103,139,184
+    throughput/total_training_log_Gflops=18.45
+    throughput/device/tokens_per_second=29,454
+    throughput/device/batches_per_second=0.4494
+2025-01-21 11:02:28.296	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=173/294,epoch=1]
+    optim/total_grad_norm=0.1548
+    train/CrossEntropyLoss=0.0801
+    train/Perplexity=1.083
+    throughput/total_tokens=11,337,728
+    throughput/total_training_Gflops=103,738,831
+    throughput/total_training_log_Gflops=18.46
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:02:30.512	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=174/294,epoch=1]
+    optim/total_grad_norm=0.1354
+    train/CrossEntropyLoss=0.0594
+    train/Perplexity=1.061
+    throughput/total_tokens=11,403,264
+    throughput/total_training_Gflops=104,338,477
+    throughput/total_training_log_Gflops=18.46
+    throughput/device/tokens_per_second=29,470
+    throughput/device/batches_per_second=0.4497
+2025-01-21 11:02:32.728	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=175/294,epoch=1]
+    optim/total_grad_norm=0.1456
+    train/CrossEntropyLoss=0.0710
+    train/Perplexity=1.074
+    throughput/total_tokens=11,468,800
+    throughput/total_training_Gflops=104,938,123
+    throughput/total_training_log_Gflops=18.47
+    throughput/device/tokens_per_second=29,476
+    throughput/device/batches_per_second=0.4498
+2025-01-21 11:02:34.945	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=176/294,epoch=1]
+    optim/total_grad_norm=0.1451
+    train/CrossEntropyLoss=0.0759
+    train/Perplexity=1.079
+    throughput/total_tokens=11,534,336
+    throughput/total_training_Gflops=105,537,770
+    throughput/total_training_log_Gflops=18.47
+    throughput/device/tokens_per_second=29,482
+    throughput/device/batches_per_second=0.4499
+2025-01-21 11:02:37.162	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=177/294,epoch=1]
+    optim/total_grad_norm=0.1416
+    train/CrossEntropyLoss=0.0686
+    train/Perplexity=1.071
+    throughput/total_tokens=11,599,872
+    throughput/total_training_Gflops=106,137,416
+    throughput/total_training_log_Gflops=18.48
+    throughput/device/tokens_per_second=29,487
+    throughput/device/batches_per_second=0.4499
+2025-01-21 11:02:39.377	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=178/294,epoch=1]
+    optim/total_grad_norm=0.1284
+    train/CrossEntropyLoss=0.0581
+    train/Perplexity=1.060
+    throughput/total_tokens=11,665,408
+    throughput/total_training_Gflops=106,737,063
+    throughput/total_training_log_Gflops=18.49
+    throughput/device/tokens_per_second=29,492
+    throughput/device/batches_per_second=0.4500
+2025-01-21 11:02:41.594	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=179/294,epoch=1]
+    optim/total_grad_norm=0.1429
+    train/CrossEntropyLoss=0.0651
+    train/Perplexity=1.067
+    throughput/total_tokens=11,730,944
+    throughput/total_training_Gflops=107,336,709
+    throughput/total_training_log_Gflops=18.49
+    throughput/device/tokens_per_second=29,496
+    throughput/device/batches_per_second=0.4501
+2025-01-21 11:02:43.914	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=180/294,epoch=1]
+    optim/total_grad_norm=0.1404
+    train/CrossEntropyLoss=0.0656
+    train/Perplexity=1.068
+    throughput/total_tokens=11,796,480
+    throughput/total_training_Gflops=107,936,356
+    throughput/total_training_log_Gflops=18.50
+    throughput/device/tokens_per_second=29,431
+    throughput/device/batches_per_second=0.4491
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:02:46.137	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=181/294,epoch=1]
+    optim/total_grad_norm=0.1437
+    train/CrossEntropyLoss=0.0704
+    train/Perplexity=1.073
+    throughput/total_tokens=11,862,016
+    throughput/total_training_Gflops=108,536,002
+    throughput/total_training_log_Gflops=18.50
+    throughput/device/tokens_per_second=29,425
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:02:48.354	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=182/294,epoch=1]
+    optim/total_grad_norm=0.1433
+    train/CrossEntropyLoss=0.0641
+    train/Perplexity=1.066
+    throughput/total_tokens=11,927,552
+    throughput/total_training_Gflops=109,135,648
+    throughput/total_training_log_Gflops=18.51
+    throughput/device/tokens_per_second=29,426
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:02:50.570	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=183/294,epoch=1]
+    optim/total_grad_norm=0.1390
+    train/CrossEntropyLoss=0.0748
+    train/Perplexity=1.078
+    throughput/total_tokens=11,993,088
+    throughput/total_training_Gflops=109,735,295
+    throughput/total_training_log_Gflops=18.51
+    throughput/device/tokens_per_second=29,426
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:02:52.786	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=184/294,epoch=1]
+    optim/total_grad_norm=0.1359
+    train/CrossEntropyLoss=0.0566
+    train/Perplexity=1.058
+    throughput/total_tokens=12,058,624
+    throughput/total_training_Gflops=110,334,941
+    throughput/total_training_log_Gflops=18.52
+    throughput/device/tokens_per_second=29,425
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:02:55.003	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=185/294,epoch=1]
+    optim/total_grad_norm=0.1481
+    train/CrossEntropyLoss=0.0744
+    train/Perplexity=1.077
+    throughput/total_tokens=12,124,160
+    throughput/total_training_Gflops=110,934,588
+    throughput/total_training_log_Gflops=18.52
+    throughput/device/tokens_per_second=29,424
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:02:57.219	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=186/294,epoch=1]
+    optim/total_grad_norm=0.1336
+    train/CrossEntropyLoss=0.0555
+    train/Perplexity=1.057
+    throughput/total_tokens=12,189,696
+    throughput/total_training_Gflops=111,534,234
+    throughput/total_training_log_Gflops=18.53
+    throughput/device/tokens_per_second=29,425
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:02:59.435	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=187/294,epoch=1]
+    optim/total_grad_norm=0.1579
+    train/CrossEntropyLoss=0.0753
+    train/Perplexity=1.078
+    throughput/total_tokens=12,255,232
+    throughput/total_training_Gflops=112,133,880
+    throughput/total_training_log_Gflops=18.54
+    throughput/device/tokens_per_second=29,425
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:01.652	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=188/294,epoch=1]
+    optim/total_grad_norm=0.1559
+    train/CrossEntropyLoss=0.0810
+    train/Perplexity=1.084
+    throughput/total_tokens=12,320,768
+    throughput/total_training_Gflops=112,733,527
+    throughput/total_training_log_Gflops=18.54
+    throughput/device/tokens_per_second=29,425
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:03.868	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=189/294,epoch=1]
+    optim/total_grad_norm=0.1598
+    train/CrossEntropyLoss=0.0911
+    train/Perplexity=1.095
+    throughput/total_tokens=12,386,304
+    throughput/total_training_Gflops=113,333,173
+    throughput/total_training_log_Gflops=18.55
+    throughput/device/tokens_per_second=29,426
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:06.187	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=190/294,epoch=1]
+    optim/total_grad_norm=0.1493
+    train/CrossEntropyLoss=0.0730
+    train/Perplexity=1.076
+    throughput/total_tokens=12,451,840
+    throughput/total_training_Gflops=113,932,820
+    throughput/total_training_log_Gflops=18.55
+    throughput/device/tokens_per_second=29,430
+    throughput/device/batches_per_second=0.4491
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:03:08.410	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=191/294,epoch=1]
+    optim/total_grad_norm=0.1419
+    train/CrossEntropyLoss=0.0729
+    train/Perplexity=1.076
+    throughput/total_tokens=12,517,376
+    throughput/total_training_Gflops=114,532,466
+    throughput/total_training_log_Gflops=18.56
+    throughput/device/tokens_per_second=29,426
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:10.627	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=192/294,epoch=1]
+    optim/total_grad_norm=0.1356
+    train/CrossEntropyLoss=0.0704
+    train/Perplexity=1.073
+    throughput/total_tokens=12,582,912
+    throughput/total_training_Gflops=115,132,113
+    throughput/total_training_log_Gflops=18.56
+    throughput/device/tokens_per_second=29,426
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:12.842	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=193/294,epoch=1]
+    optim/total_grad_norm=0.1402
+    train/CrossEntropyLoss=0.0703
+    train/Perplexity=1.073
+    throughput/total_tokens=12,648,448
+    throughput/total_training_Gflops=115,731,759
+    throughput/total_training_log_Gflops=18.57
+    throughput/device/tokens_per_second=29,428
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:15.058	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=194/294,epoch=1]
+    optim/total_grad_norm=0.1472
+    train/CrossEntropyLoss=0.0769
+    train/Perplexity=1.080
+    throughput/total_tokens=12,713,984
+    throughput/total_training_Gflops=116,331,405
+    throughput/total_training_log_Gflops=18.57
+    throughput/device/tokens_per_second=29,428
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:17.271	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=195/294,epoch=1]
+    optim/total_grad_norm=0.1476
+    train/CrossEntropyLoss=0.0687
+    train/Perplexity=1.071
+    throughput/total_tokens=12,779,520
+    throughput/total_training_Gflops=116,931,052
+    throughput/total_training_log_Gflops=18.58
+    throughput/device/tokens_per_second=29,430
+    throughput/device/batches_per_second=0.4491
+2025-01-21 11:03:19.481	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=196/294,epoch=1]
+    optim/total_grad_norm=0.1347
+    train/CrossEntropyLoss=0.0642
+    train/Perplexity=1.066
+    throughput/total_tokens=12,845,056
+    throughput/total_training_Gflops=117,530,698
+    throughput/total_training_log_Gflops=18.58
+    throughput/device/tokens_per_second=29,434
+    throughput/device/batches_per_second=0.4491
+2025-01-21 11:03:19.482	c608-052.vista.tacc.utexas.edu:0	olmo.train:1334	INFO	Training epoch complete
+2025-01-21 11:03:19.482	c608-052.vista.tacc.utexas.edu:0	olmo.train:1339	INFO	Reshuffling data loader for epoch 2...
+2025-01-21 11:03:19.483	c608-052.vista.tacc.utexas.edu:0	olmo.data.iterable_dataset:78	INFO	Saving global data order indices...
+2025-01-21 11:03:19.489	c608-052.vista.tacc.utexas.edu:0	olmo.data.iterable_dataset:87	INFO	Global data order indices saved to '/scratch/09636/zyliu/checkpoints/sft/SFT-DS-Coder-1B-final/train_data/global_indices.npy'
+2025-01-21 11:03:21.714	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=197/294,epoch=2]
+    optim/total_grad_norm=0.1317
+    train/CrossEntropyLoss=0.0632
+    train/Perplexity=1.065
+    throughput/total_tokens=12,910,592
+    throughput/total_training_Gflops=118,130,345
+    throughput/total_training_log_Gflops=18.59
+    throughput/device/tokens_per_second=29,424
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:23.929	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=198/294,epoch=2]
+    optim/total_grad_norm=0.1381
+    train/CrossEntropyLoss=0.0587
+    train/Perplexity=1.060
+    throughput/total_tokens=12,976,128
+    throughput/total_training_Gflops=118,729,991
+    throughput/total_training_log_Gflops=18.59
+    throughput/device/tokens_per_second=29,424
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:26.145	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=199/294,epoch=2]
+    optim/total_grad_norm=0.1399
+    train/CrossEntropyLoss=0.0753
+    train/Perplexity=1.078
+    throughput/total_tokens=13,041,664
+    throughput/total_training_Gflops=119,329,638
+    throughput/total_training_log_Gflops=18.60
+    throughput/device/tokens_per_second=29,424
+    throughput/device/batches_per_second=0.4490
+2025-01-21 11:03:28.464	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=200/294,epoch=2]
+    optim/total_grad_norm=0.1354
+    train/CrossEntropyLoss=0.0620
+    train/Perplexity=1.064
+    throughput/total_tokens=13,107,200
+    throughput/total_training_Gflops=119,929,284
+    throughput/total_training_log_Gflops=18.60
+    throughput/device/tokens_per_second=29,430
+    throughput/device/batches_per_second=0.4491
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:03:28.578	c608-052.vista.tacc.utexas.edu:0	olmo.train:1075	INFO	Failed to check if W&B run is cancelled, continuing run.
+2025-01-21 11:03:28.579	c608-052.vista.tacc.utexas.edu:0	olmo.train:1006	INFO	Running evaluation for 'astro-sft-small-ppl-validation'...
+2025-01-21 11:03:28.737	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=1/-1]
+2025-01-21 11:03:28.894	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=2/-1]
+2025-01-21 11:03:29.051	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=3/-1]
+2025-01-21 11:03:29.208	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=4/-1]
+2025-01-21 11:03:29.366	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=5/-1]
+2025-01-21 11:03:29.523	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=6/-1]
+2025-01-21 11:03:29.679	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=7/-1]
+2025-01-21 11:03:29.837	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=8/-1]
+2025-01-21 11:03:29.994	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=9/-1]
+2025-01-21 11:03:30.151	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=10/-1]
+2025-01-21 11:03:30.307	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=11/-1]
+2025-01-21 11:03:30.464	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=12/-1]
+2025-01-21 11:03:30.621	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=13/-1]
+2025-01-21 11:03:30.778	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=14/-1]
+2025-01-21 11:03:30.935	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=15/-1]
+2025-01-21 11:03:31.092	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=16/-1]
+2025-01-21 11:03:31.249	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=17/-1]
+2025-01-21 11:03:31.407	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=18/-1]
+2025-01-21 11:03:31.564	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=19/-1]
+2025-01-21 11:03:31.720	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=20/-1]
+2025-01-21 11:03:31.878	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=21/-1]
+2025-01-21 11:03:32.016	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=22/-1]
+2025-01-21 11:03:32.017	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	astro-sft-small-ppl-validation
+    eval/astro-sft-small-ppl-validation/CrossEntropyLoss=0.0786
+    eval/astro-sft-small-ppl-validation/Perplexity=1.082
+2025-01-21 11:03:34.233	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=201/294,epoch=2]
+    optim/total_grad_norm=0.1387
+    train/CrossEntropyLoss=0.0670
+    train/Perplexity=1.069
+    throughput/total_tokens=13,172,736
+    throughput/total_training_Gflops=120,528,930
+    throughput/total_training_log_Gflops=18.61
+    throughput/device/tokens_per_second=29,680
+    throughput/device/batches_per_second=0.4529
+2025-01-21 11:03:36.448	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=202/294,epoch=2]
+    optim/total_grad_norm=0.1452
+    train/CrossEntropyLoss=0.0612
+    train/Perplexity=1.063
+    throughput/total_tokens=13,238,272
+    throughput/total_training_Gflops=121,128,577
+    throughput/total_training_log_Gflops=18.61
+    throughput/device/tokens_per_second=29,632
+    throughput/device/batches_per_second=0.4522
+2025-01-21 11:03:38.662	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=203/294,epoch=2]
+    optim/total_grad_norm=0.1302
+    train/CrossEntropyLoss=0.0610
+    train/Perplexity=1.063
+    throughput/total_tokens=13,303,808
+    throughput/total_training_Gflops=121,728,223
+    throughput/total_training_log_Gflops=18.62
+    throughput/device/tokens_per_second=29,623
+    throughput/device/batches_per_second=0.4520
+2025-01-21 11:03:40.875	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=204/294,epoch=2]
+    optim/total_grad_norm=0.1483
+    train/CrossEntropyLoss=0.0680
+    train/Perplexity=1.070
+    throughput/total_tokens=13,369,344
+    throughput/total_training_Gflops=122,327,870
+    throughput/total_training_log_Gflops=18.62
+    throughput/device/tokens_per_second=29,620
+    throughput/device/batches_per_second=0.4520
+2025-01-21 11:03:43.089	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=205/294,epoch=2]
+    optim/total_grad_norm=0.1497
+    train/CrossEntropyLoss=0.0741
+    train/Perplexity=1.077
+    throughput/total_tokens=13,434,880
+    throughput/total_training_Gflops=122,927,516
+    throughput/total_training_log_Gflops=18.63
+    throughput/device/tokens_per_second=29,617
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:03:45.302	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=206/294,epoch=2]
+    optim/total_grad_norm=0.1492
+    train/CrossEntropyLoss=0.0617
+    train/Perplexity=1.064
+    throughput/total_tokens=13,500,416
+    throughput/total_training_Gflops=123,527,163
+    throughput/total_training_log_Gflops=18.63
+    throughput/device/tokens_per_second=29,616
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:03:47.516	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=207/294,epoch=2]
+    optim/total_grad_norm=0.1500
+    train/CrossEntropyLoss=0.0616
+    train/Perplexity=1.063
+    throughput/total_tokens=13,565,952
+    throughput/total_training_Gflops=124,126,809
+    throughput/total_training_log_Gflops=18.64
+    throughput/device/tokens_per_second=29,614
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:03:49.729	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=208/294,epoch=2]
+    optim/total_grad_norm=0.1545
+    train/CrossEntropyLoss=0.0724
+    train/Perplexity=1.075
+    throughput/total_tokens=13,631,488
+    throughput/total_training_Gflops=124,726,455
+    throughput/total_training_log_Gflops=18.64
+    throughput/device/tokens_per_second=29,613
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:03:51.942	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=209/294,epoch=2]
+    optim/total_grad_norm=0.1415
+    train/CrossEntropyLoss=0.0594
+    train/Perplexity=1.061
+    throughput/total_tokens=13,697,024
+    throughput/total_training_Gflops=125,326,102
+    throughput/total_training_log_Gflops=18.65
+    throughput/device/tokens_per_second=29,613
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:03:54.258	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=210/294,epoch=2]
+    optim/total_grad_norm=0.1482
+    train/CrossEntropyLoss=0.0652
+    train/Perplexity=1.067
+    throughput/total_tokens=13,762,560
+    throughput/total_training_Gflops=125,925,748
+    throughput/total_training_log_Gflops=18.65
+    throughput/device/tokens_per_second=29,476
+    throughput/device/batches_per_second=0.4498
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:03:56.480	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=211/294,epoch=2]
+    optim/total_grad_norm=0.1567
+    train/CrossEntropyLoss=0.0688
+    train/Perplexity=1.071
+    throughput/total_tokens=13,828,096
+    throughput/total_training_Gflops=126,525,395
+    throughput/total_training_log_Gflops=18.66
+    throughput/device/tokens_per_second=29,478
+    throughput/device/batches_per_second=0.4498
+2025-01-21 11:03:58.694	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=212/294,epoch=2]
+    optim/total_grad_norm=0.1514
+    train/CrossEntropyLoss=0.0671
+    train/Perplexity=1.069
+    throughput/total_tokens=13,893,632
+    throughput/total_training_Gflops=127,125,041
+    throughput/total_training_log_Gflops=18.66
+    throughput/device/tokens_per_second=29,488
+    throughput/device/batches_per_second=0.4500
+2025-01-21 11:04:00.907	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=213/294,epoch=2]
+    optim/total_grad_norm=0.1460
+    train/CrossEntropyLoss=0.0642
+    train/Perplexity=1.066
+    throughput/total_tokens=13,959,168
+    throughput/total_training_Gflops=127,724,687
+    throughput/total_training_log_Gflops=18.67
+    throughput/device/tokens_per_second=29,498
+    throughput/device/batches_per_second=0.4501
+2025-01-21 11:04:03.121	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=214/294,epoch=2]
+    optim/total_grad_norm=0.1460
+    train/CrossEntropyLoss=0.0666
+    train/Perplexity=1.069
+    throughput/total_tokens=14,024,704
+    throughput/total_training_Gflops=128,324,334
+    throughput/total_training_log_Gflops=18.67
+    throughput/device/tokens_per_second=29,505
+    throughput/device/batches_per_second=0.4502
+2025-01-21 11:04:05.334	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=215/294,epoch=2]
+    optim/total_grad_norm=0.1460
+    train/CrossEntropyLoss=0.0624
+    train/Perplexity=1.064
+    throughput/total_tokens=14,090,240
+    throughput/total_training_Gflops=128,923,980
+    throughput/total_training_log_Gflops=18.67
+    throughput/device/tokens_per_second=29,512
+    throughput/device/batches_per_second=0.4503
+2025-01-21 11:04:07.548	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=216/294,epoch=2]
+    optim/total_grad_norm=0.1453
+    train/CrossEntropyLoss=0.0635
+    train/Perplexity=1.066
+    throughput/total_tokens=14,155,776
+    throughput/total_training_Gflops=129,523,627
+    throughput/total_training_log_Gflops=18.68
+    throughput/device/tokens_per_second=29,518
+    throughput/device/batches_per_second=0.4504
+2025-01-21 11:04:09.762	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=217/294,epoch=2]
+    optim/total_grad_norm=0.1492
+    train/CrossEntropyLoss=0.0629
+    train/Perplexity=1.065
+    throughput/total_tokens=14,221,312
+    throughput/total_training_Gflops=130,123,273
+    throughput/total_training_log_Gflops=18.68
+    throughput/device/tokens_per_second=29,523
+    throughput/device/batches_per_second=0.4505
+2025-01-21 11:04:11.975	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=218/294,epoch=2]
+    optim/total_grad_norm=0.1435
+    train/CrossEntropyLoss=0.0613
+    train/Perplexity=1.063
+    throughput/total_tokens=14,286,848
+    throughput/total_training_Gflops=130,722,920
+    throughput/total_training_log_Gflops=18.69
+    throughput/device/tokens_per_second=29,527
+    throughput/device/batches_per_second=0.4506
+2025-01-21 11:04:14.188	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=219/294,epoch=2]
+    optim/total_grad_norm=0.1477
+    train/CrossEntropyLoss=0.0674
+    train/Perplexity=1.070
+    throughput/total_tokens=14,352,384
+    throughput/total_training_Gflops=131,322,566
+    throughput/total_training_log_Gflops=18.69
+    throughput/device/tokens_per_second=29,532
+    throughput/device/batches_per_second=0.4506
+2025-01-21 11:04:16.505	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=220/294,epoch=2]
+    optim/total_grad_norm=0.1449
+    train/CrossEntropyLoss=0.0639
+    train/Perplexity=1.066
+    throughput/total_tokens=14,417,920
+    throughput/total_training_Gflops=131,922,212
+    throughput/total_training_log_Gflops=18.70
+    throughput/device/tokens_per_second=29,467
+    throughput/device/batches_per_second=0.4496
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:04:18.726	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=221/294,epoch=2]
+    optim/total_grad_norm=0.1536
+    train/CrossEntropyLoss=0.0672
+    train/Perplexity=1.070
+    throughput/total_tokens=14,483,456
+    throughput/total_training_Gflops=132,521,859
+    throughput/total_training_log_Gflops=18.70
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:20.940	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=222/294,epoch=2]
+    optim/total_grad_norm=0.1389
+    train/CrossEntropyLoss=0.0633
+    train/Perplexity=1.065
+    throughput/total_tokens=14,548,992
+    throughput/total_training_Gflops=133,121,505
+    throughput/total_training_log_Gflops=18.71
+    throughput/device/tokens_per_second=29,464
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:23.155	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=223/294,epoch=2]
+    optim/total_grad_norm=0.1459
+    train/CrossEntropyLoss=0.0676
+    train/Perplexity=1.070
+    throughput/total_tokens=14,614,528
+    throughput/total_training_Gflops=133,721,152
+    throughput/total_training_log_Gflops=18.71
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:25.369	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=224/294,epoch=2]
+    optim/total_grad_norm=0.1537
+    train/CrossEntropyLoss=0.0751
+    train/Perplexity=1.078
+    throughput/total_tokens=14,680,064
+    throughput/total_training_Gflops=134,320,798
+    throughput/total_training_log_Gflops=18.72
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:27.582	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=225/294,epoch=2]
+    optim/total_grad_norm=0.1528
+    train/CrossEntropyLoss=0.0718
+    train/Perplexity=1.074
+    throughput/total_tokens=14,745,600
+    throughput/total_training_Gflops=134,920,445
+    throughput/total_training_log_Gflops=18.72
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:29.796	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=226/294,epoch=2]
+    optim/total_grad_norm=0.1547
+    train/CrossEntropyLoss=0.0568
+    train/Perplexity=1.058
+    throughput/total_tokens=14,811,136
+    throughput/total_training_Gflops=135,520,091
+    throughput/total_training_log_Gflops=18.72
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:32.009	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=227/294,epoch=2]
+    optim/total_grad_norm=0.1386
+    train/CrossEntropyLoss=0.0631
+    train/Perplexity=1.065
+    throughput/total_tokens=14,876,672
+    throughput/total_training_Gflops=136,119,737
+    throughput/total_training_log_Gflops=18.73
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:34.222	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=228/294,epoch=2]
+    optim/total_grad_norm=0.1494
+    train/CrossEntropyLoss=0.0719
+    train/Perplexity=1.075
+    throughput/total_tokens=14,942,208
+    throughput/total_training_Gflops=136,719,384
+    throughput/total_training_log_Gflops=18.73
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:36.436	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=229/294,epoch=2]
+    optim/total_grad_norm=0.1471
+    train/CrossEntropyLoss=0.0694
+    train/Perplexity=1.072
+    throughput/total_tokens=15,007,744
+    throughput/total_training_Gflops=137,319,030
+    throughput/total_training_log_Gflops=18.74
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:38.753	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=230/294,epoch=2]
+    optim/total_grad_norm=0.1584
+    train/CrossEntropyLoss=0.0786
+    train/Perplexity=1.082
+    throughput/total_tokens=15,073,280
+    throughput/total_training_Gflops=137,918,677
+    throughput/total_training_log_Gflops=18.74
+    throughput/device/tokens_per_second=29,467
+    throughput/device/batches_per_second=0.4496
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:04:40.973	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=231/294,epoch=2]
+    optim/total_grad_norm=0.1496
+    train/CrossEntropyLoss=0.0677
+    train/Perplexity=1.070
+    throughput/total_tokens=15,138,816
+    throughput/total_training_Gflops=138,518,323
+    throughput/total_training_log_Gflops=18.75
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:43.187	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=232/294,epoch=2]
+    optim/total_grad_norm=0.1370
+    train/CrossEntropyLoss=0.0590
+    train/Perplexity=1.061
+    throughput/total_tokens=15,204,352
+    throughput/total_training_Gflops=139,117,970
+    throughput/total_training_log_Gflops=18.75
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:45.401	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=233/294,epoch=2]
+    optim/total_grad_norm=0.1483
+    train/CrossEntropyLoss=0.0674
+    train/Perplexity=1.070
+    throughput/total_tokens=15,269,888
+    throughput/total_training_Gflops=139,717,616
+    throughput/total_training_log_Gflops=18.76
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:47.615	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=234/294,epoch=2]
+    optim/total_grad_norm=0.1387
+    train/CrossEntropyLoss=0.0644
+    train/Perplexity=1.067
+    throughput/total_tokens=15,335,424
+    throughput/total_training_Gflops=140,317,262
+    throughput/total_training_log_Gflops=18.76
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:49.828	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=235/294,epoch=2]
+    optim/total_grad_norm=0.1434
+    train/CrossEntropyLoss=0.0604
+    train/Perplexity=1.062
+    throughput/total_tokens=15,400,960
+    throughput/total_training_Gflops=140,916,909
+    throughput/total_training_log_Gflops=18.76
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:52.042	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=236/294,epoch=2]
+    optim/total_grad_norm=0.1591
+    train/CrossEntropyLoss=0.0647
+    train/Perplexity=1.067
+    throughput/total_tokens=15,466,496
+    throughput/total_training_Gflops=141,516,555
+    throughput/total_training_log_Gflops=18.77
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:54.255	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=237/294,epoch=2]
+    optim/total_grad_norm=0.1508
+    train/CrossEntropyLoss=0.0654
+    train/Perplexity=1.068
+    throughput/total_tokens=15,532,032
+    throughput/total_training_Gflops=142,116,202
+    throughput/total_training_log_Gflops=18.77
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:56.469	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=238/294,epoch=2]
+    optim/total_grad_norm=0.1449
+    train/CrossEntropyLoss=0.0547
+    train/Perplexity=1.056
+    throughput/total_tokens=15,597,568
+    throughput/total_training_Gflops=142,715,848
+    throughput/total_training_log_Gflops=18.78
+    throughput/device/tokens_per_second=29,462
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:04:58.683	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=239/294,epoch=2]
+    optim/total_grad_norm=0.1494
+    train/CrossEntropyLoss=0.0643
+    train/Perplexity=1.066
+    throughput/total_tokens=15,663,104
+    throughput/total_training_Gflops=143,315,494
+    throughput/total_training_log_Gflops=18.78
+    throughput/device/tokens_per_second=29,461
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:05:01.001	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=240/294,epoch=2]
+    optim/total_grad_norm=0.1548
+    train/CrossEntropyLoss=0.0685
+    train/Perplexity=1.071
+    throughput/total_tokens=15,728,640
+    throughput/total_training_Gflops=143,915,141
+    throughput/total_training_log_Gflops=18.78
+    throughput/device/tokens_per_second=29,466
+    throughput/device/batches_per_second=0.4496
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:05:01.009	c608-052.vista.tacc.utexas.edu:0	olmo.train:1006	INFO	Running evaluation for 'astro-sft-small-ppl-validation'...
+2025-01-21 11:05:01.167	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=1/-1]
+2025-01-21 11:05:01.324	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=2/-1]
+2025-01-21 11:05:01.481	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=3/-1]
+2025-01-21 11:05:01.638	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=4/-1]
+2025-01-21 11:05:01.796	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=5/-1]
+2025-01-21 11:05:01.953	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=6/-1]
+2025-01-21 11:05:02.110	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=7/-1]
+2025-01-21 11:05:02.267	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=8/-1]
+2025-01-21 11:05:02.424	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=9/-1]
+2025-01-21 11:05:02.581	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=10/-1]
+2025-01-21 11:05:02.739	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=11/-1]
+2025-01-21 11:05:02.896	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=12/-1]
+2025-01-21 11:05:03.053	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=13/-1]
+2025-01-21 11:05:03.210	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=14/-1]
+2025-01-21 11:05:03.367	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=15/-1]
+2025-01-21 11:05:03.524	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=16/-1]
+2025-01-21 11:05:03.681	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=17/-1]
+2025-01-21 11:05:03.838	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=18/-1]
+2025-01-21 11:05:03.995	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=19/-1]
+2025-01-21 11:05:04.152	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=20/-1]
+2025-01-21 11:05:04.309	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=21/-1]
+2025-01-21 11:05:04.448	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=22/-1]
+2025-01-21 11:05:04.449	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	astro-sft-small-ppl-validation
+    eval/astro-sft-small-ppl-validation/CrossEntropyLoss=0.0786
+    eval/astro-sft-small-ppl-validation/Perplexity=1.082
+2025-01-21 11:05:06.663	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=241/294,epoch=2]
+    optim/total_grad_norm=0.1530
+    train/CrossEntropyLoss=0.0661
+    train/Perplexity=1.068
+    throughput/total_tokens=15,794,176
+    throughput/total_training_Gflops=144,514,787
+    throughput/total_training_log_Gflops=18.79
+    throughput/device/tokens_per_second=29,684
+    throughput/device/batches_per_second=0.4529
+2025-01-21 11:05:08.878	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=242/294,epoch=2]
+    optim/total_grad_norm=0.1542
+    train/CrossEntropyLoss=0.0658
+    train/Perplexity=1.068
+    throughput/total_tokens=15,859,712
+    throughput/total_training_Gflops=145,114,434
+    throughput/total_training_log_Gflops=18.79
+    throughput/device/tokens_per_second=29,638
+    throughput/device/batches_per_second=0.4522
+2025-01-21 11:05:11.092	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=243/294,epoch=2]
+    optim/total_grad_norm=0.1556
+    train/CrossEntropyLoss=0.0762
+    train/Perplexity=1.079
+    throughput/total_tokens=15,925,248
+    throughput/total_training_Gflops=145,714,080
+    throughput/total_training_log_Gflops=18.80
+    throughput/device/tokens_per_second=29,623
+    throughput/device/batches_per_second=0.4520
+2025-01-21 11:05:13.306	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=244/294,epoch=2]
+    optim/total_grad_norm=0.1571
+    train/CrossEntropyLoss=0.0735
+    train/Perplexity=1.076
+    throughput/total_tokens=15,990,784
+    throughput/total_training_Gflops=146,313,727
+    throughput/total_training_log_Gflops=18.80
+    throughput/device/tokens_per_second=29,619
+    throughput/device/batches_per_second=0.4520
+2025-01-21 11:05:15.521	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=245/294,epoch=2]
+    optim/total_grad_norm=0.1518
+    train/CrossEntropyLoss=0.0673
+    train/Perplexity=1.070
+    throughput/total_tokens=16,056,320
+    throughput/total_training_Gflops=146,913,373
+    throughput/total_training_log_Gflops=18.81
+    throughput/device/tokens_per_second=29,613
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:05:17.734	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=246/294,epoch=2]
+    optim/total_grad_norm=0.1483
+    train/CrossEntropyLoss=0.0606
+    train/Perplexity=1.062
+    throughput/total_tokens=16,121,856
+    throughput/total_training_Gflops=147,513,019
+    throughput/total_training_log_Gflops=18.81
+    throughput/device/tokens_per_second=29,612
+    throughput/device/batches_per_second=0.4519
+2025-01-21 11:05:19.948	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=247/294,epoch=2]
+    optim/total_grad_norm=0.1529
+    train/CrossEntropyLoss=0.0688
+    train/Perplexity=1.071
+    throughput/total_tokens=16,187,392
+    throughput/total_training_Gflops=148,112,666
+    throughput/total_training_log_Gflops=18.81
+    throughput/device/tokens_per_second=29,610
+    throughput/device/batches_per_second=0.4518
+2025-01-21 11:05:22.162	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=248/294,epoch=2]
+    optim/total_grad_norm=0.1433
+    train/CrossEntropyLoss=0.0600
+    train/Perplexity=1.062
+    throughput/total_tokens=16,252,928
+    throughput/total_training_Gflops=148,712,312
+    throughput/total_training_log_Gflops=18.82
+    throughput/device/tokens_per_second=29,610
+    throughput/device/batches_per_second=0.4518
+2025-01-21 11:05:24.376	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=249/294,epoch=2]
+    optim/total_grad_norm=0.1583
+    train/CrossEntropyLoss=0.0702
+    train/Perplexity=1.073
+    throughput/total_tokens=16,318,464
+    throughput/total_training_Gflops=149,311,959
+    throughput/total_training_log_Gflops=18.82
+    throughput/device/tokens_per_second=29,608
+    throughput/device/batches_per_second=0.4518
+2025-01-21 11:05:26.692	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=250/294,epoch=2]
+    optim/total_grad_norm=0.1489
+    train/CrossEntropyLoss=0.0668
+    train/Perplexity=1.069
+    throughput/total_tokens=16,384,000
+    throughput/total_training_Gflops=149,911,605
+    throughput/total_training_log_Gflops=18.83
+    throughput/device/tokens_per_second=29,472
+    throughput/device/batches_per_second=0.4497
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:05:26.818	c608-052.vista.tacc.utexas.edu:0	olmo.train:1075	INFO	Failed to check if W&B run is cancelled, continuing run.
+2025-01-21 11:05:29.033	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=251/294,epoch=2]
+    optim/total_grad_norm=0.1644
+    train/CrossEntropyLoss=0.0721
+    train/Perplexity=1.075
+    throughput/total_tokens=16,449,536
+    throughput/total_training_Gflops=150,511,252
+    throughput/total_training_log_Gflops=18.83
+    throughput/device/tokens_per_second=29,332
+    throughput/device/batches_per_second=0.4476
+2025-01-21 11:05:31.246	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=252/294,epoch=2]
+    optim/total_grad_norm=0.1545
+    train/CrossEntropyLoss=0.0708
+    train/Perplexity=1.073
+    throughput/total_tokens=16,515,072
+    throughput/total_training_Gflops=151,110,898
+    throughput/total_training_log_Gflops=18.83
+    throughput/device/tokens_per_second=29,354
+    throughput/device/batches_per_second=0.4479
+2025-01-21 11:05:33.460	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=253/294,epoch=2]
+    optim/total_grad_norm=0.1476
+    train/CrossEntropyLoss=0.0662
+    train/Perplexity=1.068
+    throughput/total_tokens=16,580,608
+    throughput/total_training_Gflops=151,710,544
+    throughput/total_training_log_Gflops=18.84
+    throughput/device/tokens_per_second=29,373
+    throughput/device/batches_per_second=0.4482
+2025-01-21 11:05:35.672	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=254/294,epoch=2]
+    optim/total_grad_norm=0.1365
+    train/CrossEntropyLoss=0.0579
+    train/Perplexity=1.060
+    throughput/total_tokens=16,646,144
+    throughput/total_training_Gflops=152,310,191
+    throughput/total_training_log_Gflops=18.84
+    throughput/device/tokens_per_second=29,391
+    throughput/device/batches_per_second=0.4485
+2025-01-21 11:05:37.886	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=255/294,epoch=2]
+    optim/total_grad_norm=0.1573
+    train/CrossEntropyLoss=0.0718
+    train/Perplexity=1.074
+    throughput/total_tokens=16,711,680
+    throughput/total_training_Gflops=152,909,837
+    throughput/total_training_log_Gflops=18.85
+    throughput/device/tokens_per_second=29,405
+    throughput/device/batches_per_second=0.4487
+2025-01-21 11:05:40.099	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=256/294,epoch=2]
+    optim/total_grad_norm=0.1494
+    train/CrossEntropyLoss=0.0649
+    train/Perplexity=1.067
+    throughput/total_tokens=16,777,216
+    throughput/total_training_Gflops=153,509,484
+    throughput/total_training_log_Gflops=18.85
+    throughput/device/tokens_per_second=29,418
+    throughput/device/batches_per_second=0.4489
+2025-01-21 11:05:42.313	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=257/294,epoch=2]
+    optim/total_grad_norm=0.1453
+    train/CrossEntropyLoss=0.0627
+    train/Perplexity=1.065
+    throughput/total_tokens=16,842,752
+    throughput/total_training_Gflops=154,109,130
+    throughput/total_training_log_Gflops=18.85
+    throughput/device/tokens_per_second=29,429
+    throughput/device/batches_per_second=0.4491
+2025-01-21 11:05:44.526	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=258/294,epoch=2]
+    optim/total_grad_norm=0.1525
+    train/CrossEntropyLoss=0.0661
+    train/Perplexity=1.068
+    throughput/total_tokens=16,908,288
+    throughput/total_training_Gflops=154,708,776
+    throughput/total_training_log_Gflops=18.86
+    throughput/device/tokens_per_second=29,438
+    throughput/device/batches_per_second=0.4492
+2025-01-21 11:05:46.740	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=259/294,epoch=2]
+    optim/total_grad_norm=0.1448
+    train/CrossEntropyLoss=0.0612
+    train/Perplexity=1.063
+    throughput/total_tokens=16,973,824
+    throughput/total_training_Gflops=155,308,423
+    throughput/total_training_log_Gflops=18.86
+    throughput/device/tokens_per_second=29,447
+    throughput/device/batches_per_second=0.4493
+2025-01-21 11:05:49.056	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=260/294,epoch=2]
+    optim/total_grad_norm=0.1463
+    train/CrossEntropyLoss=0.0679
+    train/Perplexity=1.070
+    throughput/total_tokens=17,039,360
+    throughput/total_training_Gflops=155,908,069
+    throughput/total_training_log_Gflops=18.86
+    throughput/device/tokens_per_second=29,388
+    throughput/device/batches_per_second=0.4484
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:05:51.277	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=261/294,epoch=2]
+    optim/total_grad_norm=0.1528
+    train/CrossEntropyLoss=0.0623
+    train/Perplexity=1.064
+    throughput/total_tokens=17,104,896
+    throughput/total_training_Gflops=156,507,716
+    throughput/total_training_log_Gflops=18.87
+    throughput/device/tokens_per_second=29,383
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:05:53.490	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=262/294,epoch=2]
+    optim/total_grad_norm=0.1595
+    train/CrossEntropyLoss=0.0827
+    train/Perplexity=1.086
+    throughput/total_tokens=17,170,432
+    throughput/total_training_Gflops=157,107,362
+    throughput/total_training_log_Gflops=18.87
+    throughput/device/tokens_per_second=29,384
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:05:55.704	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=263/294,epoch=2]
+    optim/total_grad_norm=0.1507
+    train/CrossEntropyLoss=0.0684
+    train/Perplexity=1.071
+    throughput/total_tokens=17,235,968
+    throughput/total_training_Gflops=157,707,009
+    throughput/total_training_log_Gflops=18.88
+    throughput/device/tokens_per_second=29,384
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:05:57.918	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=264/294,epoch=2]
+    optim/total_grad_norm=0.1531
+    train/CrossEntropyLoss=0.0665
+    train/Perplexity=1.069
+    throughput/total_tokens=17,301,504
+    throughput/total_training_Gflops=158,306,655
+    throughput/total_training_log_Gflops=18.88
+    throughput/device/tokens_per_second=29,384
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:06:00.131	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=265/294,epoch=2]
+    optim/total_grad_norm=0.1452
+    train/CrossEntropyLoss=0.0589
+    train/Perplexity=1.061
+    throughput/total_tokens=17,367,040
+    throughput/total_training_Gflops=158,906,301
+    throughput/total_training_log_Gflops=18.88
+    throughput/device/tokens_per_second=29,385
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:06:02.345	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=266/294,epoch=2]
+    optim/total_grad_norm=0.1551
+    train/CrossEntropyLoss=0.0662
+    train/Perplexity=1.068
+    throughput/total_tokens=17,432,576
+    throughput/total_training_Gflops=159,505,948
+    throughput/total_training_log_Gflops=18.89
+    throughput/device/tokens_per_second=29,385
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:06:04.559	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=267/294,epoch=2]
+    optim/total_grad_norm=0.1395
+    train/CrossEntropyLoss=0.0587
+    train/Perplexity=1.060
+    throughput/total_tokens=17,498,112
+    throughput/total_training_Gflops=160,105,594
+    throughput/total_training_log_Gflops=18.89
+    throughput/device/tokens_per_second=29,385
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:06:06.772	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=268/294,epoch=2]
+    optim/total_grad_norm=0.1473
+    train/CrossEntropyLoss=0.0643
+    train/Perplexity=1.066
+    throughput/total_tokens=17,563,648
+    throughput/total_training_Gflops=160,705,241
+    throughput/total_training_log_Gflops=18.90
+    throughput/device/tokens_per_second=29,385
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:06:08.985	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=269/294,epoch=2]
+    optim/total_grad_norm=0.1549
+    train/CrossEntropyLoss=0.0630
+    train/Perplexity=1.065
+    throughput/total_tokens=17,629,184
+    throughput/total_training_Gflops=161,304,887
+    throughput/total_training_log_Gflops=18.90
+    throughput/device/tokens_per_second=29,386
+    throughput/device/batches_per_second=0.4484
+2025-01-21 11:06:11.302	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=270/294,epoch=2]
+    optim/total_grad_norm=0.1455
+    train/CrossEntropyLoss=0.0626
+    train/Perplexity=1.065
+    throughput/total_tokens=17,694,720
+    throughput/total_training_Gflops=161,904,534
+    throughput/total_training_log_Gflops=18.90
+    throughput/device/tokens_per_second=29,469
+    throughput/device/batches_per_second=0.4497
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:06:13.523	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=271/294,epoch=2]
+    optim/total_grad_norm=0.1422
+    train/CrossEntropyLoss=0.0618
+    train/Perplexity=1.064
+    throughput/total_tokens=17,760,256
+    throughput/total_training_Gflops=162,504,180
+    throughput/total_training_log_Gflops=18.91
+    throughput/device/tokens_per_second=29,465
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:06:15.736	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=272/294,epoch=2]
+    optim/total_grad_norm=0.1446
+    train/CrossEntropyLoss=0.0591
+    train/Perplexity=1.061
+    throughput/total_tokens=17,825,792
+    throughput/total_training_Gflops=163,103,826
+    throughput/total_training_log_Gflops=18.91
+    throughput/device/tokens_per_second=29,465
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:06:17.950	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=273/294,epoch=2]
+    optim/total_grad_norm=0.1515
+    train/CrossEntropyLoss=0.0722
+    train/Perplexity=1.075
+    throughput/total_tokens=17,891,328
+    throughput/total_training_Gflops=163,703,473
+    throughput/total_training_log_Gflops=18.91
+    throughput/device/tokens_per_second=29,464
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:06:20.165	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=274/294,epoch=2]
+    optim/total_grad_norm=0.1569
+    train/CrossEntropyLoss=0.0734
+    train/Perplexity=1.076
+    throughput/total_tokens=17,956,864
+    throughput/total_training_Gflops=164,303,119
+    throughput/total_training_log_Gflops=18.92
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:06:22.378	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=275/294,epoch=2]
+    optim/total_grad_norm=0.1524
+    train/CrossEntropyLoss=0.0668
+    train/Perplexity=1.069
+    throughput/total_tokens=18,022,400
+    throughput/total_training_Gflops=164,902,766
+    throughput/total_training_log_Gflops=18.92
+    throughput/device/tokens_per_second=29,463
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:06:24.591	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=276/294,epoch=2]
+    optim/total_grad_norm=0.1491
+    train/CrossEntropyLoss=0.0571
+    train/Perplexity=1.059
+    throughput/total_tokens=18,087,936
+    throughput/total_training_Gflops=165,502,412
+    throughput/total_training_log_Gflops=18.92
+    throughput/device/tokens_per_second=29,464
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:06:26.804	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=277/294,epoch=2]
+    optim/total_grad_norm=0.1419
+    train/CrossEntropyLoss=0.0653
+    train/Perplexity=1.067
+    throughput/total_tokens=18,153,472
+    throughput/total_training_Gflops=166,102,059
+    throughput/total_training_log_Gflops=18.93
+    throughput/device/tokens_per_second=29,464
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:06:29.018	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=278/294,epoch=2]
+    optim/total_grad_norm=0.1587
+    train/CrossEntropyLoss=0.0710
+    train/Perplexity=1.074
+    throughput/total_tokens=18,219,008
+    throughput/total_training_Gflops=166,701,705
+    throughput/total_training_log_Gflops=18.93
+    throughput/device/tokens_per_second=29,464
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:06:31.231	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=279/294,epoch=2]
+    optim/total_grad_norm=0.1421
+    train/CrossEntropyLoss=0.0612
+    train/Perplexity=1.063
+    throughput/total_tokens=18,284,544
+    throughput/total_training_Gflops=167,301,351
+    throughput/total_training_log_Gflops=18.94
+    throughput/device/tokens_per_second=29,464
+    throughput/device/batches_per_second=0.4496
+2025-01-21 11:06:33.548	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=280/294,epoch=2]
+    optim/total_grad_norm=0.1453
+    train/CrossEntropyLoss=0.0670
+    train/Perplexity=1.069
+    throughput/total_tokens=18,350,080
+    throughput/total_training_Gflops=167,900,998
+    throughput/total_training_log_Gflops=18.94
+    throughput/device/tokens_per_second=29,468
+    throughput/device/batches_per_second=0.4497
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:06:33.556	c608-052.vista.tacc.utexas.edu:0	olmo.train:1006	INFO	Running evaluation for 'astro-sft-small-ppl-validation'...
+2025-01-21 11:06:33.714	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=1/-1]
+2025-01-21 11:06:33.871	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=2/-1]
+2025-01-21 11:06:34.028	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=3/-1]
+2025-01-21 11:06:34.185	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=4/-1]
+2025-01-21 11:06:34.343	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=5/-1]
+2025-01-21 11:06:34.500	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=6/-1]
+2025-01-21 11:06:34.657	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=7/-1]
+2025-01-21 11:06:34.814	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=8/-1]
+2025-01-21 11:06:34.971	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=9/-1]
+2025-01-21 11:06:35.128	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=10/-1]
+2025-01-21 11:06:35.284	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=11/-1]
+2025-01-21 11:06:35.442	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=12/-1]
+2025-01-21 11:06:35.599	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=13/-1]
+2025-01-21 11:06:35.756	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=14/-1]
+2025-01-21 11:06:35.913	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=15/-1]
+2025-01-21 11:06:36.069	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=16/-1]
+2025-01-21 11:06:36.226	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=17/-1]
+2025-01-21 11:06:36.383	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=18/-1]
+2025-01-21 11:06:36.540	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=19/-1]
+2025-01-21 11:06:36.697	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=20/-1]
+2025-01-21 11:06:36.854	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=21/-1]
+2025-01-21 11:06:36.993	c608-052.vista.tacc.utexas.edu:0	olmo.train:1030	INFO	[eval_step=22/-1]
+2025-01-21 11:06:36.994	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	astro-sft-small-ppl-validation
+    eval/astro-sft-small-ppl-validation/CrossEntropyLoss=0.0782
+    eval/astro-sft-small-ppl-validation/Perplexity=1.081
+2025-01-21 11:06:39.207	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=281/294,epoch=2]
+    optim/total_grad_norm=0.1508
+    train/CrossEntropyLoss=0.0675
+    train/Perplexity=1.070
+    throughput/total_tokens=18,415,616
+    throughput/total_training_Gflops=168,500,644
+    throughput/total_training_log_Gflops=18.94
+    throughput/device/tokens_per_second=29,682
+    throughput/device/batches_per_second=0.4529
+2025-01-21 11:06:41.423	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=282/294,epoch=2]
+    optim/total_grad_norm=0.1551
+    train/CrossEntropyLoss=0.0728
+    train/Perplexity=1.075
+    throughput/total_tokens=18,481,152
+    throughput/total_training_Gflops=169,100,291
+    throughput/total_training_log_Gflops=18.95
+    throughput/device/tokens_per_second=29,626
+    throughput/device/batches_per_second=0.4521
+2025-01-21 11:06:43.640	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=283/294,epoch=2]
+    optim/total_grad_norm=0.1398
+    train/CrossEntropyLoss=0.0567
+    train/Perplexity=1.058
+    throughput/total_tokens=18,546,688
+    throughput/total_training_Gflops=169,699,937
+    throughput/total_training_log_Gflops=18.95
+    throughput/device/tokens_per_second=29,606
+    throughput/device/batches_per_second=0.4518
+2025-01-21 11:06:45.857	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=284/294,epoch=2]
+    optim/total_grad_norm=0.1458
+    train/CrossEntropyLoss=0.0658
+    train/Perplexity=1.068
+    throughput/total_tokens=18,612,224
+    throughput/total_training_Gflops=170,299,583
+    throughput/total_training_log_Gflops=18.95
+    throughput/device/tokens_per_second=29,595
+    throughput/device/batches_per_second=0.4516
+2025-01-21 11:06:48.073	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=285/294,epoch=2]
+    optim/total_grad_norm=0.1449
+    train/CrossEntropyLoss=0.0620
+    train/Perplexity=1.064
+    throughput/total_tokens=18,677,760
+    throughput/total_training_Gflops=170,899,230
+    throughput/total_training_log_Gflops=18.96
+    throughput/device/tokens_per_second=29,589
+    throughput/device/batches_per_second=0.4515
+2025-01-21 11:06:50.290	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=286/294,epoch=2]
+    optim/total_grad_norm=0.1354
+    train/CrossEntropyLoss=0.0595
+    train/Perplexity=1.061
+    throughput/total_tokens=18,743,296
+    throughput/total_training_Gflops=171,498,876
+    throughput/total_training_log_Gflops=18.96
+    throughput/device/tokens_per_second=29,585
+    throughput/device/batches_per_second=0.4514
+2025-01-21 11:06:52.506	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=287/294,epoch=2]
+    optim/total_grad_norm=0.1440
+    train/CrossEntropyLoss=0.0633
+    train/Perplexity=1.065
+    throughput/total_tokens=18,808,832
+    throughput/total_training_Gflops=172,098,523
+    throughput/total_training_log_Gflops=18.96
+    throughput/device/tokens_per_second=29,583
+    throughput/device/batches_per_second=0.4514
+2025-01-21 11:06:54.723	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=288/294,epoch=2]
+    optim/total_grad_norm=0.1415
+    train/CrossEntropyLoss=0.0570
+    train/Perplexity=1.059
+    throughput/total_tokens=18,874,368
+    throughput/total_training_Gflops=172,698,169
+    throughput/total_training_log_Gflops=18.97
+    throughput/device/tokens_per_second=29,581
+    throughput/device/batches_per_second=0.4514
+2025-01-21 11:06:56.939	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=289/294,epoch=2]
+    optim/total_grad_norm=0.1488
+    train/CrossEntropyLoss=0.0632
+    train/Perplexity=1.065
+    throughput/total_tokens=18,939,904
+    throughput/total_training_Gflops=173,297,816
+    throughput/total_training_log_Gflops=18.97
+    throughput/device/tokens_per_second=29,580
+    throughput/device/batches_per_second=0.4514
+2025-01-21 11:06:59.257	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=290/294,epoch=2]
+    optim/total_grad_norm=0.1447
+    train/CrossEntropyLoss=0.0590
+    train/Perplexity=1.061
+    throughput/total_tokens=19,005,440
+    throughput/total_training_Gflops=173,897,462
+    throughput/total_training_log_Gflops=18.97
+    throughput/device/tokens_per_second=29,444
+    throughput/device/batches_per_second=0.4493
+    System/Peak GPU Memory (MB)=34,786
+2025-01-21 11:07:01.481	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=291/294,epoch=2]
+    optim/total_grad_norm=0.1687
+    train/CrossEntropyLoss=0.0717
+    train/Perplexity=1.074
+    throughput/total_tokens=19,070,976
+    throughput/total_training_Gflops=174,497,108
+    throughput/total_training_log_Gflops=18.98
+    throughput/device/tokens_per_second=29,446
+    throughput/device/batches_per_second=0.4493
+2025-01-21 11:07:03.697	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=292/294,epoch=2]
+    optim/total_grad_norm=0.1437
+    train/CrossEntropyLoss=0.0631
+    train/Perplexity=1.065
+    throughput/total_tokens=19,136,512
+    throughput/total_training_Gflops=175,096,755
+    throughput/total_training_log_Gflops=18.98
+    throughput/device/tokens_per_second=29,456
+    throughput/device/batches_per_second=0.4495
+2025-01-21 11:07:05.910	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=293/294,epoch=2]
+    optim/total_grad_norm=0.1375
+    train/CrossEntropyLoss=0.0589
+    train/Perplexity=1.061
+    throughput/total_tokens=19,202,048
+    throughput/total_training_Gflops=175,696,401
+    throughput/total_training_log_Gflops=18.98
+    throughput/device/tokens_per_second=29,468
+    throughput/device/batches_per_second=0.4497
+2025-01-21 11:07:08.121	c608-052.vista.tacc.utexas.edu:0	olmo.train:967	INFO	[step=294/294,epoch=2]
+    optim/total_grad_norm=0.1400
+    train/CrossEntropyLoss=0.0580
+    train/Perplexity=1.060
+    throughput/total_tokens=19,267,584
+    throughput/total_training_Gflops=176,296,048
+    throughput/total_training_log_Gflops=18.99
+    throughput/device/tokens_per_second=29,481
+    throughput/device/batches_per_second=0.4499
+2025-01-21 11:07:08.122	c608-052.vista.tacc.utexas.edu:0	olmo.train:1334	INFO	Training epoch complete
+2025-01-21 11:07:08.122	c608-052.vista.tacc.utexas.edu:0	olmo.train:1351	INFO	Saving final unsharded model checkpoint...
+2025-01-21 11:07:08.127	c608-052.vista.tacc.utexas.edu:0	py.warnings:110	WARNING	/work/09636/zyliu/vista/miniconda3/envs/astro/lib/python3.11/site-packages/torch/distributed/fsdp/_state_dict_utils.py:773: UserWarning: When using ``NO_SHARD`` for ``ShardingStrategy``, full_state_dict willbe returned.
+  warnings.warn(
+
+2025-01-21 11:07:08.128	c608-052.vista.tacc.utexas.edu:0	py.warnings:110	WARNING	/work/09636/zyliu/vista/miniconda3/envs/astro/lib/python3.11/site-packages/torch/distributed/fsdp/_state_dict_utils.py:716: UserWarning: When using ``NO_SHARD`` for ``ShardingStrategy``, full_state_dict willbe returned.
+  warnings.warn(
+
+2025-01-21 11:07:08.131	c608-052.vista.tacc.utexas.edu:0	olmo.checkpoint:798	INFO	Saving model state...
+2025-01-21 11:07:25.803	c608-052.vista.tacc.utexas.edu:0	olmo.checkpoint:813	INFO	Saving optim state...
+2025-01-21 11:07:59.961	c608-052.vista.tacc.utexas.edu:0	olmo.checkpoint:668	INFO	Saving trainer state...
+2025-01-21 11:07:59.966	c608-052.vista.tacc.utexas.edu:0	olmo.checkpoint:606	INFO	Saving config...
+2025-01-21 11:08:00.146	c608-052.vista.tacc.utexas.edu:0	olmo.train:1353	INFO	Unsharded checkpoint saved to /scratch/09636/zyliu/checkpoints/sft/SFT-DS-Coder-1B-final/step294-unsharded
+2025-01-21 11:08:00.146	c608-052.vista.tacc.utexas.edu:0	train:354	INFO	Training complete
+wandb: - 0.000 MB of 0.000 MB uploadedwandb:                                                                                
+[rank0]:[W121 11:08:01.646388933 ProcessGroupNCCL.cpp:1168] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+c608-052:3560989:3561184 [0] NCCL INFO [Service thread] Connection closed by localRank 0
+c608-052:3560989:3565886 [0] NCCL INFO comm 0x21cc6d80 rank 0 nranks 1 cudaDev 0 busId 901000 - Abort COMPLETE

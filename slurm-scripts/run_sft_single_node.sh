@@ -52,7 +52,7 @@ torchrun --nproc_per_node=1 \
     --remote_save_folder=null \
     --save_overwrite \
     --reset_optimizer_state \
-    --load_path=${path_to_checkpoint} \
-    --save_folder=${save_root}/SFT-DS-Coder-1B-final \
+    --load_path="${path_to_checkpoint}" \
+    --save_folder="${save_root}/SFT-DS-Coder-1B-final" \
     --restart_from_unsharded_checkpoint=True \
-    --scheduler.t_warmup=${t_warmup} \
+    --scheduler.t_warmup=${t_warmup}

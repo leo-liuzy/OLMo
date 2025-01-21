@@ -61,5 +61,5 @@ accelerate launch --config_file="fsdp_config.yaml" \
     --report_to="wandb" \
     --run_name="sft-dscoder-1B" \
     --data_split_fpath="${split_file_root}/${split_file}.pkl" \
-    --output_dir_suffix="${split_file}"
+    --output_dir_suffix="${split_file}_debug"
 done

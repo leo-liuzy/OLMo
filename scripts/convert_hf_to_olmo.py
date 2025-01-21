@@ -130,8 +130,7 @@ def write_model(
     olmo_config.model.include_bias = include_attn_bias
     olmo_config.model.bias_for_layer_norm = False
     olmo_config.model.scale_logits = False
-    # olmo_config.model.embedding_size = 
-    olmo_config.model.vocab_size = len(hf_tokenizer)
+    olmo_config.model.vocab_size = olmo_config.model.embedding_size = len(hf_tokenizer)
     olmo_config.model.weight_tying = hf_config.tie_word_embeddings
     olmo_config.model.eos_token_id = hf_config.eos_token_id
     olmo_config.model.pad_token_id = hf_tokenizer.pad_token_id # type: ignore
