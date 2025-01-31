@@ -1,14 +1,16 @@
-run_name: OLMo-7B-sample-cpt
+run_name: DSCoder-1B-cpt
 seed: 6198
 epoch: 0
 dry_run: false
 
 model:
-  d_model: 4096
-  n_heads: 32
-  n_layers: 32
+  d_model: 2048
+  n_heads: 16
+  n_kv_heads: 16
+  clip_qkv: null
+  n_layers: 24
   mlp_ratio: 4
-  mlp_hidden_size: 22016
+  mlp_hidden_size: 11008
   activation_type: swiglu
   block_type: sequential
   block_group_size: 1
@@ -16,32 +18,40 @@ model:
   alibi_bias_max: 8.0
   rope: true
   rope_full_precision: true
-  flash_attention: true
+  rope_theta: 100000
+  flash_attention: false
   attention_dropout: 0.0
   multi_query_attention: false
   attention_layer_norm: false
   residual_dropout: 0.0
   embedding_dropout: 0.0
-  layer_norm_type: default
-  layer_norm_with_affine: false
+  embedding_layer_norm: false
+  layer_norm_type: rms
+  layer_norm_with_affine: true
+  layer_norm_eps: 1.0e-06
   attention_layer_norm_with_affine: false
-  max_sequence_length: 512 # 2048
+  max_sequence_length: 8192 #2048 # 16384
   include_bias: false
   bias_for_layer_norm: false
   scale_logits: false
-  vocab_size: 50280
-  embedding_size: 50304
-  weight_tying: true
-  eos_token_id: 0
-  pad_token_id: 1
+  vocab_size: 32022
+  embedding_size: 32022
+  weight_tying: false
+  eos_token_id: 32014
+  pad_token_id: 32014
   init_device: meta
   init_fn: mitchell
   init_std: 0.02
   init_cutoff_factor: null
   precision: amp_bf16
+  scale_emb_init: false
+  emb_init_std: null
+  norm_after: false
+  rope_factor: 4.0
+
 optimizer:
   name: adamw
-  learning_rate: 2.3e-05
+  learning_rate: 2e-5
   weight_decay: 0.1
   betas:
   - 0.9
@@ -50,19 +60,20 @@ optimizer:
   decay_norm_and_bias: false
   decay_embeddings: false
   metrics_log_interval: 10
+
 scheduler:
-  name: linear_with_warmup
-  t_warmup: 556000
-  t_max: 558223
-  alpha_f: 0.001
+  name: cosine_with_warmup
+  t_warmup: 9
+  t_max: null
+  alpha_f: 0.1
   grad_clip_warmup_steps: null
   grad_clip_warmup_factor: null
 
-filter_strategy: cat_mds
-
 data:
   paths:
-  - /home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup/${filter_strategy}/train/part-000-00000.npy
+  - /scratch/07144/yw23374/data/astro_cpt_dscoder/train8k/input_ids.npy
+  label_mask_paths:
+  - /scratch/07144/yw23374/data/astro_cpt_dscoder/train8k/label_mask.npy
   datasets: null
   pad_direction: right
   num_workers: 0
@@ -71,28 +82,28 @@ data:
   prefetch_factor: 16
   persistent_workers: true
   timeout: 0
-restore_dataloader: true # false
+restore_dataloader: true
 fast_forward_batches: null
 evaluators:
-- label: astro-small-ppl-validation
+- label: astro-cpt-small-ppl-validation
   data:
-    num_workers: 0
-    drop_last: true
-    datasets:
-      astro-small-ppl-validation:
-        - /home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup/${filter_strategy}/valid/part-0-00000.npy
+    paths:
+    - /scratch/07144/yw23374/data/astro_cpt_dscoder/valid8k/input_ids.npy
+    label_mask_paths:
+    - /scratch/07144/yw23374/data/astro_cpt_dscoder/valid8k/label_mask.npy
+    datasets: null
 
-eval_interval: 10
+eval_interval: 40
 tokenizer:
-  identifier: tokenizers/allenai_eleuther-ai-gpt-neox-20b-pii-special.json
+  identifier: tokenizers/deepseek-coder-1.3b-base.json
   truncate_direction: right
 save_folder: ""
 remote_save_folder: null
 canceled_check_interval: 50
-save_interval: 1000
-save_interval_unsharded: 10000
+save_interval: 500
+save_interval_unsharded: 1000
 save_interval_ephemeral: null
-save_num_checkpoints_to_keep: -1
+save_num_checkpoints_to_keep: 9
 save_num_unsharded_checkpoints_to_keep: -1
 save_overwrite: false
 force_save_unsharded: false
@@ -103,21 +114,21 @@ reset_optimizer_state: false
 sharded_checkpointer: torch_legacy
 new_style_checkpoints: null
 max_duration: 3ep # Use `ep` for #epoch, `T` for #tokens
-global_train_batch_size: 2
-device_train_batch_size: 1
-device_train_microbatch_size: 1
-device_eval_batch_size: 4
+global_train_batch_size: 32 #[32, 128, 256]
+device_train_batch_size: null
+device_train_microbatch_size: 2
+device_eval_batch_size: 8
 eval_subset_num_batches: -1
 eval_on_load: true
-device_train_grad_accum: 16
+device_train_grad_accum: 1
 max_grad_norm: 1.0
 max_grad_norm_ratio: null
 precision: amp_bf16
 wandb:
-  project: astro-olmo-small
-  entity: leo-liuzy
-  group: astro-olmo-small-sample
-  name: astro-olmo-small-sample-${filter_strategy}
+  project: astro-cpt-olmo-small
+  entity: lingchensanwen
+  group: astro-cpt-olmo-small
+  name: astro-cpt-olmo-small
   tags:
   - watching
   log_artifacts: false
@@ -128,22 +139,17 @@ speed_monitor:
   gpu_flops_available: null
 console_log_interval: 1
 compile: null
-  # mode: max-autotune
-  # fullgraph: false
-  # backend: "inductor"
-# fsdp:
-#   use_orig_params: true
-#   sharding_strategy: FULL_SHARD
-#   # wrapping_strategy: by_block
-#   wrapping_strategy: one_in_two
-#   precision: mixed
-  # cpu_offload: true
-
+fsdp:
+  use_orig_params: true
+  sharding_strategy: FULL_SHARD
+  wrapping_strategy: null
+  precision: mixed
 softmax_auxiliary_loss: false
-time_limit: null
+time_limit: 171000.0
+extra_steps_after_cancel: 10
 early_stopping_factor: null
 save_data_indices: true
 python_profiling: false
 torch_profiling: false
 stop_at: null
-activation_checkpointing: whole_layer
+activation_checkpointing: null

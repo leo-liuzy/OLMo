@@ -4,6 +4,7 @@ NODES=$2
 
 cd ${WORK}/OLMo
 
+export WANDB_MODE=online
 export NCCL_DEBUG=INFO
 export NODENAME=$(hostname -s)
 
@@ -17,6 +18,8 @@ echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX "
 echo "Nodelist:= " $SLURM_JOB_NODELIST
 echo "Number of nodes:= " $SLURM_JOB_NUM_NODES
 echo "Ntasks per node:= "  $SLURM_NTASKS_PER_NODE
+echo "NODE_RANK:= "  $NODE_RANK
+echo "WORLD_SIZE:= "  $WORLD_SIZE
 echo "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX "
 
 # ******************* These are read internally it seems ***********************************
@@ -39,22 +42,11 @@ export NCCL_MIN_CHANNELS=32
 # for debugging
 export NCCL_DEBUG=INFO
 
-save_root=${SCRATCH}/checkpoints/tenk_dump_package_dedup
-data_folder=${SCRATCH}/processed_data/sample_dump_package/dedup
-data_folder=${SCRATCH}/processed_data/tenk_dump_package/dedup
-path_to_checkpoint="${SCRATCH}/base_models/OLMo/OLMo-1B-final"
+save_root="${SCRATCH}/checkpoints/cpt"
+path_to_checkpoint="${SCRATCH}/base_models/deepseek/olmo/deepseek-coder-1.3b-base"
 
-# no_biblio_mds,11 no_html_mds,8 no_tab_fig_mds,9 cat_mds,14 # sample bs=8
-
-# no_biblio_mds,132 no_html_mds,67 no_tab_fig_mds,102 cat_mds,155 # 10k bs=8
-
-# no_biblio_mds,4 no_html_mds,2 no_tab_fig_mds,3 cat_mds,4 # 10k bs=2048
-filter_warmup_pair=cat_mds,4
-
-echo $filter_strategy
-echo $t_warmup
-
-IFS=, read -r filter_strategy t_warmup <<< $filter_warmup_pair
+echo hahah
+t_warmup=20
 torchrun --nproc_per_node=1 \
     --rdzv-backend=c10d \
     --node_rank=${NODE_RANK}\
@@ -64,14 +56,12 @@ torchrun --nproc_per_node=1 \
     --rdzv_endpoint "${MASTER_ADDR}:${MASTER_PORT}" \
     --master_addr ${MASTER_ADDR} \
     scripts/train.py \
-    configs/astro-cpt/OLMo-1B.yaml \
+    configs/astro-cpt/DS-Coder-1B.yaml \
     --reset_trainer_state \
     --remote_save_folder=null \
     --save_overwrite \
     --reset_optimizer_state \
-    --data.paths=[${data_folder}/${filter_strategy}/train/part-0-00000.npy] \
     --load_path=${path_to_checkpoint} \
-    --save_folder=${save_root}/${filter_strategy}/OLMo-1B-final \
+    --save_folder="/scratch/07144/yw23374/checkpoints/cpt/CPT-DS-Coder-1B-final-8k-32-batch/" \
     --restart_from_unsharded_checkpoint=True \
-    --filter_strategy=${filter_strategy} \
-    --scheduler.t_warmup=${t_warmup} \
+    --scheduler.t_warmup=${t_warmup}
