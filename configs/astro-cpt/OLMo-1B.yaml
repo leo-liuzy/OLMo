@@ -64,7 +64,7 @@ filter_strategy: cat_mds
 
 data:
   paths:
-  - /home1/09636/zyliu/scratch/processed_data/sample_dump_package/dedup/train/${filter_strategy}/part-000-00000.npy
+  - /scratch/07144/yw23374/processed_data/tenk_dump_package/dedup/train/cat_mds/part-0-00000.npy
   datasets: null
   pad_direction: right
   num_workers: 0
@@ -82,7 +82,7 @@ evaluators:
     drop_last: true
     datasets:
       astro-small-ppl-validation:
-        - /home1/09636/zyliu/scratch/processed_data/tenk_dump_package/dedup/valid/part-0-00000.npy
+        - /scratch/07144/yw23374/processed_data/tenk_dump_package/dedup/valid/part-0-00000.npy
 
 eval_interval: 10
 tokenizer:
