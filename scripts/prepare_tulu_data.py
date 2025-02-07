@@ -95,12 +95,14 @@ def dscoder_preprocess(example, tokenizer: Tokenizer, max_seq_len: int):
 def dscoder_cpt_preprocess(example, tokenizer: Tokenizer, max_seq_len: int):
     input_ids = [tokenizer.eos_token_id]
     label_mask = [False]
-    content_tokens = tokenizer.encode(
-        example["text"] + tokenizer.eos_token,
-        add_special_tokens=False
-    )
+    text = example["text"].strip() + tokenizer.eos_token + "\n"
+    content_tokens = tokenizer.encode(text, add_special_tokens=False)
     input_ids += content_tokens
     label_mask += [True] * len(content_tokens)
+    if len(content_tokens) >= 2:
+        assert content_tokens[-2] == tokenizer.eos_token_id
+        label_mask[-1] = False
+
     input_ids = input_ids[:max_seq_len]
     label_mask = label_mask[:max_seq_len]
     if len(input_ids) < max_seq_len:
